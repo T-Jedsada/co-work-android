@@ -9,7 +9,6 @@ abstract class BaseActivity <V : BaseContract.View, P : BaseContract.Presenter<V
     protected abstract fun layoutToInflate(): Int
     protected abstract fun setupView()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutToInflate())
@@ -19,7 +18,6 @@ abstract class BaseActivity <V : BaseContract.View, P : BaseContract.Presenter<V
     override fun onStart() {
         super.onStart()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
