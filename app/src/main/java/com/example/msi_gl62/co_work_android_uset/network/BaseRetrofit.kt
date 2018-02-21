@@ -1,5 +1,4 @@
 package com.example.potikorn.testcoopapp.network
-
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -28,5 +27,4 @@ class BaseRetrofit {
                         val request = requestBuilder.build()
                         return@addInterceptor chain.proceed(request) }
             return okHttpBuilder.build() } }
-
 }

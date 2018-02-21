@@ -1,5 +1,4 @@
 package com.example.msi_gl62.co_work_android_uset
-
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.view.View
@@ -21,13 +20,10 @@ fun View.simpleFadeOutAnimation(): ViewPropertyAnimator = let {
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
-                    this@simpleFadeOutAnimation.hide()
-                }
-            }) }
+                    this@simpleFadeOutAnimation.hide() } }) }
 
 fun View.hide() = let {
-    this.visibility = View.GONE
-}
+    this.visibility = View.GONE }
+
 fun View.show() = let {
-    this.visibility = View.VISIBLE
-}
+    this.visibility = View.VISIBLE }
