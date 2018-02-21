@@ -2,6 +2,9 @@ language: android
 
 jdk: oraclejdk8
 
+notifications:
+    slack: 20scoopscnx:MHXX5rImwvTFSMK0JiJfa7ur
+
 before_cache:
  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
