@@ -22,10 +22,7 @@ class Register : AppCompatActivity() {
         setButtonNext()
         getDataFacebook()
 
-
     }
-
-
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
@@ -67,7 +64,6 @@ class Register : AppCompatActivity() {
                                             e.printStackTrace() }
                                     }
                                 }).executeAsync()
-
                     }
                     override fun onCancel() {}
                     override fun onError(exception: FacebookException) {}
