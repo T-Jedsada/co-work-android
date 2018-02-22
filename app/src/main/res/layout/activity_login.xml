@@ -5,4 +5,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.msi_gl62.co_work_android_uset.ui.login.Login">
 
+
+
+
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:text="register"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
 </RelativeLayout>

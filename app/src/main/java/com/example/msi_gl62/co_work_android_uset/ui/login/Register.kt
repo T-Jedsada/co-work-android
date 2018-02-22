@@ -9,6 +9,7 @@ import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_register.*
+import java.util.*
 import java.util.regex.Pattern
 
 class Register : AppCompatActivity() {
@@ -17,10 +18,14 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        getDataFacebook()
         setImageviewUser()
         setButtonNext()
+        getDataFacebook()
+
+
     }
+
+
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
@@ -40,7 +45,7 @@ class Register : AppCompatActivity() {
         } }
 
     private fun getDataFacebook() {
-        callbackManager = CallbackManager.Factory.create()
+
         callbackManager = CallbackManager.Factory.create()
         LoginManager.getInstance().registerCallback(callbackManager,
                 object : FacebookCallback<LoginResult> {
