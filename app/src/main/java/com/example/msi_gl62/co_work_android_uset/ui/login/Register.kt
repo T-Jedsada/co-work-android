@@ -3,12 +3,13 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_register.*
-import android.app.Activity
+import java.util.regex.Pattern
 
 class Register : AppCompatActivity() {
     val PICK_IMAGE = 1000
@@ -18,17 +19,25 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         getDataFacebook()
         setImageviewUser()
+        setButtonNext()
     }
 
+    private fun setButtonNext() {
+        btnSubmit.setOnClickListener {
+            val validemail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
+            val email = edtEmail.text.toString()
+            val matcher = Pattern.compile(validemail).matcher(email)
+            if (matcher.matches()){ Toast.makeText(getApplicationContext(),"True",Toast.LENGTH_LONG).show(); }
+            else { Toast.makeText(getApplicationContext(),"Fail",Toast.LENGTH_LONG).show(); }
+        } }
 
     private fun setImageviewUser() {
         imageView.setOnClickListener{
-
-            val galleryIntent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(galleryIntent, PICK_IMAGE)
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_PICK
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
         } }
-
-
 
     private fun getDataFacebook() {
         callbackManager = CallbackManager.Factory.create()
@@ -50,8 +59,8 @@ class Register : AppCompatActivity() {
                                             val textemail=data.getString("email")
                                             edtName.setText(textemail)
                                         } catch (e: Exception) {
-                                            e.printStackTrace() } }
-                                    Log.e("teststst","sdsdsd"+data)
+                                            e.printStackTrace() }
+                                    }
                                 }).executeAsync()
 
                     }
@@ -64,12 +73,12 @@ class Register : AppCompatActivity() {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode === Activity.RESULT_OK) {
-            if (requestCode === PICK_IMAGE) {
+            if (requestCode == PICK_IMAGE) {
                 val picUri = data.data
                 Log.e("twtetst","........"+picUri)
-                imageView.setImageURI(picUri) }
-        }
+                imageView.setImageURI(picUri)
+            }
+
     }
 
 }

@@ -5,7 +5,4 @@
     android:layout_height="match_parent"
     tools:context="com.example.msi_gl62.co_work_android_uset.ui.login.Login">
 
-
-
-
 </RelativeLayout>
