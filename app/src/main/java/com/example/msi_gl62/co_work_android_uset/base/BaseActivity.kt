@@ -14,13 +14,4 @@ abstract class BaseActivity <V : BaseContract.View, P : BaseContract.Presenter<V
         setContentView(layoutToInflate())
         setupView()
     }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
 }

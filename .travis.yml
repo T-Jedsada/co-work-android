@@ -50,7 +50,7 @@ android:
 
 before_install:
 
-  - yes | sdkmanager "platforms;android-26"
+  - yes | sdkmanager "platforms;android-27"
 
 
 
