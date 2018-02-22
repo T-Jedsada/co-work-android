@@ -1,4 +1,4 @@
-package com.example.msi_gl62.buildvariantsandroid.base
+package com.example.msigl62.coworkandroiduset.base
 open class BaseContract {
     interface View {
         fun showProgressDialog() }
