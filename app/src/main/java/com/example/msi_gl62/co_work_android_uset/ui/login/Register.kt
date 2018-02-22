@@ -20,12 +20,14 @@ class Register : AppCompatActivity() {
         setImageviewUser()
     }
 
+
     private fun setImageviewUser() {
         imageView.setOnClickListener{
 
             val galleryIntent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(galleryIntent, PICK_IMAGE)
         } }
+
 
 
     private fun getDataFacebook() {
