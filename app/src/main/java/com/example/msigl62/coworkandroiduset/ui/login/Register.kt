@@ -1,9 +1,9 @@
-package com.example.msi_gl62.co_work_android_uset.ui.login
+package com.example.msigl62.coworkandroiduset.ui.login
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.msi_gl62.co_work_android_uset.R
+import com.example.msigl62.coworkandroiduset.R
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult

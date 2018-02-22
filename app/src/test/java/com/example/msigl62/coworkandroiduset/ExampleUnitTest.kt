@@ -1,4 +1,4 @@
-package com.example.msi_gl62.co_work_android_uset
+package com.example.msigl62.coworkandroiduset
 
 import org.junit.Test
 

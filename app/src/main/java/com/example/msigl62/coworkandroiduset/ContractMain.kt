@@ -1,5 +1,6 @@
-package com.example.msi_gl62.rider
-import com.example.msi_gl62.buildvariantsandroid.base.BaseContract
+package com.example.msigl62.coworkandroiduset
+
+import com.example.msigl62.coworkandroiduset.base.BaseContract
 
 class ContractMain {
     interface View : BaseContract.View
