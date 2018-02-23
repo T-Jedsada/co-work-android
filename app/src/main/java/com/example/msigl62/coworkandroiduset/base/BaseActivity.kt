@@ -1,7 +1,6 @@
-package com.example.msi_gl62.rider.base
+package com.example.msigl62.coworkandroiduset.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.example.msi_gl62.buildvariantsandroid.base.BaseContract
 
 abstract class BaseActivity <V : BaseContract.View, P : BaseContract.Presenter<V>> :
         AppCompatActivity(), BaseContract.View {
