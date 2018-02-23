@@ -6,16 +6,16 @@ import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.ui.register.Contact
-import com.example.msigl62.coworkandroiduset.ui.register.Model
-import com.example.msigl62.coworkandroiduset.ui.register.Presenter
+import com.example.msigl62.coworkandroiduset.ui.register.RegisterContact
+import com.example.msigl62.coworkandroiduset.ui.register.RegisterContactModel
+import com.example.msigl62.coworkandroiduset.ui.register.RegisterPresenter
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
-class Register : AppCompatActivity(), Contact.view  {
-    lateinit var presenter: Contact.presenter
+class Register : AppCompatActivity(), RegisterContact.view  {
+    lateinit var presenter: RegisterContact.presenter
     private val PICK_IMAGE = 3000
     private var callbackManager: CallbackManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class Register : AppCompatActivity(), Contact.view  {
         setImageViewUser()
         setButtonNext()
         getDataFacebook()
-        presenter = Presenter()
+        presenter = RegisterPresenter()
         LoginManager.getInstance().logOut()
     }
 
@@ -33,8 +33,7 @@ class Register : AppCompatActivity(), Contact.view  {
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
-            presenter.checkMatcherEmail(Model(edtEmail.text.toString()), this) }
-
+            presenter.checkMatcherEmail(RegisterContactModel(edtEmail.text.toString()), this) }
     }
 
     private fun setImageViewUser() {
