@@ -2,7 +2,6 @@ package com.example.msi_gl62.co_work_android_uset.ui.login
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
@@ -13,9 +12,6 @@ import kotlinx.android.synthetic.main.activity_register.*
 import java.util.regex.Pattern
 import com.facebook.FacebookException
 import com.facebook.FacebookCallback
-import android.R.attr.data
-import android.app.Activity
-
 
 class Register : AppCompatActivity() {
     val PICK_IMAGE = 3000
@@ -26,9 +22,7 @@ class Register : AppCompatActivity() {
         setImageviewUser()
         setButtonNext()
         getDataFacebook()
-        LoginManager.getInstance().logOut()
-
-    }
+        LoginManager.getInstance().logOut() }
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
@@ -40,14 +34,12 @@ class Register : AppCompatActivity() {
 
     private fun setImageviewUser() {
         imageView.setOnClickListener{
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_PICK
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE) }
-    }
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_PICK
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE) } }
 
     private fun getDataFacebook() {
-
         callbackManager = CallbackManager.Factory.create()
         login_button.setReadPermissions("email")
         login_button.registerCallback(callbackManager,
@@ -72,23 +64,18 @@ class Register : AppCompatActivity() {
                         textOR.visibility = GONE
                     }
                     override fun onCancel() {}
-                    override fun onError(exception: FacebookException) {}
-                })
-    }
+                    override fun onError(exception: FacebookException) {} }) }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-            if (requestCode == PICK_IMAGE) {
-                val picUri = data.data
-                imageView.setImageURI(picUri) }
-    }
+        if (requestCode == PICK_IMAGE) {
+            val picUri = data.data
+            imageView.setImageURI(picUri) } }
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginManager.getInstance().logOut()
-    }
-
+        LoginManager.getInstance().logOut() }
 
 }
 
