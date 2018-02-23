@@ -34,7 +34,7 @@ class Register : AppCompatActivity(), Contact.view  {
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
             val model = Model(edtEmail.text.toString())
-            presenter.showtext(model, this) }
+            presenter.checkMatcherEmail(model, this) }
     }
 
     private fun setImageViewUser() {
