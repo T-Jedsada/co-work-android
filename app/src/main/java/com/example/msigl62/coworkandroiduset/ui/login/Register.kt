@@ -2,16 +2,18 @@ package com.example.msi_gl62.co_work_android_uset.ui.login
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
-import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.regex.Pattern
 import com.facebook.FacebookException
 import com.facebook.FacebookCallback
+import com.facebook.CallbackManager
+import java.util.*
 
 class Register : AppCompatActivity() {
     private val PICK_IMAGE = 3000
@@ -22,7 +24,10 @@ class Register : AppCompatActivity() {
         setImageviewUser()
         setButtonNext()
         getDataFacebook()
-        LoginManager.getInstance().logOut() }
+        LoginManager.getInstance().logOut()
+
+
+    }
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
@@ -40,29 +45,19 @@ class Register : AppCompatActivity() {
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE) } }
 
     private fun getDataFacebook() {
-        callbackManager = CallbackManager.Factory.create()
-        login_button.setReadPermissions("email")
-        login_button.registerCallback(callbackManager,
-                object : FacebookCallback<LoginResult> {
-                    override fun onSuccess(loginResult: LoginResult) {
-                        val params = Bundle()
-                        params.putString("fields", "id,name,gender,email")
-                        GraphRequest(AccessToken.getCurrentAccessToken(), "me", params, HttpMethod.GET,
-                                GraphRequest.Callback { response -> val data = response.jsonObject
-                                    if (response != null) {
-                                        try {
-                                            edtName.setText(data.getString("name"))
-                                            val idUser=data.getString("id")
-                                            edtEmail.setText(data.getString("email"))
-                                        } catch (e: Exception) {
-                                            e.printStackTrace() }
-                                    }
-                                }).executeAsync()
-                        login_button.visibility = GONE
-                        textOR.visibility = GONE
-                    }
-                    override fun onCancel() {}
-                    override fun onError(exception: FacebookException) {} }) }
+        btnFacebook.setOnClickListener {
+            callbackManager = CallbackManager.Factory.create()
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
+            LoginManager.getInstance().registerCallback(callbackManager,
+                    object : FacebookCallback<LoginResult> {
+                        override fun onSuccess(loginResult: LoginResult) {
+                            btnFacebook.visibility = GONE
+                            textOR.visibility = GONE
+                        }
+                        override fun onCancel() {}
+                        override fun onError(error: FacebookException) {}
+                    }) }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)

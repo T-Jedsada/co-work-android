@@ -8,17 +8,11 @@ import com.example.msigl62.coworkandroiduset.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : BaseActivity<ContractMain.View, PresenterMain>(){
-
     override fun showProgressDialog() {}
     override fun layoutToInflate(): Int=R.layout.activity_login
     override fun setupView() {
-
         btnRegister.setOnClickListener {
             val i = Intent(this, Register::class.java)
             startActivity(i)
-
-        }
-    }
-
-
+        } }
 }
