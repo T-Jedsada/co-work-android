@@ -6,14 +6,16 @@ import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
+import com.example.msigl62.coworkandroiduset.ui.login.Contact
+import com.example.msigl62.coworkandroiduset.ui.login.Model
+import com.example.msigl62.coworkandroiduset.ui.login.Presenter
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_register.*
-import java.util.regex.Pattern
 import java.util.*
-
-class Register : AppCompatActivity() {
+class Register : AppCompatActivity(), Contact.view  {
+    lateinit var presenter: Contact.presenter
     private val PICK_IMAGE = 3000
     private var callbackManager: CallbackManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,18 +24,17 @@ class Register : AppCompatActivity() {
         setImageViewUser()
         setButtonNext()
         getDataFacebook()
+        presenter = Presenter()
         LoginManager.getInstance().logOut()
     }
 
+    override fun contactPresenter(Description: String) {
+        Toast.makeText(applicationContext, Description, Toast.LENGTH_LONG).show(); }
+
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
-            val validEmail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
-            val email = edtEmail.text.toString()
-            val matcher = Pattern.compile(validEmail).matcher(email)
-            if (matcher.matches()) {
-                Toast.makeText(applicationContext, "True", Toast.LENGTH_LONG).show(); } else {
-                Toast.makeText(applicationContext, "Fail", Toast.LENGTH_LONG).show(); }
-        }
+            val model = Model(edtEmail.text.toString())
+            presenter.showtext(model, this) }
     }
 
     private fun setImageViewUser() {
@@ -42,8 +43,7 @@ class Register : AppCompatActivity() {
             intent.type = "image/*"
             intent.action = Intent.ACTION_PICK
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
-        }
-    }
+        } }
 
     private fun getDataFacebook() {
         btnFacebook.setOnClickListener {
@@ -69,9 +69,7 @@ class Register : AppCompatActivity() {
                         }
                         override fun onCancel() {}
                         override fun onError(error: FacebookException) {}
-                    })
-        }
-    }
+                    }) } }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
@@ -79,13 +77,11 @@ class Register : AppCompatActivity() {
         if (requestCode == PICK_IMAGE) {
             val picUri = data.data
             imageView.setImageURI(picUri)
-        }
-    }
+        } }
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginManager.getInstance().logOut()
-    }
+        LoginManager.getInstance().logOut() }
 
 }
 
