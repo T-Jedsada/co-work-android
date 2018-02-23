@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.msigl62.coworkandroiduset.ui.login.Register">
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -48,6 +46,7 @@
         android:layout_height="50dp" />
 
     <TextView
+        android:id="@+id/textOR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSubmit"
@@ -55,15 +54,13 @@
         android:text="OR" />
 
 
-    <com.facebook.login.widget.LoginButton
+    <Button
+        android:id="@+id/btnFacebook"
+        android:text="@string/fb_btn"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btnSubmit"
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_below="@+id/textOR"
+        android:layout_width="250dp"
+        android:layout_height="50dp" />
 
 
 </RelativeLayout>
