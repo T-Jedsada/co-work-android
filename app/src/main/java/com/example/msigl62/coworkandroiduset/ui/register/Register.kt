@@ -1,22 +1,35 @@
-package com.example.msi_gl62.co_work_android_uset.ui.login
+package com.example.msigl62.coworkandroiduset.ui.register
+
+import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.support.v4.content.CursorLoader
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.ui.register.RegisterContact
-import com.example.msigl62.coworkandroiduset.ui.register.RegisterContactModel
-import com.example.msigl62.coworkandroiduset.ui.register.RegisterPresenter
-import com.facebook.*
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.GraphRequest
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_register.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 import java.util.*
-class Register : AppCompatActivity(), RegisterContact.view  {
-    lateinit var presenter: RegisterContact.presenter
-    private val PICK_IMAGE = 3000
+
+class Register : AppCompatActivity(), RegisterContact.view {
+    companion object {
+        const val REQUEST_CODE = 1
+    }
+
+    private lateinit var presenter: RegisterContact.presenter
     private var callbackManager: CallbackManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +46,16 @@ class Register : AppCompatActivity(), RegisterContact.view  {
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
-            presenter.checkMatcherEmail(RegisterContactModel(edtEmail.text.toString()), this) }
+            presenter.checkMatcherEmail(RegisterContactModel(edtEmail.text.toString()), this)
+        }
     }
 
     private fun setImageViewUser() {
         imageView.setOnClickListener {
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_PICK
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
-        } }
+            val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+    }
 
     private fun getDataFacebook() {
         btnFacebook.setOnClickListener {
@@ -55,10 +68,11 @@ class Register : AppCompatActivity(), RegisterContact.view  {
                             textOR.visibility = GONE
                             val request = GraphRequest.newMeRequest(
                                     loginResult.accessToken
-                            ) { `object`, _ ->   Log.e("CheckEmail", `object`.has("email").toString())
-                            val name = `object`.getString("name")
+                            ) { `object`, _ ->
+                                Log.e("CheckEmail", `object`.has("email").toString())
+                                val name = `object`.getString("name")
                                 edtName.setText(name)
-                                var email =`object`.getString("email")
+                                val email = `object`.getString("email")
                                 edtEmail.setText(email)
                             }
                             val parameters = Bundle()
@@ -68,23 +82,43 @@ class Register : AppCompatActivity(), RegisterContact.view  {
                         }
                         override fun onCancel() {}
                         override fun onError(error: FacebookException) {}
-                    }) } }
+                    })
+        }
+    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    @Suppress("DEPRECATED_IDENTITY_EQUALS")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE) {
-            val picUri = data.data
-            imageView.setImageURI(picUri)
-        } }
+        if (resultCode === Activity.RESULT_OK) {
+            if (requestCode === REQUEST_CODE) {
+                val imageUri = data?.data.let { it }
+                setImageView(imageUri)
+                val fileImage = File(imageUri?.let { getPath(it) })
+                val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
+                val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
+                //todo call function that api here
+            }
+        }
+    }
+
+    private fun setImageView(imageUri: Uri?) {
+        imageView.setImageURI(imageUri)
+    }
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginManager.getInstance().logOut() }
+        LoginManager.getInstance().logOut()
+    }
 
+    private fun getPath(contentUri: Uri): String? {
+        val arrData = arrayOf(MediaStore.Images.Media.DATA)
+        val loader = CursorLoader(applicationContext, contentUri, arrData, null, null, null)
+        val cursor = loader.loadInBackground()
+        val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor?.moveToFirst()
+        val result = columnIndex?.let { cursor.getString(it) }
+        cursor?.close()
+        return result
+    }
 }
-
-
-
-
-

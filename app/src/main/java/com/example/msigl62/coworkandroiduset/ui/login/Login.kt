@@ -1,7 +1,7 @@
 package com.example.msigl62.coworkandroiduset.ui.login
 import android.content.Intent
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msi_gl62.co_work_android_uset.ui.login.Register
+import com.example.msigl62.coworkandroiduset.ui.register.Register
 import com.example.msigl62.coworkandroiduset.ContractMain
 import com.example.msigl62.coworkandroiduset.PresenterMain
 import com.example.msigl62.coworkandroiduset.base.BaseActivity
