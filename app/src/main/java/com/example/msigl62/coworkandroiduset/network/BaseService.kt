@@ -14,5 +14,5 @@ interface BaseService {
                           @Part("name") name: String,
                           @Part("email") email: String,
                           @Part("password") password: String,
-                          @Part("image") image: MultipartBody.Part): Call<Register>
+                          @Part image: MultipartBody.Part): Call<Register>
 }
