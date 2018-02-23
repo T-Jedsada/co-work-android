@@ -14,7 +14,7 @@ import com.facebook.FacebookException
 import com.facebook.FacebookCallback
 
 class Register : AppCompatActivity() {
-    val PICK_IMAGE = 3000
+    private val PICK_IMAGE = 3000
     private var callbackManager: CallbackManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +26,11 @@ class Register : AppCompatActivity() {
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
-            val validemail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
+            val validEmail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
             val email = edtEmail.text.toString()
-            val matcher = Pattern.compile(validemail).matcher(email)
-            if (matcher.matches()){ Toast.makeText(getApplicationContext(),"True",Toast.LENGTH_LONG).show(); }
-            else { Toast.makeText(getApplicationContext(),"Fail",Toast.LENGTH_LONG).show(); } } }
+            val matcher = Pattern.compile(validEmail).matcher(email)
+            if (matcher.matches()){ Toast.makeText(applicationContext,"True",Toast.LENGTH_LONG).show(); }
+            else { Toast.makeText(applicationContext,"Fail",Toast.LENGTH_LONG).show(); } } }
 
     private fun setImageviewUser() {
         imageView.setOnClickListener{
@@ -51,11 +51,9 @@ class Register : AppCompatActivity() {
                                 GraphRequest.Callback { response -> val data = response.jsonObject
                                     if (response != null) {
                                         try {
-                                            val textname=data.getString("name")
-                                            edtName.setText(textname)
-                                            val textid=data.getString("id")
-                                            val textemail=data.getString("email")
-                                            edtEmail.setText(textemail)
+                                            edtName.setText(data.getString("name"))
+                                            val idUser=data.getString("id")
+                                            edtEmail.setText(data.getString("email"))
                                         } catch (e: Exception) {
                                             e.printStackTrace() }
                                     }
