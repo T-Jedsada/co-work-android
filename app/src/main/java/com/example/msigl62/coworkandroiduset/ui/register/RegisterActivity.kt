@@ -24,7 +24,7 @@ import okhttp3.RequestBody
 import java.io.File
 import java.util.*
 
-class Register : AppCompatActivity(), RegisterContact.view {
+class RegisterActivity : AppCompatActivity(), RegisterContact.view {
     companion object {
         const val REQUEST_CODE = 1
     }
