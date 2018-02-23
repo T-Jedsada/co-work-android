@@ -6,9 +6,9 @@ import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.ui.login.Contact
-import com.example.msigl62.coworkandroiduset.ui.login.Model
-import com.example.msigl62.coworkandroiduset.ui.login.Presenter
+import com.example.msigl62.coworkandroiduset.ui.register.Contact
+import com.example.msigl62.coworkandroiduset.ui.register.Model
+import com.example.msigl62.coworkandroiduset.ui.register.Presenter
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -33,8 +33,8 @@ class Register : AppCompatActivity(), Contact.view  {
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
-            val model = Model(edtEmail.text.toString())
-            presenter.checkMatcherEmail(model, this) }
+            presenter.checkMatcherEmail(Model(edtEmail.text.toString()), this) }
+
     }
 
     private fun setImageViewUser() {

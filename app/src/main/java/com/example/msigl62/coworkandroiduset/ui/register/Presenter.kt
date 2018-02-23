@@ -1,4 +1,4 @@
-package com.example.msigl62.coworkandroiduset.ui.login
+package com.example.msigl62.coworkandroiduset.ui.register
 import java.util.regex.Pattern
 
 class Presenter : Contact.presenter {
