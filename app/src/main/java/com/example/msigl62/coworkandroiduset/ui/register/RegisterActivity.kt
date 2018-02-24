@@ -1,5 +1,4 @@
 package com.example.msigl62.coworkandroiduset.ui.register
-
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -23,13 +22,14 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 import java.util.*
+import android.view.View.OnFocusChangeListener
 
-class RegisterActivity : AppCompatActivity(), RegisterContact.view {
+class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     companion object {
         const val REQUEST_CODE = 1
     }
 
-    private lateinit var presenter: RegisterContact.presenter
+    private lateinit var presenter: RegisterContact.Presenter
     private var callbackManager: CallbackManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +39,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.view {
         getDataFacebook()
         presenter = RegisterPresenter()
         LoginManager.getInstance().logOut()
+
+        edt_Name.onFocusChangeListener = OnFocusChangeListener { v, _ ->
+            if(edt_Name.text.length>30){
+                edt_Name.error = "nameerror"
+            } }
+
     }
 
     override fun contactPresenter(Description: String) {
@@ -46,7 +52,10 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.view {
 
     private fun setButtonNext() {
         btnSubmit.setOnClickListener {
-            presenter.checkMatcherEmail(RegisterContactModel(edtEmail.text.toString()), this)
+
+            val model=RegisterContactModel(edt_Name.text.toString(),edt_Email.text.toString()
+                    ,edt_Password.text.toString(),edt_re_Password.text.toString())
+            presenter.checkEditex(model, this)
         }
     }
 
@@ -71,9 +80,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.view {
                             ) { `object`, _ ->
                                 Log.e("CheckEmail", `object`.has("email").toString())
                                 val name = `object`.getString("name")
-                                edtName.setText(name)
+                                edt_Name.setText(name)
                                 val email = `object`.getString("email")
-                                edtEmail.setText(email)
+                                edt_Email.setText(email)
                             }
                             val parameters = Bundle()
                             parameters.putString("fields", "id,name,link,email")
@@ -97,6 +106,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.view {
                 val fileImage = File(imageUri?.let { getPath(it) })
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
+                Log.e("testtsts","testtsts"+bodyPartImage)
+
                 //todo call function that api here
             }
         }

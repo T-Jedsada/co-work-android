@@ -1,49 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="25dp"
-        android:layout_centerHorizontal="true"
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
         android:id="@+id/imageView"
         android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        app:bootstrapBrand="primary"
+        app:hasBorder="true" />
 
-    <EditText
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_Name"
         android:layout_below="@id/imageView"
-        android:padding="10dp"
+        android:layout_centerHorizontal="true"
         android:hint="name"
-        android:id="@+id/edtName"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        />
 
-    <EditText
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/edt_Email"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_Name"
         android:hint="gmail"
-        android:padding="10dp"
-        android:layout_below="@+id/edtName"
-        android:id="@+id/edtEmail"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:padding="10dp" />
 
-    <EditText
-        android:inputType="textPassword"
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_Password"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_Email"
         android:hint="password"
-        android:padding="10dp"
-        android:layout_below="@+id/edtEmail"
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:inputType="numberPassword"
+        android:padding="10dp" />
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_re_Password"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_Password"
+        android:hint="password"
+        android:inputType="numberPassword"
+        android:padding="10dp" />
+
+
 
     <Button
+        android:layout_marginTop="20dp"
         android:id="@+id/btnSubmit"
-        android:text="Next"
-        android:layout_below="@+id/edtPassword"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_re_Password"
         android:layout_centerHorizontal="true"
-        android:layout_width="250dp"
-        android:layout_height="50dp" />
+        android:text="Next" />
 
     <TextView
         android:id="@+id/textOR"
@@ -53,14 +80,13 @@
         android:layout_centerHorizontal="true"
         android:text="OR" />
 
-
     <Button
         android:id="@+id/btnFacebook"
-        android:text="@string/fb_btn"
-        android:layout_centerHorizontal="true"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/textOR"
-        android:layout_width="250dp"
-        android:layout_height="50dp" />
-
+        android:layout_centerHorizontal="true"
+        android:text="@string/fb_btn" />
 
 </RelativeLayout>
+</ScrollView>
