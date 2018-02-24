@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         setImageViewUser()
-        setButtonNext()
+        setButtonSubmitRegister()
         getDataFacebook()
         setonFocusChangeListener()
         presenter = RegisterPresenter()
@@ -48,14 +48,21 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             if(edt_Name.text.length>30){
                 edt_Name.error = "nameerror"
             } }
+        edt_Password.onFocusChangeListener = OnFocusChangeListener { _, _ ->
+            if(edt_Password.text.length!=6){
+                edt_Password.error = "passerror"
+            } }
+        edt_re_Password.onFocusChangeListener = OnFocusChangeListener { _, _ ->
+            if(edt_re_Password.text.length!=6){
+                edt_re_Password.error = "passerror"
+            } }
     }
 
     override fun contactPresenter(Description: String) {
         Toast.makeText(applicationContext, Description, Toast.LENGTH_LONG).show(); }
 
-    private fun setButtonNext() {
+    private fun setButtonSubmitRegister() {
         btnSubmit.setOnClickListener {
-
             val model=RegisterContactModel(edt_Name.text.toString(),edt_Email.text.toString()
                     ,edt_Password.text.toString(),edt_re_Password.text.toString())
             presenter.checkEdiText(model, this)

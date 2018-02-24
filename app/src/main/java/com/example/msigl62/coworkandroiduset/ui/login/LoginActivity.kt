@@ -11,7 +11,7 @@ class LoginActivity : BaseActivity<ContractMain.View, PresenterMain>(){
     override fun showProgressDialog() {}
     override fun layoutToInflate(): Int=R.layout.activity_login
     override fun setupView() {
-        btnRegister.setOnClickListener {
+        register.setOnClickListener {
             val i = Intent(this, RegisterActivity::class.java)
             startActivity(i)
         } }

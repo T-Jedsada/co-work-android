@@ -2,5 +2,8 @@
     <string name="app_name">co-work-android-uset</string>
     <string name="facebook_app_id">207669949811265</string>
     <string name="fb_login_protocol_scheme">fb1768282206580252</string>
-    <string name="fb_btn">facebook</string>
+    <string name="fb_btn">Facebook</string>
+    <string name="submit_btn">Log in</string>
+    <string name="btn_register">Register</string>
+    <string name="submit_btn_with_facebook">Log in with facebook</string>
 </resources>

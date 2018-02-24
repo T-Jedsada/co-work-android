@@ -12,7 +12,7 @@ class RegisterPresenter : RegisterContact.Presenter {
                     ""->view.contactPresenter("nameFail")
                     else -> {
                         val x:Int? =model.edit_name?.length
-                        if(x!! >10){
+                        if(x!! >30){
                             view.contactPresenter("name>30")
                         }else{
                             when (model.edit_password) {

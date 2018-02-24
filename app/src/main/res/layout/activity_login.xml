@@ -3,16 +3,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.msigl62.coworkandroiduset.ui.login.LoginActivity">
 
 
 
+    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        app:bootstrapBrand="primary"
+        app:hasBorder="true" />
+
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_Name_Login"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:hint="name"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        />
+
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:inputType="numberPassword"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/edt_Password_Login"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_Name_Login"
+        android:hint="password"
+        android:padding="10dp" />
 
 
     <Button
-        android:id="@+id/btnRegister"
-        android:text="register"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnSubmitLogin"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt_Password_Login"
+        android:layout_centerHorizontal="true"
+        android:text="@string/submit_btn" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSubmitLoginFacebook"
+        android:layout_alignStart="@+id/btnSubmitLogin"
+        android:layout_marginStart="8dp"
+        android:text="Don't have account" />
+
+    <TextView
+        android:layout_marginTop="23dp"
+        android:layout_below="@id/btnSubmitLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:id="@+id/textOr" />
+
+    <TextView
+        android:id="@+id/Forgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textOr"
+        android:layout_alignBottom="@+id/textOr"
+        android:layout_alignEnd="@+id/btnSubmitLogin"
+        android:layout_marginEnd="8dp"
+        android:text="Forgot Password" />
+
+
+    <Button
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnSubmitLoginFacebook"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textOr"
+        android:layout_centerHorizontal="true"
+        android:text="@string/submit_btn_with_facebook" />
+
+
+
 
 </RelativeLayout>
