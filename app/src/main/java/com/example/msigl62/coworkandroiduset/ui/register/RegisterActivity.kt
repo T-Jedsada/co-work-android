@@ -37,14 +37,17 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         setImageViewUser()
         setButtonNext()
         getDataFacebook()
+        setonFocusChangeListener()
         presenter = RegisterPresenter()
         LoginManager.getInstance().logOut()
 
-        edt_Name.onFocusChangeListener = OnFocusChangeListener { v, _ ->
+    }
+
+    private fun setonFocusChangeListener() {
+        edt_Name.onFocusChangeListener = OnFocusChangeListener { _, _ ->
             if(edt_Name.text.length>30){
                 edt_Name.error = "nameerror"
             } }
-
     }
 
     override fun contactPresenter(Description: String) {
@@ -55,7 +58,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
             val model=RegisterContactModel(edt_Name.text.toString(),edt_Email.text.toString()
                     ,edt_Password.text.toString(),edt_re_Password.text.toString())
-            presenter.checkEditex(model, this)
+            presenter.checkEdiText(model, this)
         }
     }
 
