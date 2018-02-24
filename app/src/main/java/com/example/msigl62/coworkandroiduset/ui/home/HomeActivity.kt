@@ -10,6 +10,7 @@ import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.OnMenuTabClickListener
 
 class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(){
+    private var bottomBar: BottomBar? = null
     override fun setUpBottomBar() {
         val savedInstanceState = null
         bottomBar = BottomBar.attachShy(findViewById(R.id.myCoordinator),
@@ -23,8 +24,6 @@ class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(){
             override fun onMenuTabReSelected(@IdRes menuItemId: Int) {}
         })
     }
-
-    private var bottomBar: BottomBar? = null
     override fun showProgressDialog() {}
 
     override fun layoutToInflate(): Int =R.layout.activity_home
