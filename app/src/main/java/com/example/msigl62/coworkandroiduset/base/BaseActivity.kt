@@ -6,11 +6,13 @@ abstract class BaseActivity <V : BaseContract.View, P : BaseContract.Presenter<V
         AppCompatActivity(), BaseContract.View {
 
     protected abstract fun layoutToInflate(): Int
-    protected abstract fun setupView()
+    protected abstract fun setUpView()
+    protected abstract fun setUpBottomBar()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutToInflate())
-        setupView()
+        setUpView()
+        setUpBottomBar()
     }
 }

@@ -10,7 +10,7 @@ class BaseRetrofit {
         fun createRx(): BaseService? {
             val retrofit = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("")
+                    .baseUrl(BaseUrl.baseUrl)
                     .client(setOkHttpClient())
                     .build()
             return retrofit.create(BaseService::class.java)

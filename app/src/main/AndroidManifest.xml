@@ -22,6 +22,7 @@
         </activity>
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity">
         </activity>
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeActivity"></activity>
     </application>
 
 </manifest>

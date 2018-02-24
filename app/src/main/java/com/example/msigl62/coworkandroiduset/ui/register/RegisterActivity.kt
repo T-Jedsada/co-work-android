@@ -59,7 +59,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     }
 
     override fun contactPresenter(Description: String) {
-        Toast.makeText(applicationContext, Description, Toast.LENGTH_LONG).show(); }
+        Toast.makeText(applicationContext, Description, Toast.LENGTH_LONG).show() }
 
     private fun setButtonSubmitRegister() {
         btnSubmit.setOnClickListener {
@@ -116,7 +116,10 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                 val fileImage = File(imageUri?.let { getPath(it) })
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
-                Log.e("testtsts","testtsts"+bodyPartImage)
+
+                val length = fileImage.length()
+                Log.e("length","length....bytes="+length)
+                Log.e("length","length....Kb="+length/1024)
 
                 //todo call function that api here
             }
@@ -140,6 +143,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         cursor?.moveToFirst()
         val result = columnIndex?.let { cursor.getString(it) }
         cursor?.close()
+
+        Log.e("chack","image......"+result)
+
         return result
     }
 }
