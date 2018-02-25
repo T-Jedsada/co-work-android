@@ -4,6 +4,9 @@
     <string name="fb_login_protocol_scheme">fb1768282206580252</string>
     <string name="fb_btn">Facebook</string>
     <string name="submit_btn">Log in</string>
+    <string name="submit_forgot_email">Send</string>
     <string name="btn_register">Register</string>
     <string name="submit_btn_with_facebook">Log in with facebook</string>
+    <string name="text_forgot_title">Reset your password</string>
+    <string name="text_forgot_Sub">Well send you an email with a reset link</string>
 </resources>

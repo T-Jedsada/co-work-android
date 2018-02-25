@@ -13,6 +13,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:layout_marginTop="20dp"
+                android:id="@+id/edt_search"
+                android:layout_below="@id/imageView"
+                android:layout_centerHorizontal="true"
+                android:hint="search"
+                android:layout_width="320dp"
+                android:layout_height="50dp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignEnd="@+id/edt_search"
+                android:layout_alignTop="@+id/edt_search"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/filter" />
 
         </RelativeLayout>
 

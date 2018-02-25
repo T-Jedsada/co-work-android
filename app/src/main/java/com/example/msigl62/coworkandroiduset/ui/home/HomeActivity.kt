@@ -9,6 +9,7 @@ import com.example.msigl62.coworkandroiduset.base.BaseActivity
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.OnMenuTabClickListener
 
+
 class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(){
     private var bottomBar: BottomBar? = null
     override fun setUpBottomBar() {
