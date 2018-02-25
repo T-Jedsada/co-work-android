@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:4.30.0'
 
     implementation 'com.roughike:bottom-bar:1.4.0.1'
-
+    testCompile 'org.mockito:mockito-all:1.10.19'
 
 }
 

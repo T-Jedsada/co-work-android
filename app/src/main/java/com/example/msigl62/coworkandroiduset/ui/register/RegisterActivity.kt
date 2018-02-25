@@ -155,7 +155,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View  {
         LoginManager.getInstance().logOut()
     }
 
-    private fun getPath(contentUri: Uri): String? {
+    fun getPath(contentUri: Uri): String? {
         val arrData = arrayOf(MediaStore.Images.Media.DATA)
         val loader = CursorLoader(applicationContext, contentUri, arrData, null, null, null)
         val cursor = loader.loadInBackground()
@@ -164,6 +164,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View  {
         val result = columnIndex?.let { cursor.getString(it) }
         cursor?.close()
         image=result
+        Log.e("sdsd00","sdsd"+loader)
+        Log.e("sdsd00","sdsd...."+contentUri)
+        Log.e("sdsd00","sdsd....88"+result)
         return result
     }
 }
