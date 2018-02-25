@@ -64,4 +64,6 @@ licenses:
 
 
 
-script: ./gradlew clean build
+script:
+    -./gradlew clean build
+    -./gradlew --stacktrace
