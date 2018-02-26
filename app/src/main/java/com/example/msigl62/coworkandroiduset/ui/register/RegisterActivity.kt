@@ -24,7 +24,6 @@ import java.io.File
 import java.util.*
 import android.view.View.OnFocusChangeListener
 import com.example.msigl62.coworkandroiduset.ContractMain
-import com.example.msigl62.coworkandroiduset.SetCallRequest
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -170,6 +169,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View ,ContractMain
         cursor?.moveToFirst()
         val result = columnIndex?.let { cursor.getString(it) }
         cursor?.close()
+        image=result
         return result
     }
 
