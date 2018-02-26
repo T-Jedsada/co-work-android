@@ -3,7 +3,6 @@ import java.util.regex.Pattern
 
 class RegisterPresenter : RegisterContact.Presenter {
     override fun checkEdiText(model: RegisterContactModel, view: RegisterContact.View) {
-
         val validEmail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" +
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." +
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
@@ -16,21 +15,15 @@ class RegisterPresenter : RegisterContact.Presenter {
             model.edit_re_password.equals("")->view.contactPresenter("Please check Repassword", "", "", "", "", "")
             model.id_facebook.equals(null)->view.contactPresenter("Please check facebook", "", "", "", "", "")
             model.path_image.equals("")->view.contactPresenter("Please check image", "", "", "", "", "")
-            !model.edit_re_password.equals(model.edit_password)->view.contactPresenter("Please check password", "", "", "", "", "")
+            !model.edit_re_password.equals(model.edit_password)->view.contactPresenter("Please check repassword", "", "", "", "", "")
             model.edit_name?.length ?: 0>30->view.contactPresenter("Please check length name", "", "", "", "", "")
-            model.edit_password?.length ?: 0>6->view.contactPresenter("Please check length name", "", "", "", "", "")
-            model.edit_re_password?.length ?: 0>6->view.contactPresenter("Please check length name", "", "", "", "", "")
+            model.edit_password?.length ?: 0>6->view.contactPresenter("Please check length password", "", "", "", "", "")
+            model.edit_re_password?.length ?: 0>6->view.contactPresenter("Please check length repassword", "", "", "", "", "")
+            model.path_image.equals(null)->view.contactPresenter("Please check No Image", "", "", "", "", "")
             else -> {
                 view.contactPresenter("true", model.id_facebook, model.edit_name, model.edit_email, model.edit_password, model.path_image)
-            }
-        }
-
+            } }
     }
-
-
-
-
-
 }
 
 

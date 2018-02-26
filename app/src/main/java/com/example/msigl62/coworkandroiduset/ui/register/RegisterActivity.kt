@@ -146,8 +146,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View ,ContractMain
                 Log.e("length","length....Kb="+length/1024)
                 Log.e("bodyPartImage","bodyPartImage...."+bodyPartImage)
 
-
-
             }
         }
     }
