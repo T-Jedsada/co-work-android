@@ -2,10 +2,9 @@ package com.example.msigl62.coworkandroiduset
 
 import com.example.msigl62.coworkandroiduset.model.Register
 
-interface InterActor {
+class InterActor {
     interface OnFinishRequest {
-        //todo some thing with response result here
-        fun onSuccess()
+        fun <T> onSuccess(t:T)
     }
 
     interface ActData {

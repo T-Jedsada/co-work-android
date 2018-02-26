@@ -23,13 +23,16 @@ import okhttp3.RequestBody
 import java.io.File
 import java.util.*
 import android.view.View.OnFocusChangeListener
+import com.example.msigl62.coworkandroiduset.ContractMain
+import com.example.msigl62.coworkandroiduset.SetCallRequest
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class RegisterActivity : AppCompatActivity(), RegisterContact.View  {
+class RegisterActivity : AppCompatActivity(), RegisterContact.View ,ContractMain.View {
     companion object { const val REQUEST_CODE = 1 }
     private var idFacebook:String?=null
     private var image:String?=null
+    private var imageBodyPartImage:MultipartBody.Part?=null
     private lateinit var presenter: RegisterContact.Presenter
     private var callbackManager: CallbackManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +72,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View  {
 
     override fun contactPresenter(Status: String,id_facebook:String?, name: String?, email: String?, password: String?,path_image:String?) {
         if(Status == "true"){
-            Toast.makeText(applicationContext, "$Status $id_facebook $name $email  $password $path_image" , Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "$Status $id_facebook $name $email  $password $path_image $imageBodyPartImage " , Toast.LENGTH_LONG).show()
+            //var presenter: ContractMain.CallPresenter? = SetCallRequest(this)
+           // presenter?.callRegister("","","","",imageBodyPartImage)
         }else{
             Toast.makeText(applicationContext, "$Status " , Toast.LENGTH_LONG).show()
         } }
@@ -136,12 +141,14 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View  {
                 val fileImage = File(imageUri?.let { getPath(it) })
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
-
+                imageBodyPartImage=bodyPartImage
                 val length = fileImage.length()
                 Log.e("length","length....bytes="+length)
                 Log.e("length","length....Kb="+length/1024)
+                Log.e("bodyPartImage","bodyPartImage...."+bodyPartImage)
 
-                //todo call function that api here
+
+
             }
         }
     }
@@ -163,10 +170,11 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View  {
         cursor?.moveToFirst()
         val result = columnIndex?.let { cursor.getString(it) }
         cursor?.close()
-        image=result
-        Log.e("sdsd00","sdsd"+loader)
-        Log.e("sdsd00","sdsd...."+contentUri)
-        Log.e("sdsd00","sdsd....88"+result)
         return result
     }
+
+    //TODO ProgressDialog
+    override fun showProgressDialog() {}
+    override fun callStatusRegister(st: String) {}
+
 }

@@ -9,9 +9,7 @@ import com.example.msigl62.coworkandroiduset.base.BaseActivity
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
 import com.example.msigl62.coworkandroiduset.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
-
 class LoginActivity : BaseActivity<ContractMain.View, PresenterMain>(),View.OnClickListener{
-
 
     override fun setUpBottomBar() {}
     override fun showProgressDialog() {}
@@ -37,7 +35,8 @@ class LoginActivity : BaseActivity<ContractMain.View, PresenterMain>(),View.OnCl
             }
             else -> {
             }
-        }
-    }
+        } }
 
 }
+
+
