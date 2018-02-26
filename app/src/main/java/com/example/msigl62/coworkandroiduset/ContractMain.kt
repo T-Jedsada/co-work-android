@@ -11,7 +11,6 @@ class ContractMain {
 
     interface Presenter : BaseContract.Presenter<View>
     interface CallPresenter{
-        fun callRegister(name: String? = null,email: String? = null,password: String? = null,facebook_id: String? = null
-                ,image: MultipartBody.Part? = null)
+        fun callRegister(name: String,email: String,password: String,facebook_id: String,image: MultipartBody.Part)
     }
 }
