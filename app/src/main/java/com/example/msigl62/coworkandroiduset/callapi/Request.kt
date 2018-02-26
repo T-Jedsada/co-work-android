@@ -1,5 +1,6 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
+import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.Register
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
@@ -20,7 +21,9 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onSuccess(it) }
                     }
 
-                    override fun onError(e: Throwable) {}
+                    override fun onError(e: Throwable) {
+                        Log.e("throw wtf ",e.message)
+                    }
                 })
     }
 }

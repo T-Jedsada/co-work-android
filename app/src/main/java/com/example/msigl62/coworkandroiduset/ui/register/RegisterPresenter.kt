@@ -2,12 +2,20 @@ package com.example.msigl62.coworkandroiduset.ui.register
 
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.InterActor
+import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.model.Register
 import java.util.regex.Pattern
 
-class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter,InterActor.OnFinishRequest {
-    override fun <T> onSuccess(t: T) {
+class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, InterActor.OnFinishRequest {
+    private val actData: InterActor.ActData = Request()
 
+    override fun requestValidateApi(model: Register) {
+        actData.requestVerify(model, this)
+    }
+
+    override fun <T> onSuccess(t: T) {
+        //todo add real response this just mock for test
+        view.onResponseFromApi("success")
     }
 
     override fun checkEdiText(model: Register) {

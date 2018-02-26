@@ -29,26 +29,27 @@ import java.io.File
 import java.util.*
 
 class RegisterActivity : AppCompatActivity(), RegisterContact.View {
-    override fun onSuccessValidated(model: Register) {
+    private var idFacebook: String? = null
+    private var imageBodyPartImage: MultipartBody.Part? = null
+    private lateinit var presenter: RegisterContact.Presenter
+    private var callbackManager: CallbackManager? = null
 
+    override fun onResponseFromApi(resMessage: String) {
+        //todo add real response this just mock for test
+        Log.e("response" , "Success")
     }
 
-    override fun callStatusRegister(model: Register) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onSuccessValidated(model: Register) {
+      presenter.requestValidateApi(model)
     }
 
     override fun onErrorMessage(err: Int) {
         Toast.makeText(this, applicationContext.getText(err), Toast.LENGTH_SHORT).show()
     }
-
     companion object {
         const val REQUEST_CODE = 1
-    }
 
-    private var idFacebook: String? = null
-    private var imageBodyPartImage: MultipartBody.Part? = null
-    private lateinit var presenter: RegisterContact.Presenter
-    private var callbackManager: CallbackManager? = null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
