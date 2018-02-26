@@ -30,7 +30,7 @@ import java.util.*
 
 class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     override fun onSuccessValidated(model: Register) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun callStatusRegister(model: Register) {
