@@ -9,4 +9,12 @@
     <string name="submit_btn_with_facebook">Log in with facebook</string>
     <string name="text_forgot_title">Reset your password</string>
     <string name="text_forgot_Sub">Well send you an email with a reset link</string>
+    <string name="email_format_invalid">invalid email format</string>
+    <string name="name_empty_message">name should not empty</string>
+    <string name="email_empty_massage">email should not empty</string>
+    <string name="password_empty_massage">password should not empty</string>
+    <string name="re_password_empty_massage">re-password should not empty</string>
+    <string name="invalid_re_password">invalid re-password</string>
+    <string name="name_longer_that_default">name should not longer that 30 words</string>
+    <string name="password_longer_that_defaul">password should not longer that 30 words</string>
 </resources>

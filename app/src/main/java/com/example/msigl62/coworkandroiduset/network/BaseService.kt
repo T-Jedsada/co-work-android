@@ -11,9 +11,9 @@ import retrofit2.http.Part
 interface BaseService {
     @Multipart
     @POST("index.php")
-    fun sendRequestVerify(@Part("facebook_id") facebook_id: String,
-                          @Part("name") name: String,
-                          @Part("email") email: String,
-                          @Part("password") password: String,
-                          @Part image: MultipartBody.Part): Observable<Response<Register>>
+    fun sendRequestVerify(@Part("facebook_id") facebook_id: String?,
+                          @Part("name") name: String?,
+                          @Part("email") email: String?,
+                          @Part("password") password: String?,
+                          @Part image: MultipartBody.Part?): Observable<Response<Register>>
 }

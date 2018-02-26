@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class Request : InterActor.ActData {
     override fun requestVerify(user: Register, callback: InterActor.OnFinishRequest) {
-        BaseRetrofit.createRx()?.sendRequestVerify(user.facebook_id, user.name, user.email, user.password, user.image)
+        BaseRetrofit.createRx()?.sendRequestVerify(user.facebookId, user.name, user.email, user.password, user.image)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<Register>>() {
@@ -23,5 +23,4 @@ class Request : InterActor.ActData {
                     override fun onError(e: Throwable) {}
                 })
     }
-
 }
