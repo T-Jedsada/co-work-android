@@ -57,7 +57,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         getDataFacebook()
         setonFocusChangeListener()
         setToolBar()
-        presenter = RegisterPresenter(this,applicationContext)
+        presenter = RegisterPresenter(this)
         LoginManager.getInstance().logOut()
     }
 
@@ -92,6 +92,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         btnSubmit.setOnClickListener {
             val model = Register(idFacebook, edt_Name.text.toString(), edt_Email.text.toString()
                     , edt_Password.text.toString(), edt_re_Password.text.toString(), imageBodyPartImage)
+            Log.e("test ",idFacebook+ edt_Name.text.toString()+ edt_Email.text.toString()
+                    + edt_Password.text.toString()+ edt_re_Password.text.toString())
             presenter.checkEdiText(model)
         }
     }
