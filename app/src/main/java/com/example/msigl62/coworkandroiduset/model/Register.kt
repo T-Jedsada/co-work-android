@@ -3,9 +3,9 @@ package com.example.msigl62.coworkandroiduset.model
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
 
-data class Register(@SerializedName("facebook_id") val facebookId: String?
-                    , @SerializedName("name") val name: String?
-                    , @SerializedName("email") val email: String?
-                    , @SerializedName("password") val password: String?
-                    , @SerializedName("re_password") val rePassword: String?
-                    , @SerializedName("image") val image: MultipartBody.Part?)
+data class Register(@SerializedName("facebook_id") var facebookId: String?
+                    , @SerializedName("name") var name: String?
+                    , @SerializedName("email") var email: String?
+                    , @SerializedName("password") var password: String?
+                    , @SerializedName("re_password") var rePassword: String?
+                    , @SerializedName("image") var image: MultipartBody.Part?)
