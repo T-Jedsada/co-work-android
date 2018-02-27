@@ -10,6 +10,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,6 +18,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 dependencies {
@@ -45,7 +49,6 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:4.30.0'
 
-    testCompile 'org.mockito:mockito-all:1.10.19'
-
+    compile 'org.mockito:mockito-inline:2.7.22'
+    androidTestCompile 'org.mockito:mockito-android:2.7.22'
 }
-

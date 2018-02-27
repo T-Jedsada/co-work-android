@@ -12,7 +12,6 @@ import retrofit2.Response
 
 class Request : InterActor.ActData {
 
-
     override fun requestVerify(user: Register, callback: InterActor.OnFinishRequest) {
         BaseRetrofit.createRx()?.sendRequestVerify(user.facebookId, user.name, user.email, user.password, user.image)
                 ?.subscribeOn(Schedulers.io())
@@ -22,17 +21,16 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<Register>) {
                         t.body()?.let { callback.onSuccess(it) }
                     }
+
                     override fun onError(e: Throwable) {
-                        Log.e("throw wtf ",e.message)
+                        Log.e("throw wtf ", e.message)
                     }
                 })
     }
 
-
-
     //TODO LOGIN
     override fun requestLogin(userLogin: Login, callback: InterActor.OnFinishRequest) {
-        BaseRetrofit.createRx()?.sendRequestLogin(userLogin.facebookId,userLogin.email,userLogin.password)
+        BaseRetrofit.createRx()?.sendRequestLogin(userLogin.facebookId, userLogin.email, userLogin.password)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<Login>>() {
@@ -40,14 +38,10 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<Login>) {
                         t.body()?.let { callback.onSuccess(it) }
                     }
+
                     override fun onError(e: Throwable) {
-                        Log.e("throw wtf ",e.message)
+                        Log.e("throw wtf ", e.message)
                     }
                 })
-
     }
-
-
-
-
 }

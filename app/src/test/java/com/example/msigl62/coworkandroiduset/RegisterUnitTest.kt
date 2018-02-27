@@ -13,12 +13,12 @@ import org.mockito.MockitoAnnotations
 import org.mockito.internal.verification.VerificationModeFactory.times
 
 class RegisterUnitTest {
-
     private val registerPresenter: RegisterPresenter
     @Mock
     private val view = mock(RegisterContact.View::class.java)
     @Mock
     private val bodyPart = mock(MultipartBody.Part::class.java)
+    private var model = Register("", "111", "111@111.com", "111111", "111111", bodyPart)
 
 
     init {
@@ -28,67 +28,56 @@ class RegisterUnitTest {
 
     @Test
     fun nullOnNameValueShouldCallErrorFunction() {
-        val mockModel = Register("", "", "erijg@sergsergserg"
-                , "aweeej", "aweeej", bodyPart)
-        registerPresenter.checkEdiText(mockModel)
+        model.name = ""
+        registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.name_empty_message)
     }
 
     @Test
     fun emailInvalidValueShouldCallErrorFunction() {
-        val model = Register("", "awekwpefaowkfe", "erijg"
-                , "aeewej", "aweeej", bodyPart)
+        model.email = "awefawef"
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.email_format_invalid)
     }
 
     @Test
     fun nullOnEmailValueShouldCallErrorFunction() {
-        val model = Register("", "porkgeprok", ""
-                , "aweeej", "aweeej", bodyPart)
+        model.email = ""
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.email_empty_massage)
     }
 
     @Test
     fun nullOnPasswordValueShouldCallErrorFunction() {
-        val model = Register("", "porkgeprok", "eeeeee@gmailc.com"
-                , "", "aweeej", bodyPart)
+        model.password = ""
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.password_empty_massage)
     }
 
     @Test
     fun nullOnRePasswordValueShouldCallErrorFunction() {
-        val model = Register("", "porkgeprok", "pokpeokgeprogk@pokew.com"
-                , "aweeej", "", bodyPart)
+        model.rePassword = ""
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.re_password_empty_massage)
     }
 
     @Test
     fun rePasswordNotEqualPasswordShouldCallErrorFunction() {
-        val model = Register("", "porkgeprok", "wefwefp@woekf.com"
-                , "aweeej", "ewwegweg", bodyPart)
+        model.rePassword = "popopopoppo"
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.invalid_re_password)
     }
 
     @Test
     fun nameLongerThanConfigDefaultShouldCallErrorFunction() {
-        val model = Register("", "porkgeeprogpwrjgo;iwaejgo;awijrg;owijriiiiiiiiiiiiiiiiiiiiiiiiiiiwrgojwjig;poiejgwpijeg;owiejgprok"
-                , "wefwefwef@weok.com"
-                , "aweeej", "aweeej", bodyPart)
+        model.name = "aiwjfwoeiaweoijfaowiejfowifjoawjefoawijefoiajwefojawoefijaweofjawoefjaowejfaowejfoaweifjoawijefoaiwjeofijaw"
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.name_longer_that_default)
     }
 
     @Test
     fun passWordThanConfigDefaultShouldCallErrorFunction() {
-        val model = Register("", "awrgegrg"
-                , "sssssssssssssssssssssssssss@ewfw.com"
-                , "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                , "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", bodyPart)
+        model.password="111111111111111111111111111111111111111111111111111111111111"
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.password_longer_that_defaul)
     }
