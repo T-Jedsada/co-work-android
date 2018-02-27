@@ -24,9 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity"></activity>
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity" />
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeActivity" />
-        <activity android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity"></activity>
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity" />
     </application>
 
 </manifest>
