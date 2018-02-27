@@ -12,6 +12,7 @@ import android.view.View.GONE
 import android.view.View.OnFocusChangeListener
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
+import com.example.msigl62.coworkandroiduset.getPath
 import com.example.msigl62.coworkandroiduset.model.Register
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.facebook.CallbackManager
@@ -93,8 +94,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         btnSubmit.setOnClickListener {
             val model = Register(idFacebook, edt_Name.text.toString(), edt_Email.text.toString()
                     , edt_Password.text.toString(), edt_re_Password.text.toString(), imageBodyPartImage)
-            Log.e("test ",idFacebook+ edt_Name.text.toString()+ edt_Email.text.toString()
-                    + edt_Password.text.toString()+ edt_re_Password.text.toString())
+
             presenter.checkEdiText(model)
         }
     }
@@ -151,7 +151,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             if (requestCode === REQUEST_CODE) {
                 val imageUri = data?.data.let { it }
                 setImageView(imageUri)
-                val fileImage = File(imageUri?.let { getPath(it) })
+                val fileImage = File(imageUri?.getPath(applicationContext))
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
@@ -168,16 +168,5 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     override fun onDestroy() {
         super.onDestroy()
         LoginManager.getInstance().logOut()
-    }
-
-    fun getPath(contentUri: Uri): String? {
-        val arrData = arrayOf(MediaStore.Images.Media.DATA)
-        val loader = CursorLoader(applicationContext, contentUri, arrData, null, null, null)
-        val cursor = loader.loadInBackground()
-        val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-        cursor?.moveToFirst()
-        val result = columnIndex?.let { cursor.getString(it) }
-        cursor?.close()
-        return result
     }
 }

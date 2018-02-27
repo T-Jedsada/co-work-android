@@ -20,6 +20,8 @@ class RegisterUnitTest {
     @Mock
     private val bodyPart = mock(MultipartBody.Part::class.java)
 
+
+
     init {
         MockitoAnnotations.initMocks(this)
         registerPresenter = RegisterPresenter(view)
@@ -37,6 +39,7 @@ class RegisterUnitTest {
     fun emailInvalidValueShouldCallErrorFunction() {
         val model = Register("", "awekwpefaowkfe", "erijg"
                 , "aeewej", "aweeej", bodyPart)
+
         registerPresenter.checkEdiText(model)
         verify(view, times(1)).onErrorMessage(R.string.email_format_invalid)
     }
