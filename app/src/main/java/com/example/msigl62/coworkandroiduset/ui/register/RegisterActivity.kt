@@ -2,8 +2,6 @@ package com.example.msigl62.coworkandroiduset.ui.register
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.Dialog
-import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -38,6 +36,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     private lateinit var presenter: RegisterContact.Presenter
     private var callbackManager: CallbackManager? = null
 
+
     override fun onResponseFromApi(resMessage: String) {
         val simpleAlert = AlertDialog.Builder(this).create()
         simpleAlert.setTitle(resMessage)
@@ -60,6 +59,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     companion object {
         const val REQUEST_CODE = 1
 
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +71,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         setToolBar()
         presenter = RegisterPresenter(this)
         LoginManager.getInstance().logOut()
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -144,10 +145,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
                                 val profilePicUrl = `object`.getJSONObject("picture").getJSONObject("data").getString("url")
                                 imageView.load(profilePicUrl)
-                                Log.e("URL:Image","image...."+profilePicUrl)
+                                //Log.e("URL:Image","image...."+profilePicUrl)
 
                                 val bodyPartImage = MultipartBody.Part.createFormData("image","idFacebook")
                                 imageBodyPartImage = bodyPartImage
+
+                                Log.e("imageBodyPartImage ","imageBodyPartImage_ID"+bodyPartImage)
                             }
 
                             val parameters = Bundle()
@@ -174,6 +177,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
+
+                Log.e("imageBodyPartImage ","imageBodyPartImage_ID_Image..."+bodyPartImage)
             }
         }
     }
@@ -186,4 +191,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         super.onDestroy()
         LoginManager.getInstance().logOut()
     }
+
+
+
+
 }
