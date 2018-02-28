@@ -5,7 +5,7 @@ import com.example.msigl62.coworkandroiduset.model.Register
 
 class InterActor {
     interface OnFinishRequest {
-        fun <T> onSuccess(t:T )
+        fun <T> onSuccess(t:T ){}
     }
 
     interface ActData {

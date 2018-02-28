@@ -12,5 +12,7 @@ interface RegisterContact {
         fun onSuccessValidated(model : Register)
         fun onErrorMessage(err : Int)
         fun onResponseFromApi(resMessage : String)
+        //fun onResponseFromApi(  arrEx: List<Register>)
+
        }
 }

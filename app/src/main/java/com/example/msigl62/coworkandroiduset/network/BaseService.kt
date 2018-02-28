@@ -11,12 +11,13 @@ import retrofit2.http.Part
 
 interface BaseService {
     @Multipart
-    @POST("api/register")
+    @POST("register")
     fun sendRequestVerify(@Part("facebook_id") facebook_id: String?,
                           @Part("name") name: String?,
                           @Part("email") email: String?,
-                          @Part("password") password: String?,
-                          @Part image: MultipartBody.Part?): Observable<Response<Register>>
+                          @Part("password") password: String?
+                      ,@Part image: MultipartBody.Part?
+    ): Observable<Response<Register>>
 
     @Multipart
     @POST("")

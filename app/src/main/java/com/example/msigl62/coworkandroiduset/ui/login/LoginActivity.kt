@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
         register.setOnClickListener(this)
         btnSubmitLogin.setOnClickListener(this)
         forgot.setOnClickListener(this)
+        btnSubmitLoginFacebook.setOnClickListener(this)
         presenter = LoginPresenter(this)
 
     }
@@ -56,8 +57,16 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
                 val i = Intent(this, ForgotActivity::class.java)
                 startActivity(i)
             }
+            R.id.btnSubmitLoginFacebook->{
+                val i = Intent(this, RegisterActivity::class.java)
+                startActivity(i)
+            }
             else -> { }
         } }
+
+    override fun onBackPressed() {
+
+    }
 
 }
 

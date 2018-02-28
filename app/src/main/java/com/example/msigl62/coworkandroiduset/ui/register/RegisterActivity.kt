@@ -1,11 +1,12 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
 import android.app.Activity
+import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.support.v4.content.CursorLoader
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View.GONE
@@ -13,6 +14,7 @@ import android.view.View.OnFocusChangeListener
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.getPath
+import com.example.msigl62.coworkandroiduset.load
 import com.example.msigl62.coworkandroiduset.model.Register
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.facebook.CallbackManager
@@ -36,8 +38,15 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     private var callbackManager: CallbackManager? = null
 
     override fun onResponseFromApi(resMessage: String) {
-        //todo add real response this just mock for test
-        Log.e("response" , "Success")
+        val simpleAlert = AlertDialog.Builder(this).create()
+        simpleAlert.setTitle(resMessage)
+        simpleAlert.setMessage("Verify Email")
+        simpleAlert.setButton(AlertDialog.BUTTON_POSITIVE, "Enter", {
+            _, _ ->
+            val i = Intent(this, LoginActivity::class.java)
+            startActivity(i)
+        })
+        simpleAlert.show()
     }
 
     override fun onSuccessValidated(model: Register) {
@@ -69,33 +78,34 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        }
-    }
+        } }
 
     private fun setonFocusChangeListener() {
         edt_Name.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-            if (edt_Name.text.length > 30) {
+            if (edt_Name.text.length > 60) {
                 edt_Name.error = "Please check Character length"
             }
         }
         edt_Password.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-            if (edt_Password.text.length != 6) {
+            if (edt_Password.text.length < 6) {
                 edt_Password.error = "Please check Character length"
             }
         }
         edt_re_Password.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-            if (edt_re_Password.text.length != 6) {
+            if (edt_re_Password.text.length < 6) {
                 edt_re_Password.error = "Please check Character length"
-            }
-        }
+            } }
     }
 
     private fun setButtonSubmitRegister() {
         btnSubmit.setOnClickListener {
-            val model = Register(idFacebook, edt_Name.text.toString(), edt_Email.text.toString()
-                    , edt_Password.text.toString(), edt_re_Password.text.toString(), imageBodyPartImage)
+            val model = Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
+                    , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imageBodyPartImage)
 
-            presenter.checkEdiText(model)
+            imageBodyPartImage?.let {  presenter.checkEdiText(model) }?:
+            Toast.makeText(applicationContext , "Please upload image",Toast.LENGTH_SHORT).show()
+
+
         }
     }
 
@@ -129,10 +139,17 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                                     edt_Email.setText(`object`.getString("email"))
                                 }
                                 idFacebook = `object`.getString("id")
+
+                                val profilePicUrl = `object`.getJSONObject("picture").getJSONObject("data").getString("url")
+                                imageView.load(profilePicUrl)
+                                Log.e("URL:Image","image...."+profilePicUrl)
+
+                                val bodyPartImage = MultipartBody.Part.createFormData("image","idFacebook")
+                                imageBodyPartImage = bodyPartImage
                             }
 
                             val parameters = Bundle()
-                            parameters.putString("fields", "id,name,link,email")
+                            parameters.putString("fields", "id,name,link,email,picture.type(large)")
                             request.parameters = parameters
                             request.executeAsync()
                         }
@@ -155,8 +172,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
-
-
             }
         }
     }

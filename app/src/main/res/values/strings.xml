@@ -16,5 +16,6 @@
     <string name="re_password_empty_massage">re-password should not empty</string>
     <string name="invalid_re_password">invalid re-password</string>
     <string name="name_longer_that_default">name should not longer that 30 words</string>
-    <string name="password_longer_that_defaul">password should not longer that 30 words</string>
+    <string name="password_longer_that_defaul">password should not longer than 30 words</string>
+    <string name="password_shorter_that_defaul">password should not shorter than words</string>
 </resources>

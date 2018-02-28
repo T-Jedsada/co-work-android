@@ -14,18 +14,17 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
     }
 
     override fun <T> onSuccess(t: T) {
-        //todo add real response this just mock for test
         view.onResponseFromApi("success")
     }
 
     override fun checkEdiText(model: Register) {
         when {
             model.name.isNullOrEmpty() -> view.onErrorMessage(R.string.name_empty_message)
-            model.name?.length ?: 0 > 30 -> view.onErrorMessage(R.string.name_longer_that_default)
+            model.name?.length ?: 0 > 60 -> view.onErrorMessage(R.string.name_longer_that_default)
             model.email.isNullOrEmpty() -> view.onErrorMessage(R.string.email_empty_massage)
             !model.email.emailPattern().matches() -> view.onErrorMessage(R.string.email_format_invalid)
             model.password.isNullOrEmpty() -> view.onErrorMessage(R.string.password_empty_massage)
-            model.password?.length ?: 0 > 6 -> view.onErrorMessage(R.string.password_longer_that_defaul)
+            model.password?.length ?: 0 < 6 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
             model.rePassword.isNullOrEmpty() -> view.onErrorMessage(R.string.re_password_empty_massage)
             !model.rePassword.equals(model.password) -> view.onErrorMessage(R.string.invalid_re_password)
             else -> {
