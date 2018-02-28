@@ -1,5 +1,6 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
@@ -72,8 +73,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         LoginManager.getInstance().logOut()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setToolBar() {
-        text_toolbar.text = "Login"
+        text_toolbar.text = getString(R.string.register_header)
         image_arrow.setOnClickListener {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)

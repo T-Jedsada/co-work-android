@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">co-work-android-uset</string>
+    <string name="app_name">co-work-android-user</string>
     <string name="facebook_app_id">207669949811265</string>
     <string name="fb_login_protocol_scheme">fb1768282206580252</string>
     <string name="fb_btn">Facebook</string>
@@ -10,12 +10,13 @@
     <string name="text_forgot_title">Reset your password</string>
     <string name="text_forgot_Sub">Well send you an email with a reset link</string>
     <string name="email_format_invalid">invalid email format</string>
-    <string name="name_empty_message">name should not empty</string>
-    <string name="email_empty_massage">email should not empty</string>
-    <string name="password_empty_massage">password should not empty</string>
-    <string name="re_password_empty_massage">re-password should not empty</string>
-    <string name="invalid_re_password">invalid re-password</string>
-    <string name="name_longer_that_default">name should not longer that 30 words</string>
-    <string name="password_longer_that_defaul">password should not longer than 30 words</string>
-    <string name="password_shorter_that_defaul">password should not shorter than words</string>
+    <string name="name_empty_message">Name should not empty</string>
+    <string name="email_empty_massage">E-mail should not empty</string>
+    <string name="password_empty_massage">Password should not empty</string>
+    <string name="re_password_empty_massage">Re-password should not empty</string>
+    <string name="invalid_re_password">Invalid Re-password</string>
+    <string name="name_longer_that_default">Name should not longer that 30 words</string>
+    <string name="password_longer_that_defaul">Password should not longer than 30 words</string>
+    <string name="password_shorter_that_defaul">Password should not shorter than words</string>
+    <string name="register_header">Register</string>
 </resources>

@@ -26,7 +26,7 @@
         android:inputType="textFilter"
         android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
-        android:hint="name"
+        android:hint="Name"
         android:layout_width="320dp"
         android:layout_height="50dp"
         />
@@ -40,7 +40,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/edt_Name"
-        android:hint="gmail"
+        android:hint="E-mail"
         android:padding="10dp" />
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -51,7 +51,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/edt_Email"
-        android:hint="password length 6 "
+        android:hint="Password length 6 "
         android:padding="10dp" />
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -62,7 +62,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/edt_Password"
-        android:hint="repassword length 6 "
+        android:hint="Re-password length 6 "
         android:padding="10dp" />
 
     <Button
