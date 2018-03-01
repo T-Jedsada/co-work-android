@@ -5,16 +5,25 @@ import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Register
+import okhttp3.MultipartBody
 
-class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, InterActor.OnFinishRequest {
-    private val actData: InterActor.ActData = Request()
-
-    override fun requestValidateApi(model: Register) {
-        actData.requestVerify(model, this)
+class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, Request.RegisterListener {
+    override fun onEmailSuccess(responseData: String?) {
+        //todo final response here u can log to do more result here
     }
 
-    override fun <T> onSuccess(t: T) {
-        view.onResponseFromApi("success")
+    override fun onImageSuccess(user: Register?, path: String?) {
+        user?.let { actData.requestUploadUserData(it, this) }
+    }
+
+    override fun onSaveSuccess(user: Register?) {
+        user?.let { actData.requestSendEmail(user.facebookId, user.email, this) }
+    }
+
+    private val actData: InterActor.ActData = Request()
+
+    override fun requestValidateApi(model: Register, image: MultipartBody.Part) {
+        actData.requestUploadImage(image, model, this)
     }
 
     override fun checkEdiText(model: Register) {
@@ -30,5 +39,6 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             else -> {
                 view.onSuccessValidated(model)
             }
-        } }
+        }
+    }
 }
