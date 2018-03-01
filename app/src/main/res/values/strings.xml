@@ -19,4 +19,10 @@
     <string name="password_longer_that_defaul">Password should not longer than 30 words</string>
     <string name="password_shorter_that_defaul">Password should not shorter than words</string>
     <string name="register_header">Register</string>
+    <string name="upload_image_profile">Upload Image Profile</string>
+    <string name="e_mail">E-mail</string>
+    <string name="name">Name</string>
+    <string name="re_password">Re - Password</string>
+    <string name="or">OR</string>
+    <string name="password">Password</string>
 </resources>

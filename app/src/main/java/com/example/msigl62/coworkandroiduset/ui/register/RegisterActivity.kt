@@ -36,13 +36,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     private lateinit var presenter: RegisterContact.Presenter
     private var callbackManager: CallbackManager? = null
 
-
     override fun onResponseFromApi(resMessage: String) {
         val simpleAlert = AlertDialog.Builder(this).create()
         simpleAlert.setTitle(resMessage)
         simpleAlert.setMessage("Verify Email")
         simpleAlert.setButton(AlertDialog.BUTTON_POSITIVE, "Enter", {
-            _, _ ->
+             _, _ ->
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         })
@@ -51,6 +50,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
     override fun onSuccessValidated(model: Register) {
       presenter.requestValidateApi(model)
+        btnSubmit.isClickable = false
     }
 
     override fun onErrorMessage(err: Int) {
@@ -66,12 +66,18 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         setContentView(R.layout.activity_register)
         setImageViewUser()
         setButtonSubmitRegister()
-        getDataFacebook()
-        setonFocusChangeListener()
+        getIntentFromLoginActivity()
         setToolBar()
         presenter = RegisterPresenter(this)
         LoginManager.getInstance().logOut()
 
+    }
+
+    private fun getIntentFromLoginActivity() {
+        val status = intent.extras!!.getString("keyStatusFormLoginActivity")
+        if(status == "false"){
+            getDataFacebook()
+        }else{ }
     }
 
     @SuppressLint("SetTextI18n")
@@ -83,33 +89,18 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         } }
 
-    private fun setonFocusChangeListener() {
-        edt_Name.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-            if (edt_Name.text.length > 60) {
-                edt_Name.error = "Please check Character length"
-            }
-        }
-        edt_Password.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-            if (edt_Password.text.length < 6) {
-                edt_Password.error = "Please check Character length"
-            }
-        }
-        edt_re_Password.onFocusChangeListener = OnFocusChangeListener { _, _ ->
-            if (edt_re_Password.text.length < 6) {
-                edt_re_Password.error = "Please check Character length"
-            } }
-    }
-
     private fun setButtonSubmitRegister() {
         btnSubmit.setOnClickListener {
             val model = Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
                     , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imageBodyPartImage)
-
             imageBodyPartImage?.let {  presenter.checkEdiText(model) }?:
             Toast.makeText(applicationContext , "Please upload image",Toast.LENGTH_SHORT).show()
-
-
         }
+        btnFacebook.setOnClickListener {
+            getDataFacebook()
+        }
+
+
     }
 
     private fun setImageViewUser() {
@@ -120,7 +111,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     }
 
     private fun getDataFacebook() {
-        btnFacebook.setOnClickListener {
             callbackManager = CallbackManager.Factory.create()
             LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
             LoginManager.getInstance().registerCallback(callbackManager,
@@ -128,11 +118,10 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                         override fun onSuccess(loginResult: LoginResult) {
                             btnFacebook.visibility = GONE
                             textOR.visibility = GONE
+                            textUploadImage.visibility = GONE
                             val request = GraphRequest.newMeRequest(
                                     loginResult.accessToken
                             ) { `object`, _ ->
-                                Log.e("CheckEmail", `object`.has("email").toString())
-                                Log.e("id", "id....= " + `object`.get("id").toString())
                                 val name = `object`.getString("name")
                                 edt_Name.setText(name)
                                 val email: Boolean? = `object`.has("email")
@@ -142,15 +131,11 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                                     edt_Email.setText(`object`.getString("email"))
                                 }
                                 idFacebook = `object`.getString("id")
-
                                 val profilePicUrl = `object`.getJSONObject("picture").getJSONObject("data").getString("url")
                                 imageView.load(profilePicUrl)
-                                //Log.e("URL:Image","image...."+profilePicUrl)
-
                                 val bodyPartImage = MultipartBody.Part.createFormData("image","idFacebook")
                                 imageBodyPartImage = bodyPartImage
 
-                                Log.e("imageBodyPartImage ","imageBodyPartImage_ID"+bodyPartImage)
                             }
 
                             val parameters = Bundle()
@@ -158,11 +143,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                             request.parameters = parameters
                             request.executeAsync()
                         }
-
                         override fun onCancel() {}
                         override fun onError(error: FacebookException) {}
                     })
-        }
     }
 
     @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -177,11 +160,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
-
-                Log.e("imageBodyPartImage ","imageBodyPartImage_ID_Image..."+bodyPartImage)
+                textUploadImage.visibility = GONE
             }
-        }
-    }
+        } }
 
     private fun setImageView(imageUri: Uri?) {
         imageView.setImageURI(imageUri)
@@ -191,8 +172,4 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         super.onDestroy()
         LoginManager.getInstance().logOut()
     }
-
-
-
-
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <include layout="@layout/layout_toolbar" />
 
@@ -18,7 +19,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         app:bootstrapBrand="primary"
-        app:hasBorder="true" />
+        app:hasBorder="true"
+        tools:ignore="UnknownIdInLayout" />
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:layout_marginTop="20dp"
@@ -26,10 +28,19 @@
         android:inputType="textFilter"
         android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
-        android:hint="Name"
+        android:hint="@string/name"
         android:layout_width="320dp"
         android:layout_height="50dp"
         />
+
+    <TextView
+        android:id="@+id/textUploadImage"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:text="@string/upload_image_profile" />
 
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -40,29 +51,31 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/edt_Name"
-        android:hint="E-mail"
+        android:hint="@string/e_mail"
         android:padding="10dp" />
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:layout_centerHorizontal="true"
-        android:inputType="textFilter"
+        android:inputType="textPassword"
         android:layout_marginTop="20dp"
         android:id="@+id/edt_Password"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/edt_Email"
-        android:hint="Password length 6 "
+        app:passwordToggleEnabled="true"
+        android:hint="@string/password"
         android:padding="10dp" />
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_below="@+id/edt_Password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:inputType="textFilter"
+        android:inputType="textPassword"
         android:id="@+id/edt_re_Password"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/edt_Password"
-        android:hint="Re-password length 6 "
+        android:hint="@string/re_password"
+        app:passwordToggleEnabled="true"
         android:padding="10dp" />
 
     <Button
@@ -81,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSubmit"
         android:layout_centerHorizontal="true"
-        android:text="OR" />
+        android:text="@string/or" />
 
     <Button
         android:textAllCaps="false"

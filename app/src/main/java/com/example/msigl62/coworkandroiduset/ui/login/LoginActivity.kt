@@ -21,8 +21,6 @@ import java.util.*
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View{
 
-    private var callbackManager: CallbackManager? = null
-
     override fun onSuccessValidated(model: Login) {
         Toast.makeText(applicationContext, ""+model, Toast.LENGTH_LONG).show()
     }
@@ -33,7 +31,6 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
 
     override fun onResponseFromApi(resMessage: String) {
         //TODO true  val i = Intent(this, HomeActivity::class.java)
-
     }
 
     private lateinit var presenter: LoginContact.Presenter
@@ -64,45 +61,15 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
                 startActivity(i)
             }
             R.id.btnSubmitLoginFacebook->{
-
+                val intent = Intent(this, RegisterActivity::class.java)
+                intent.putExtra("keyStatusFormLoginActivity", "false")
+                startActivity(intent)
             }
             else -> { }
         } }
 
     override fun onBackPressed() {}
 
-    private fun getDataFacebook() {
-        btnFacebook.setOnClickListener {
-            callbackManager = CallbackManager.Factory.create()
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
-            LoginManager.getInstance().registerCallback(callbackManager,
-                    object : FacebookCallback<LoginResult> {
-                        override fun onSuccess(loginResult: LoginResult) {
-                            btnFacebook.visibility = View.GONE
-                            textOR.visibility = View.GONE
-                            val request = GraphRequest.newMeRequest(
-                                    loginResult.accessToken
-                            ) { `object`, _ ->
-                                val name = `object`.getString("name")
-                                val email: Boolean? = `object`.has("email")
-                                if (email == false) {
-                                    Toast.makeText(applicationContext, "NoEmail", Toast.LENGTH_LONG).show()
-                                } else {
-                                    edt_Email.setText(`object`.getString("email"))
-                                }
-                            }
-
-                            val parameters = Bundle()
-                            parameters.putString("fields", "id,name,link,email,picture.type(large)")
-                            request.parameters = parameters
-                            request.executeAsync()
-                        }
-
-                        override fun onCancel() {}
-                        override fun onError(error: FacebookException) {}
-                    })
-        }
-    }
 
 
 }
