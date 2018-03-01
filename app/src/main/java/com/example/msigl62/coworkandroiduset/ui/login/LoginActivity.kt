@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View{
-
     override fun onSuccessValidated(model: Login) {
         Toast.makeText(applicationContext, ""+model, Toast.LENGTH_LONG).show()
     }
@@ -42,7 +41,6 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
         forgot.setOnClickListener(this)
         btnSubmitLoginFacebook.setOnClickListener(this)
         presenter = LoginPresenter(this)
-
     }
 
     override fun onClick(v: View) {

@@ -9,7 +9,6 @@ import com.example.msigl62.coworkandroiduset.base.BaseActivity
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.OnMenuTabClickListener
 
-
 class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(){
     private var bottomBar: BottomBar? = null
     override fun setUpBottomBar() {
@@ -30,8 +29,6 @@ class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(){
 
     override fun layoutToInflate(): Int =R.layout.activity_home
 
-    override fun setUpView() {
-    }
-
+    override fun setUpView() {}
 
 }

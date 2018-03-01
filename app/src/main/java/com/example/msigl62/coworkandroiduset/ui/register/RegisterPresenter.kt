@@ -30,6 +30,5 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             else -> {
                 view.onSuccessValidated(model)
             }
-        }
-    }
+        } }
 }

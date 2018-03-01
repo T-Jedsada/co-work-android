@@ -75,10 +75,4 @@ class RegisterUnitTest {
         verify(view, times(1)).onErrorMessage(R.string.name_longer_that_default)
     }
 
-    @Test
-    fun passWordThanConfigDefaultShouldCallErrorFunction() {
-        model.password="111111111111111111111111111111111111111111111111111111111111"
-        registerPresenter.checkEdiText(model)
-        verify(view, times(1)).onErrorMessage(R.string.password_longer_that_defaul)
-    }
 }

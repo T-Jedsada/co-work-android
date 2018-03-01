@@ -11,7 +11,6 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
 class Request : InterActor.ActData {
-
     override fun requestVerify(user: Register, callback: InterActor.OnFinishRequest) {
         BaseRetrofit.createRx()?.sendRequestVerify(user.facebookId, user.name, user.email, user.password,user.image)
                 ?.subscribeOn(Schedulers.io())
@@ -22,7 +21,6 @@ class Request : InterActor.ActData {
                         Log.e("onNext","onNext.msg")
                         t.body()?.let { callback.onSuccess(it) }
                     }
-
                     override fun onError(e: Throwable) {
                         Log.e("throw wtf ", e.message)
                     }
@@ -39,7 +37,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<Login>) {
                         t.body()?.let { callback.onSuccess(it) }
                     }
-
                     override fun onError(e: Throwable) {
                         Log.e("throw wtf ", e.message)
                     }
