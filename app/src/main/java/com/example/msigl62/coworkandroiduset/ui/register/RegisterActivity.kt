@@ -13,6 +13,7 @@ import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.getPath
 import com.example.msigl62.coworkandroiduset.load
 import com.example.msigl62.coworkandroiduset.model.Register
+import com.example.msigl62.coworkandroiduset.requestBody
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -89,9 +90,11 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
     private fun setButtonSubmitRegister() {
         btnSubmit.setOnClickListener {
-            val model = Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
-                    , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imageBodyPartImage)
-            imageBodyPartImage?.let {  presenter.checkEdiText(model) }?:
+            val model = imageBodyPartImage?.let { it1 ->
+                Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
+                        , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString() ,"", it1)}
+
+            imageBodyPartImage?.let { model?.let { it1 -> presenter.checkEdiText(it1) } }?:
             Toast.makeText(applicationContext , "Please upload image",Toast.LENGTH_SHORT).show()
         }
         btnFacebook.setOnClickListener {

@@ -8,4 +8,5 @@ data class Register(@SerializedName("facebook_id") var facebookId: String?
                     , @SerializedName("email") var email: String?
                     , @SerializedName("password") var password: String?
                     , @SerializedName("re_password") var rePassword: String?
-                    , @SerializedName("image") var image: String?)
+                    , @SerializedName("image") var image: String?
+                    , var imageFile : MultipartBody.Part)
