@@ -1,5 +1,6 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
+import android.util.Log
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
@@ -24,10 +25,12 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
     }
 
     override fun requestValidateApi(model: Register) {
-        when(model.image?.trim()?.isEmpty()){
-            true -> actData.requestUploadImage(model.imageFile, model, this)
-            false ->  actData.requestUploadUserData(model, this)
+        if(model.image.isNullOrBlank()){
+            actData.requestUploadImage(model.imageFile, model, this)
+        }else{
+            actData.requestUploadUserData(model, this)
         }
+
     }
 
     override fun checkEdiText(model: Register) {
