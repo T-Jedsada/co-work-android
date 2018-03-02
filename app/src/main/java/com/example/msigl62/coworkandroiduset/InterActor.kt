@@ -15,8 +15,8 @@ class InterActor {
         fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener)
         fun requestUploadUserData(user: Register, callback: RegisterListener)
         fun requestSendEmail(id: String?, email: String?, callback: RegisterListener)
-        fun requestForgotPassword(forgot: Forgot, callback: Request.ForgotListener)
 
+        fun requestForgotPassword(forgot: Forgot, callback: Request.ForgotListener)
         fun requestSendEmailForgot(id: String?, email: String?, callback: Request.ForgotListener)
 
     }

@@ -15,6 +15,7 @@ import retrofit2.Response
 
 class Request : InterActor.ActData {
 
+
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
     fun onSaveSuccess(user: Register?)
@@ -71,7 +72,7 @@ class Request : InterActor.ActData {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseDataForgot>) {
                         t.body()?.let { callback.onResponseSuccessForgot(forgot)
-                            Log.e("requestForgotPassword","sdsd"+ it.toString())
+                            Log.e("requestForgotPassword","sdsd............."+ it.toString())
                         }}
                     override fun onError(e: Throwable) {
                     }

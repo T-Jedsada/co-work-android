@@ -12,7 +12,7 @@ class ForgotPresenter (val view: ForgotContact.View) : ForgotContact.Presenter, 
 
 
     override fun onResponseSuccessForgot(user: Forgot?) {
-        user?.let { actData.requestSendEmailForgot(user.facebookId, user.email,this) }
+        user?.let { actData.requestSendEmailForgot(user.id,user.email,this ) }
     }
 
     override fun requestValidateApi(model: Forgot) {

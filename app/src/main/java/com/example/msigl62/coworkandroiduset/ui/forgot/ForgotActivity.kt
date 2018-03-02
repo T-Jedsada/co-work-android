@@ -49,7 +49,7 @@ class ForgotActivity : AppCompatActivity(),ForgotContact.View  {
 
     private fun setButtonSubmitForgotPassword() {
         btnSubmitForgot.setOnClickListener {
-            val model=Forgot("12222",edt_forgot_email.text.trim().toString())
+            val model=Forgot("",edt_forgot_email.text.trim().toString())
             presenter.checkEdiText(model)
             }
     }
