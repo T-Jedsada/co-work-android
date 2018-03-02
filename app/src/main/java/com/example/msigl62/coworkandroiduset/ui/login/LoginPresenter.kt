@@ -17,7 +17,7 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
     }
 
     override fun requestValidateApi(model: Login) {
-        actData.requestLogin(model, this)
+
     }
 
     override fun checkEdiTextLogin(model: Login) {

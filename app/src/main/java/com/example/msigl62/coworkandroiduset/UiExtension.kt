@@ -2,6 +2,7 @@ package com.example.msigl62.coworkandroiduset
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.ProgressDialog
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
@@ -9,6 +10,8 @@ import android.support.v4.content.CursorLoader
 import android.view.View
 import android.view.ViewPropertyAnimator
 import android.widget.ImageView
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -29,6 +32,10 @@ fun String?.emailPattern():Matcher{
             "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
     return Pattern.compile(validEmail).matcher(this)
 }
+
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+fun String?.requestBody():RequestBody =  RequestBody.create(MediaType.parse("text/plain"), (this ?: ""))
+
 
 fun View.simpleFadeOutAnimation(): ViewPropertyAnimator = let {
     this.animate()
@@ -59,3 +66,4 @@ fun Uri.getPath(context: Context): String? {
     cursor?.close()
     return result
 }
+

@@ -6,15 +6,28 @@ import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Register
 
-class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, InterActor.OnFinishRequest {
+class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, Request.RegisterListener {
     private val actData: InterActor.ActData = Request()
 
-    override fun requestValidateApi(model: Register) {
-        actData.requestVerify(model, this)
+
+    override fun onEmailSuccess(responseData: String?) {
+        view.onResponseFromApi("success")
     }
 
-    override fun <T> onSuccess(t: T) {
-        view.onResponseFromApi("success")
+    override fun onSaveSuccess(user: Register?) {
+        user?.let { actData.requestSendEmail(user.facebookId, user.email, this) }
+    }
+
+    override fun onImageSuccess(user: Register?, path: String?) {
+        user?.image = path
+        user?.let { actData.requestUploadUserData(it, this) }
+    }
+
+    override fun requestValidateApi(model: Register) {
+        when(model.image?.trim()?.isEmpty()){
+            true -> actData.requestUploadImage(model.imageFile, model, this)
+            false ->  actData.requestUploadUserData(model, this)
+        }
     }
 
     override fun checkEdiText(model: Register) {
@@ -24,11 +37,12 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             model.email.isNullOrEmpty() -> view.onErrorMessage(R.string.email_empty_massage)
             !model.email.emailPattern().matches() -> view.onErrorMessage(R.string.email_format_invalid)
             model.password.isNullOrEmpty() -> view.onErrorMessage(R.string.password_empty_massage)
-            model.password?.length ?: 0 < 6 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
+            model.password?.length ?: 0 > 30 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
             model.rePassword.isNullOrEmpty() -> view.onErrorMessage(R.string.re_password_empty_massage)
             !model.rePassword.equals(model.password) -> view.onErrorMessage(R.string.invalid_re_password)
             else -> {
                 view.onSuccessValidated(model)
             }
-        } }
+        }
+    }
 }

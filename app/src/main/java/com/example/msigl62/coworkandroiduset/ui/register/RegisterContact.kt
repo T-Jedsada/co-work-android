@@ -6,11 +6,12 @@ interface RegisterContact {
 
     interface Presenter {
         fun checkEdiText(model: Register)
-        fun requestValidateApi(model : Register)
+        fun requestValidateApi(model: Register)
     }
+
     interface View {
-        fun onSuccessValidated(model : Register)
-        fun onErrorMessage(err : Int)
-        fun onResponseFromApi(resMessage : String)
-       }
+        fun onSuccessValidated(model: Register)
+        fun onErrorMessage(err: Int)
+        fun onResponseFromApi(resMessage: String)
+    }
 }

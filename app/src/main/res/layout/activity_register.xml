@@ -4,106 +4,134 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <include layout="@layout/layout_toolbar" />
-
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_below="@+id/toolBarThem"
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        app:bootstrapBrand="primary"
-        app:hasBorder="true"
-        tools:ignore="UnknownIdInLayout" />
-
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_marginTop="20dp"
-        android:id="@+id/edt_Name"
-        android:inputType="textFilter"
-        android:layout_below="@id/imageView"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/name"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        />
-
-    <TextView
-        android:id="@+id/textUploadImage"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:text="@string/upload_image_profile" />
+        <include layout="@layout/layout_toolbar" />
 
 
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:inputType="textFilter"
-        android:id="@+id/edt_Email"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/edt_Name"
-        android:hint="@string/e_mail"
-        android:padding="10dp" />
+        <TextView
+            android:id="@+id/textRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolBarThem"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20sp"
+            android:text="@string/btn_register_title"
+            android:textColor="@color/colorToolText"
+            android:textStyle="bold" />
 
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_centerHorizontal="true"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
-        android:id="@+id/edt_Password"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/edt_Email"
-        app:passwordToggleEnabled="true"
-        android:hint="@string/password"
-        android:padding="10dp" />
+        <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/textRegister"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            app:bootstrapBrand="primary"
+            app:hasBorder="true"
+            tools:ignore="UnknownIdInLayout" />
 
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_below="@+id/edt_Password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:inputType="textPassword"
-        android:id="@+id/edt_re_Password"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:hint="@string/re_password"
-        app:passwordToggleEnabled="true"
-        android:padding="10dp" />
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/edt_Name"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="@string/name"
+            android:inputType="textFilter" />
 
-    <Button
-        android:textAllCaps="false"
-        android:layout_marginTop="20dp"
-        android:id="@+id/btnSubmit"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/edt_re_Password"
-        android:layout_centerHorizontal="true"
-        android:text="@string/btn_register" />
+        <TextView
+            android:id="@+id/textUploadImage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp"
+            android:text="@string/upload_image_profile" />
 
-    <TextView
-        android:id="@+id/textOR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSubmit"
-        android:layout_centerHorizontal="true"
-        android:text="@string/or" />
 
-    <Button
-        android:textAllCaps="false"
-        android:id="@+id/btnFacebook"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/textOR"
-        android:layout_centerHorizontal="true"
-        android:text="@string/fb_btn" />
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/edt_Email"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/edt_Name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="@string/e_mail"
+            android:inputType="textFilter"
+            android:padding="10dp" />
 
-</RelativeLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/password_layout"
+            android:layout_width="320dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/edt_Email"
+            android:layout_centerHorizontal="true"
+            app:errorEnabled="true"
+            app:passwordToggleEnabled="true">
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edt_Password"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/edt_Email"
+                android:layout_centerHorizontal="true"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                app:passwordToggleEnabled="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/re_password_layout"
+            android:layout_width="320dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/password_layout"
+            android:layout_centerHorizontal="true"
+            app:passwordToggleEnabled="true">
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edt_re_Password"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/edt_Password"
+                android:layout_centerHorizontal="true"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                app:passwordToggleEnabled="true" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/re_password_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/btn_register"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/textOR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnSubmit"
+            android:layout_centerHorizontal="true"
+            android:text="@string/or" />
+
+        <Button
+            android:id="@+id/btnFacebook"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textOR"
+            android:layout_centerHorizontal="true"
+            android:text="@string/fb_btn"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
 </ScrollView>

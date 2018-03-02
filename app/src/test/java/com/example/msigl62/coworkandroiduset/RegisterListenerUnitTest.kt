@@ -18,7 +18,7 @@ class RegisterUnitTest {
     private val view = mock(RegisterContact.View::class.java)
     @Mock
     private val bodyPart = mock(MultipartBody.Part::class.java)
-    private var model = Register("", "111", "111@111.com", "111111", "111111", bodyPart)
+    private var model = Register("", "111", "111@111.com", "111111", "111111", "",bodyPart)
 
 
     init {
