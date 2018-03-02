@@ -9,15 +9,7 @@ import com.example.msigl62.coworkandroiduset.model.Login
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
 import com.example.msigl62.coworkandroiduset.ui.home.HomeActivity
 import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.GraphRequest
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
-import java.util.*
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View{
     override fun onSuccessValidated(model: Login) {

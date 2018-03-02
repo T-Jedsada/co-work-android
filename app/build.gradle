@@ -53,5 +53,4 @@ dependencies {
     androidTestCompile 'org.mockito:mockito-android:2.7.22'
 
 
-
 }

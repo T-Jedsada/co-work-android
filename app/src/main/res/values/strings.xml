@@ -5,6 +5,10 @@
     <string name="fb_btn">Facebook</string>
     <string name="submit_btn">Log in</string>
     <string name="submit_forgot_email">Send</string>
+    <string name="submit_forgot_finish">Back to Login</string>
+    <string name="text_forgot_title_finish">Thanks !</string>
+    <string name="forgot_header">Forgot</string>
+    <string name="text_forgot_Sub_finish">Please follow the link in the email</string>
     <string name="btn_register_title">Registration</string>
     <string name="btn_register">Register</string>
     <string name="submit_btn_with_facebook">Log in with facebook</string>
