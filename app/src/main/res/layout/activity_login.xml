@@ -21,7 +21,7 @@
         android:id="@+id/edt_Name_Login"
         android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
-        android:hint="name"
+        android:hint="E-mail"
         android:layout_width="320dp"
         android:layout_height="50dp"
         />
@@ -35,7 +35,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/edt_Name_Login"
-        android:hint="password"
+        android:hint="Password"
         android:padding="10dp" />
 
 
@@ -64,9 +64,21 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OR"
+        android:text="Or"
         android:id="@+id/textOr" />
-
+    <View
+        android:layout_width="120dp"
+        android:layout_height="1dp"
+        android:layout_alignStart="@+id/register"
+        android:layout_below="@+id/register"
+        android:background="@color/colorToolText"
+        android:id="@+id/view" />
+    <View
+        android:layout_width="105dp"
+        android:layout_height="1dp"
+        android:layout_alignStart="@+id/forgot"
+        android:layout_below="@+id/view"
+        android:background="@color/colorToolText" />
     <TextView
         android:id="@+id/forgot"
         android:layout_width="wrap_content"

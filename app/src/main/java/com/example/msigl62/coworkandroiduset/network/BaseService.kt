@@ -4,10 +4,7 @@ import com.example.msigl62.coworkandroiduset.model.ResponseData
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
+import retrofit2.http.*
 
 interface BaseService {
     @Multipart
@@ -16,13 +13,18 @@ interface BaseService {
     ): Observable<Response<ResponseData>>
 
     //todo data user
+    @FormUrlEncoded
     @POST("register")
-    fun requestUploadUserData(@Body name: String?, @Body email: String?, @Body facebook_id: String?
-                              , @Body password: String?, @Body image: String?): Observable<Response<ResponseData>>
+    fun requestUploadUserData(@Field("name") name: String?,
+                              @Field("email") email: String?,
+                              @Field("facebook_id") facebook_id: String?,
+                              @Field("password") password: String?,
+                              @Field("image") image: String?): Observable<Response<ResponseData>>
 
     //todo data email
+    @FormUrlEncoded
     @POST("send-email")
-    fun requestSendEmail(@Body id: String?, @Body email: String?
+    fun requestSendEmail(@Field("id") id: String?, @Field("email") email: String?
     ): Observable<Response<ResponseData>>
 
 

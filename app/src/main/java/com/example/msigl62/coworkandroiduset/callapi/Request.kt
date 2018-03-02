@@ -1,5 +1,6 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
+import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.Login
 import com.example.msigl62.coworkandroiduset.model.Register
@@ -16,8 +17,8 @@ class Request : InterActor.ActData {
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
     fun onSaveSuccess(user: Register?)
-    fun onEmailSuccess(responseData: String?)
-}
+    fun onEmailSuccess(responseData: String?) }
+
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
         BaseRetrofit.createRx()?.sendRequestImage(image)
                 ?.subscribeOn(Schedulers.io())
@@ -25,14 +26,16 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onImageSuccess(user, it.data?.message) }
+                        t.body()?.let { callback.onImageSuccess(user, it.data?.message)
+                        Log.e("image ", it.toString()) }
                     }
-
-                    override fun onError(e: Throwable) {}
+                    override fun onError(e: Throwable) {
+                        Log.e("sdsdsdsd","sdsd"+e.toString()) }
                 })
     }
 
     override fun requestUploadUserData(user: Register, callback: RegisterListener) {
+        Log.e("user ", user.toString())
         BaseRetrofit.createRx()?.requestUploadUserData(user.name, user.email , user.facebookId,user.password, user.image)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
@@ -42,7 +45,10 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onSaveSuccess(user) }
                     }
 
-                    override fun onError(e: Throwable) {}
+                    override fun onError(e: Throwable) {
+                        Log.e("sdsdsdsd","sdsd"+e.toString())
+
+                    }
                 })
     }
 
@@ -56,7 +62,9 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onEmailSuccess(it.data?.message) }
                     }
 
-                    override fun onError(e: Throwable) {}
+                    override fun onError(e: Throwable) {
+                        Log.e("sdsdsdsd","sdsd"+e.toString())
+                    }
                 })
     }
 }

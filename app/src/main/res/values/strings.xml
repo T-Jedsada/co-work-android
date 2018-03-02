@@ -5,6 +5,7 @@
     <string name="fb_btn">Facebook</string>
     <string name="submit_btn">Log in</string>
     <string name="submit_forgot_email">Send</string>
+    <string name="btn_register_title">Registration</string>
     <string name="btn_register">Register</string>
     <string name="submit_btn_with_facebook">Log in with facebook</string>
     <string name="text_forgot_title">Reset your password</string>
@@ -15,14 +16,17 @@
     <string name="password_empty_massage">Password should not empty</string>
     <string name="re_password_empty_massage">Re-password should not empty</string>
     <string name="invalid_re_password">Invalid Re-password</string>
-    <string name="name_longer_that_default">Name should not longer that 30 words</string>
+    <string name="name_longer_that_default">Name should not longer that 60 words</string>
     <string name="password_longer_that_defaul">Password should not longer than 30 words</string>
     <string name="password_shorter_that_defaul">Password should not shorter than words</string>
     <string name="register_header">Register</string>
+    <string name="login_header">Login</string>
     <string name="upload_image_profile">Upload Image Profile</string>
     <string name="e_mail">E-mail</string>
     <string name="name">Name</string>
-    <string name="re_password">Re - Password</string>
-    <string name="or">OR</string>
+    <string name="re_password">Re-Password</string>
+    <string name="or">Or</string>
     <string name="password">Password</string>
+    <string name="message">Loading......</string>
+    <string name="load_register">Register</string>
 </resources>
