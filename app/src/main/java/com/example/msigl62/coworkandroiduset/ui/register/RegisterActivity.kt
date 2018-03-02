@@ -112,22 +112,18 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         btnSubmit.setOnClickListener {
             val model = imageBodyPartImage?.let { it1 ->
                 Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
-                        , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imagePathFacebook, it1)
-            }
+                        , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imagePathFacebook, it1) }
 
             imageBodyPartImage?.let { model?.let { it1 -> presenter.checkEdiText(it1) } }
-                    ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show()
-        }
-        btnFacebook.setOnClickListener {
-            getDataFacebook()
-        }
+                    ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show() }
+
+        btnFacebook.setOnClickListener { getDataFacebook() }
     }
 
     private fun setImageViewUser() {
         imageView.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(intent, REQUEST_CODE)
-        }
+            startActivityForResult(intent, REQUEST_CODE) }
     }
 
     private fun getDataFacebook() {
@@ -157,8 +153,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                             imageBodyPartImage = bodyPartImage
                             imagePathFacebook = profilePicUrl
 
-
-                            Log.e("image", "sdsd......" + profilePicUrl)
                         }
                         val parameters = Bundle()
                         parameters.putString("fields", "id,name,link,email,picture.type(large)")
@@ -184,18 +178,15 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
                 textUploadImage.visibility = GONE
-            }
-        }
+            } }
     }
 
     private fun setImageView(imageUri: Uri?) {
-        imageView.setImageURI(imageUri)
-    }
+        imageView.setImageURI(imageUri) }
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginManager.getInstance().logOut()
-    }
+        LoginManager.getInstance().logOut() }
 
     override fun onBackPressed() {
         val simpleAlert = AlertDialog.Builder(this).create()
@@ -205,6 +196,5 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         })
-        simpleAlert.show()
-    }
+        simpleAlert.show() }
 }

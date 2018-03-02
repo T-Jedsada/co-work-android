@@ -2,7 +2,6 @@ package com.example.msigl62.coworkandroiduset.callapi
 
 import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
-import com.example.msigl62.coworkandroiduset.model.Login
 import com.example.msigl62.coworkandroiduset.model.Register
 import com.example.msigl62.coworkandroiduset.model.ResponseData
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
@@ -26,29 +25,20 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onImageSuccess(user, it.data?.message)
-                        Log.e("image ", it.toString()) }
+                        t.body()?.let { callback.onImageSuccess(user, it.data?.message) }
                     }
-                    override fun onError(e: Throwable) {
-                        Log.e("sdsdsdsd","sdsd"+e.toString()) }
-                })
-    }
+                    override fun onError(e: Throwable) {}
+                }) }
 
     override fun requestUploadUserData(user: Register, callback: RegisterListener) {
-        Log.e("user ", user.toString())
         BaseRetrofit.createRx()?.requestUploadUserData(user.name, user.email , user.facebookId,user.password, user.image)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onSaveSuccess(user) }
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Log.e("sdsdsdsd","sdsd"+e.toString())
-
-                    }
+                        t.body()?.let { callback.onSaveSuccess(user) } }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
@@ -59,12 +49,7 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onEmailSuccess(it.data?.message) }
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Log.e("sdsdsdsd","sdsd"+e.toString())
-                    }
-                })
-    }
+                        t.body()?.let { callback.onEmailSuccess(it.data?.message) } }
+                    override fun onError(e: Throwable) {}
+                }) }
 }
