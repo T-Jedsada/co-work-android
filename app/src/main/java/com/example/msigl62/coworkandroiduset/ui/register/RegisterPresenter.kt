@@ -24,7 +24,10 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
     }
 
     override fun requestValidateApi(model: Register) {
-        actData.requestUploadImage(model.imageFile, model, this)
+        when(model.image?.trim()?.isEmpty()){
+            true -> actData.requestUploadImage(model.imageFile, model, this)
+            false ->  actData.requestUploadUserData(model, this)
+        }
     }
 
     override fun checkEdiText(model: Register) {
