@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
-import android.util.Log
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request

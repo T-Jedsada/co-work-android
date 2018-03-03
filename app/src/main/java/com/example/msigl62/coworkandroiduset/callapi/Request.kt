@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
-import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.Forgot
 import com.example.msigl62.coworkandroiduset.model.Register
@@ -15,17 +14,15 @@ import retrofit2.Response
 
 class Request : InterActor.ActData {
 
-
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
     fun onSaveSuccess(user: Register?)
     fun onEmailSuccess(responseData: String?) }
 
     interface ForgotListener {
-        fun onResponseSuccessForgot(user: Forgot?)
+        fun onResponseSuccessForgot(user: Forgot?,path: String?)
         fun onEmailSuccessForgot(responseData: String?)
     }
-
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
         BaseRetrofit.createRx()?.sendRequestImage(image)
@@ -63,7 +60,7 @@ class Request : InterActor.ActData {
                 }) }
 
 
-    //TODO
+    //TODO requestForgotPassword
     override fun requestForgotPassword(forgot: Forgot, callback: ForgotListener) {
         BaseRetrofit.createRx()?.requestForgotEmail(forgot.email)
                 ?.subscribeOn(Schedulers.io())
@@ -71,16 +68,13 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseDataForgot>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseDataForgot>) {
-                        t.body()?.let { callback.onResponseSuccessForgot(forgot)
-                            Log.e("requestForgotPassword","sdsd............."+ it.toString())
-                        }}
+                        t.body()?.let { callback.onResponseSuccessForgot(forgot, it.data?.id) } }
                     override fun onError(e: Throwable) {
                     }
-                })
-    }
+                }) }
 
 
-   //TODO SEND Eamil
+   //TODO SEND requestSendEmailForgot
     override fun requestSendEmailForgot(id: String?, email: String?, callback: ForgotListener) {
         BaseRetrofit.createRx()?.requestSendEmailForgot(id , email)
                 ?.subscribeOn(Schedulers.io())
@@ -88,10 +82,10 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onEmailSuccessForgot(it.data?.message) } }
+                        t.body()?.let { callback.onEmailSuccessForgot(it.data?.message) }
+                    }
                     override fun onError(e: Throwable) {}
                 })
     }
-
 
 }

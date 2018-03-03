@@ -29,16 +29,14 @@ interface BaseService {
     ): Observable<Response<ResponseData>>
 
 
-
-    //todo data email
+    //TODO requestForgotEmail
     @FormUrlEncoded
     @POST("register/forgot-password")
     fun requestForgotEmail(@Field("email") email: String?
     ): Observable<Response<ResponseDataForgot>>
 
 
-
-    //todo data email
+    //TODO requestSendEmailForgot
     @FormUrlEncoded
     @POST("send-email/forgot-password")
     fun requestSendEmailForgot(@Field("id") id: String?, @Field("email") email: String?

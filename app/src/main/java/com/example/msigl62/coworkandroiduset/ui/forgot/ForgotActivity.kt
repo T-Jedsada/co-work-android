@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Forgot
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_forgot.*
@@ -40,11 +39,14 @@ class ForgotActivity : AppCompatActivity(),ForgotContact.View  {
     }
 
     override fun onResponseFromApi(resMessage: String) {
-        Toast.makeText(this,""+resMessage, Toast.LENGTH_SHORT).show()
-        val i = Intent(this, ForgotActivityFinish::class.java)
-        startActivity(i)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-
+        if(resMessage.equals("This email do not sing up")){
+            Toast.makeText(this,""+resMessage, Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this,""+resMessage, Toast.LENGTH_SHORT).show()
+            val i = Intent(this, ForgotActivityFinish::class.java)
+            startActivity(i)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     private fun setButtonSubmitForgotPassword() {

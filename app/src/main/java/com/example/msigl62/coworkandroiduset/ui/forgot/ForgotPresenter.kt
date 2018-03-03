@@ -11,18 +11,23 @@ class ForgotPresenter (val view: ForgotContact.View) : ForgotContact.Presenter, 
     private val actData: InterActor.ActData = Request()
 
 
-    override fun onResponseSuccessForgot(user: Forgot?) {
-        user?.let { actData.requestSendEmailForgot(user.id,user.email,this ) }
-    }
-
     override fun requestValidateApi(model: Forgot) {
         actData.requestForgotPassword(model,this)
+    }
+
+    override fun onResponseSuccessForgot(user: Forgot?,path: String?) {
+        user?.id = path
+            if(user?.id.equals(null)){
+                view.onResponseFromApi("noSuccess")
+            }else{
+                user?.let { actData.requestSendEmailForgot(user.id,user.email,this ) }
+
+        }
     }
 
     override fun onEmailSuccessForgot(responseData: String?) {
         view.onResponseFromApi("success")
     }
-
 
     override fun checkEdiText(model: Forgot) {
         when {
