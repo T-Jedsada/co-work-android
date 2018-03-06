@@ -39,18 +39,15 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
             }
             R.id.btnSubmitLoginFacebook->{
                 // TODO channel login facrbook
-
                 //val intent = Intent(this, RegisterActivity::class.java)
                 //intent.putExtra("keyStatusFormLoginActivity", "false")
                 //startActivity(intent)
-
                 val model= Login("44555","","")
                 presenter.getIdUserFacebookLogin(model)
 
             }
             else -> { }
         } }
-
 
     override fun onSuccessValidated(model: Login) {
         presenter.requestValidateApi(model)
@@ -64,10 +61,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
         Toast.makeText(this, ""+resMessage, Toast.LENGTH_SHORT).show()
     }
 
-
     override fun onBackPressed() {}
-
-
 
 }
 
