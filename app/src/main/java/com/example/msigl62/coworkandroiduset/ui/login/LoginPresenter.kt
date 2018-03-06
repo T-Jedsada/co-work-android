@@ -13,7 +13,7 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
     private val actData: InterActor.ActData = Request()
 
     override fun onResponseSuccessLogin(responseData: String?) {
-        Log.e("sdsd","sdsdsd................."+responseData)
+        Log.e("ResponseSuccessLogin","msq="+responseData)
         view.onResponseFromApi("success")
     }
 

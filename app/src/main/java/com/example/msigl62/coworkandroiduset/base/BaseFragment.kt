@@ -17,6 +17,5 @@ abstract class BaseFragment <V : BaseContract.View, P : BaseContract.Presenter<V
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setup()
-    }
+        setup() }
 }
