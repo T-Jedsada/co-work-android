@@ -4,19 +4,15 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View.GONE
 import android.widget.Toast
-import com.beardedhen.androidbootstrap.R.id.md
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.getPath
-import com.example.msigl62.coworkandroiduset.load
+import com.example.msigl62.coworkandroiduset.extension.getPath
+import com.example.msigl62.coworkandroiduset.extension.load
 import com.example.msigl62.coworkandroiduset.model.Register
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.facebook.CallbackManager
@@ -31,7 +27,6 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.security.MessageDigest
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -94,8 +89,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         val status = intent.extras!!.getString("keyStatusFormLoginActivity")
         if (status == "false") {
             getDataFacebook()
-        } else {
-        }
+        } else { }
     }
 
     @SuppressLint("SetTextI18n")
@@ -116,7 +110,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
             imageBodyPartImage?.let { model?.let { it1 -> presenter.checkEdiText(it1) } }
                     ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show() }
-
         btnFacebook.setOnClickListener { getDataFacebook() }
     }
 
@@ -152,14 +145,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                             val bodyPartImage = MultipartBody.Part.createFormData(profilePicUrl, profilePicUrl)
                             imageBodyPartImage = bodyPartImage
                             imagePathFacebook = profilePicUrl
-
                         }
                         val parameters = Bundle()
                         parameters.putString("fields", "id,name,link,email,picture.type(large)")
                         request.parameters = parameters
                         request.executeAsync()
                     }
-
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -182,11 +173,13 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     }
 
     private fun setImageView(imageUri: Uri?) {
-        imageView.setImageURI(imageUri) }
+        imageView.setImageURI(imageUri)
+    }
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginManager.getInstance().logOut() }
+        LoginManager.getInstance().logOut()
+    }
 
     override fun onBackPressed() {
         val simpleAlert = AlertDialog.Builder(this).create()
@@ -196,5 +189,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         })
-        simpleAlert.show() }
+        simpleAlert.show()
+    }
 }

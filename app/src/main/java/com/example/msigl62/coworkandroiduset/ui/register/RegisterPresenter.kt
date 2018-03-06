@@ -1,15 +1,13 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
-import android.util.Log
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
-import com.example.msigl62.coworkandroiduset.emailPattern
+import com.example.msigl62.coworkandroiduset.extension.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Register
 
 class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, Request.RegisterListener {
     private val actData: InterActor.ActData = Request()
-
 
     override fun onEmailSuccess(responseData: String?) {
         view.onResponseFromApi("success")
@@ -30,7 +28,6 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
         }else{
             actData.requestUploadUserData(model, this)
         }
-
     }
 
     override fun checkEdiText(model: Register) {
@@ -45,7 +42,6 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             !model.rePassword.equals(model.password) -> view.onErrorMessage(R.string.invalid_re_password)
             else -> {
                 view.onSuccessValidated(model)
-            }
-        }
+            } }
     }
 }

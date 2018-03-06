@@ -15,17 +15,16 @@
         app:bootstrapBrand="primary"
         app:hasBorder="true" />
 
-
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:layout_marginTop="20dp"
-        android:id="@+id/edt_Name_Login"
+        android:id="@+id/edt_Email_Login"
         android:layout_below="@id/imageView"
+        android:inputType="textFilter"
         android:layout_centerHorizontal="true"
         android:hint="E-mail"
         android:layout_width="320dp"
         android:layout_height="50dp"
         />
-
 
     <com.beardedhen.androidbootstrap.BootstrapEditText
         android:inputType="textPassword"
@@ -34,10 +33,9 @@
         android:id="@+id/edt_Password_Login"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/edt_Name_Login"
+        android:layout_below="@+id/edt_Email_Login"
         android:hint="Password"
         android:padding="10dp" />
-
 
     <Button
         android:textAllCaps="false"

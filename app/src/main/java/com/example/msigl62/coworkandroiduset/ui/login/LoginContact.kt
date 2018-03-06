@@ -6,7 +6,9 @@ class LoginContact {
     interface Presenter {
         fun checkEdiTextLogin(model: Login)
         fun requestValidateApi(model : Login)
+        fun getIdUserFacebookLogin(model : Login)
     }
+
     interface View {
         fun onSuccessValidated(model : Login)
         fun onErrorMessage(err : Int)

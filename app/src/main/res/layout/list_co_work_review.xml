@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/listCoWorkLayout"
+    android:layout_below="@+id/rating"
+    android:layout_marginTop="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewReview"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:layout_below="@+id/recyclerViewReview"
+        android:text="@string/reserve_seat"
+        android:id="@+id/btnReserveSeat"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+</RelativeLayout>
