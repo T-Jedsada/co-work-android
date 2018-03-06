@@ -19,6 +19,4 @@ class ImageCoWorkPagerOne(t:String): BaseFragment<ContractMain.View, PresenterMa
     override fun setup() {
         imagePager.load(text)
     }
-
-
 }

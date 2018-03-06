@@ -9,6 +9,7 @@ import com.example.msigl62.coworkandroiduset.model.Forgot
 class ForgotPresenter (val view: ForgotContact.View) : ForgotContact.Presenter, InterActor.OnFinishRequest,Request.ForgotListener {
 
     private val actData: InterActor.ActData = Request()
+
     override fun requestValidateApi(model: Forgot) {
         actData.requestForgotPassword(model,this)
     }
@@ -32,5 +33,6 @@ class ForgotPresenter (val view: ForgotContact.View) : ForgotContact.Presenter, 
             !model.email.emailPattern().matches() -> view.onErrorMessage(R.string.email_format_invalid)
             else -> {
                 view.onSuccessValidated(model)
-            } } }
+            } }
+    }
 }

@@ -19,6 +19,7 @@ class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(),HomeContac
 
     private lateinit var presenter: HomeContact.Presenter
     private var bottomBar: BottomBar? = null
+
     override fun setUpBottomBar() {
         val savedInstanceState = null
         bottomBar = BottomBar.attachShy(findViewById(R.id.myCoordinator),
@@ -28,12 +29,14 @@ class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(),HomeContac
             override fun onMenuTabSelected(@IdRes menuItemId: Int) {
                 if (menuItemId==R.id.explore){
                     Toast.makeText(applicationContext, "", Toast.LENGTH_LONG).show()
-                }else{ } }
+                }else{ }
+            }
             override fun onMenuTabReSelected(@IdRes menuItemId: Int) {}
         })
     }
 
     override fun showProgressDialog() {}
+
     override fun layoutToInflate(): Int =R.layout.activity_home
 
     override fun setUpView() {
@@ -46,13 +49,10 @@ class HomeActivity : BaseActivity<ContractMain.View, PresenterMain>(),HomeContac
         listCoWorkNearby.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         listCoWorkNearby.adapter = adapterCoWorkNearby
         coWorkNearby?.let { adapterCoWorkNearby.setItem(it) }
-
-
+        //TODO change onCallSuccessCoWorkNearby
         val adapterCoWorkPopular: AdapterCoWorkPopular by lazy { AdapterCoWorkPopular(listOf()) }
         listCoWorkPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         listCoWorkPopular.adapter = adapterCoWorkPopular
         coWorkNearby?.let { adapterCoWorkPopular.setItem(it) }
-
     }
-
 }

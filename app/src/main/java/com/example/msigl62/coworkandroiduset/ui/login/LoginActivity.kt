@@ -1,4 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.login
+
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View{
 
     private lateinit var presenter: LoginContact.Presenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -44,10 +46,10 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
                 //startActivity(intent)
                 val model= Login("44555","","")
                 presenter.getIdUserFacebookLogin(model)
-
             }
             else -> { }
-        } }
+        }
+    }
 
     override fun onSuccessValidated(model: Login) {
         presenter.requestValidateApi(model)
@@ -62,7 +64,6 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
     }
 
     override fun onBackPressed() {}
-
 }
 
 

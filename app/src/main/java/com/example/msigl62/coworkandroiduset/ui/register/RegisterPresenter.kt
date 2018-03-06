@@ -9,7 +9,6 @@ import com.example.msigl62.coworkandroiduset.model.Register
 class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, Request.RegisterListener {
     private val actData: InterActor.ActData = Request()
 
-
     override fun onEmailSuccess(responseData: String?) {
         view.onResponseFromApi("success")
     }
@@ -29,7 +28,6 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
         }else{
             actData.requestUploadUserData(model, this)
         }
-
     }
 
     override fun checkEdiText(model: Register) {
@@ -44,7 +42,6 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             !model.rePassword.equals(model.password) -> view.onErrorMessage(R.string.invalid_re_password)
             else -> {
                 view.onSuccessValidated(model)
-            }
-        }
+            } }
     }
 }

@@ -31,15 +31,15 @@ class ForgotActivity : AppCompatActivity(),ForgotContact.View  {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        } }
+        }
+    }
 
     override fun onSuccessValidated(model: Forgot) {
         loadingDialog = ProgressDialog.show(this,
                 "Loading",
                 "Loading...",
                 true,
-                false
-        )
+                false)
         presenter.requestValidateApi(model)
     }
 
@@ -62,5 +62,4 @@ class ForgotActivity : AppCompatActivity(),ForgotContact.View  {
             val model=Forgot("",edt_forgot_email.text.trim().toString())
             presenter.checkEdiText(model) }
     }
-
 }

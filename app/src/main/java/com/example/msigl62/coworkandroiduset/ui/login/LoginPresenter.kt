@@ -7,7 +7,6 @@ import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.extension.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Login
 
-
 class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, InterActor.OnFinishRequest,Request.LoginLister {
 
     private val actData: InterActor.ActData = Request()
@@ -25,7 +24,6 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
         actData.requestLogin(model,this)
     }
 
-
     override fun checkEdiTextLogin(model: Login) {
         when {
             model.email.isNullOrEmpty() -> view.onErrorMessage(R.string.email_empty_massage)
@@ -34,9 +32,6 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
             model.password?.length ?: 0 > 30 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
             else -> {
                 view.onSuccessValidated(model)
-            }
-        }
+            } }
     }
-
-
 }

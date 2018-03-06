@@ -8,7 +8,6 @@ import com.example.msigl62.coworkandroiduset.base.BaseFragment
 import com.example.msigl62.coworkandroiduset.extension.load
 import kotlinx.android.synthetic.main.pager_theme.*
 
-
 @SuppressLint("ValidFragment")
 class ImageCoWorkPagerTwo (t:String): BaseFragment<ContractMain.View, PresenterMain>() {
     var text: String =t

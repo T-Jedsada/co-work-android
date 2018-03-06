@@ -89,8 +89,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         val status = intent.extras!!.getString("keyStatusFormLoginActivity")
         if (status == "false") {
             getDataFacebook()
-        } else {
-        }
+        } else { }
     }
 
     @SuppressLint("SetTextI18n")
@@ -111,7 +110,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
             imageBodyPartImage?.let { model?.let { it1 -> presenter.checkEdiText(it1) } }
                     ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show() }
-
         btnFacebook.setOnClickListener { getDataFacebook() }
     }
 
@@ -147,14 +145,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                             val bodyPartImage = MultipartBody.Part.createFormData(profilePicUrl, profilePicUrl)
                             imageBodyPartImage = bodyPartImage
                             imagePathFacebook = profilePicUrl
-
                         }
                         val parameters = Bundle()
                         parameters.putString("fields", "id,name,link,email,picture.type(large)")
                         request.parameters = parameters
                         request.executeAsync()
                     }
-
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -177,11 +173,13 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
     }
 
     private fun setImageView(imageUri: Uri?) {
-        imageView.setImageURI(imageUri) }
+        imageView.setImageURI(imageUri)
+    }
 
     override fun onDestroy() {
         super.onDestroy()
-        LoginManager.getInstance().logOut() }
+        LoginManager.getInstance().logOut()
+    }
 
     override fun onBackPressed() {
         val simpleAlert = AlertDialog.Builder(this).create()
@@ -191,5 +189,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         })
-        simpleAlert.show() }
+        simpleAlert.show()
+    }
 }

@@ -26,10 +26,8 @@ class Request : InterActor.ActData {
         fun onResponseSuccessLogin(responseData: String?)
     }
 
-
     interface HomeListener {
         fun <T> onSuccess(t: T) }
-
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
         BaseRetrofit.createRx()?.sendRequestImage(image)
@@ -66,8 +64,6 @@ class Request : InterActor.ActData {
                     override fun onError(e: Throwable) {}
                 }) }
 
-
-
     //TODO login
     override fun requestLogin(login: Login, callback: LoginLister) {
         Log.e("getDataModelLogin","data="+" "+login.facebookId+" "+login.email+" "+login.password+" ")
@@ -83,8 +79,6 @@ class Request : InterActor.ActData {
                 })
     }
 
-
-
     //TODO requestForgotPassword
     override fun requestForgotPassword(forgot: Forgot, callback: ForgotListener) {
         BaseRetrofit.createRx()?.requestForgotEmail(forgot.email)
@@ -97,7 +91,6 @@ class Request : InterActor.ActData {
                     override fun onError(e: Throwable) {
                     }
                 }) }
-
 
    //TODO send requestSendEmailForgot
     override fun requestSendEmailForgot(id: String?, email: String?, callback: ForgotListener) {
@@ -112,8 +105,6 @@ class Request : InterActor.ActData {
                     override fun onError(e: Throwable) {}
                 }) }
 
-
-
     //TODO listCoWorking
     override fun callCoWorkNearby(callback: HomeListener) {
         val baseService by lazy { BaseRetrofit.createRx() }
@@ -125,6 +116,4 @@ class Request : InterActor.ActData {
                     }
                     override fun onError(e: Throwable) {} })
     }
-
-
 }

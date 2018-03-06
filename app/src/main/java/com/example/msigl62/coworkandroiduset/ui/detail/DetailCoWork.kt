@@ -14,13 +14,13 @@ import kotlinx.android.synthetic.main.activity_detail_co_work.*
 
 class DetailCoWork : AppCompatActivity(), OnMapReadyCallback {
     lateinit var mMap: GoogleMap
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_co_work)
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.mapCoWork) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
         setPagerImage()
     }
 
@@ -34,11 +34,8 @@ class DetailCoWork : AppCompatActivity(), OnMapReadyCallback {
     //TODO Map
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-
     }
 }
