@@ -27,9 +27,9 @@ class ForgotActivityFinish : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun setToolBar() {
-        text_toolbar.text = getString(R.string.login_header)
+        text_toolbar.text = getString(R.string.forgot_header)
         image_arrow.setOnClickListener {
-            val i = Intent(this, LoginActivity::class.java)
+            val i = Intent(this, ForgotActivity::class.java)
             startActivity(i)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         } }
