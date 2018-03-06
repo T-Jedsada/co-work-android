@@ -34,6 +34,7 @@
         android:id="@+id/edt_forgot_email"
         android:layout_below="@id/textSub"
         android:layout_centerHorizontal="true"
+        android:inputType="textFilter"
         android:hint="Email"
         android:layout_width="320dp"
         android:layout_height="50dp"

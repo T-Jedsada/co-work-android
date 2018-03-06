@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:background="@color/colorPrimary"
+        android:id="@+id/imageCoWorkPopular"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:clickable="true"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_below="@+id/imageCoWorkPopular"
+        android:id="@+id/textCoWorkPopularName"
+        android:textStyle="bold"
+        android:text="Co-Working Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/textCoWorkPopularName"
+        android:id="@+id/textCoWorkPopularAddress"
+        android:text="Suthep, Chiangmai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="200dp"
+        android:layout_below="@+id/imageCoWorkPopular"
+        android:id="@+id/textRating"
+        android:text="Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RatingBar
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="250dp"
+        android:layout_below="@+id/imageCoWorkPopular"
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:numStars="5"
+        android:stepSize="0.1"
+        android:isIndicator="true" />
+    
+</RelativeLayout>

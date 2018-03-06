@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/like"
-        android:icon="@drawable/angry"
+        android:id="@+id/explore"
+        android:icon="@drawable/iconmenu"
         android:title="EXPLORE" />
     <item
-        android:id="@+id/love"
-        android:icon="@drawable/angry"
+        android:id="@+id/saveo"
+        android:icon="@drawable/iconmenu"
         android:title="SAVEO" />
     <item
-        android:id="@+id/sad"
-        android:icon="@drawable/angry"
+        android:id="@+id/seat"
+        android:icon="@drawable/iconmenu"
         android:title="SEAT" />
 
     <item
-        android:id="@+id/angry"
-        android:icon="@drawable/angry"
+        android:id="@+id/profile"
+        android:icon="@drawable/iconmenu"
         android:title="PROFILE" />
 </menu>

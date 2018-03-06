@@ -3,6 +3,7 @@ package com.example.msigl62.coworkandroiduset
 import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.callapi.Request.RegisterListener
 import com.example.msigl62.coworkandroiduset.model.Forgot
+import com.example.msigl62.coworkandroiduset.model.Login
 import com.example.msigl62.coworkandroiduset.model.Register
 import okhttp3.MultipartBody
 
@@ -18,6 +19,10 @@ class InterActor {
 
         fun requestForgotPassword(forgot: Forgot, callback: Request.ForgotListener)
         fun requestSendEmailForgot(id: String?, email: String?, callback: Request.ForgotListener)
+
+        fun callCoWorkNearby(callback: Request.HomeListener)
+
+        fun requestLogin(login: Login,callback: Request.LoginLister)
 
     }
 }

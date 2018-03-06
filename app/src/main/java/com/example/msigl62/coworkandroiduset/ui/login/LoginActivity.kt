@@ -7,22 +7,10 @@ import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.model.Login
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
-import com.example.msigl62.coworkandroiduset.ui.home.HomeActivity
 import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View{
-    override fun onSuccessValidated(model: Login) {
-        Toast.makeText(applicationContext, ""+model, Toast.LENGTH_LONG).show()
-    }
-
-    override fun onErrorMessage(err: Int) {
-        Toast.makeText(this, applicationContext.getText(err), Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResponseFromApi(resMessage: String) {
-        //TODO true  val i = Intent(this, HomeActivity::class.java)
-    }
 
     private lateinit var presenter: LoginContact.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,22 +29,41 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener,LoginContact.View
                 val i = Intent(this, RegisterActivity::class.java)
                 startActivity(i) }
             R.id.btnSubmitLogin -> {
-                val model = Login("","karn939.n@gmail.com","123456")
+                // TODO channel login email
+                val model= Login("",edt_Email_Login.text.trim().toString(),edt_Password_Login.text.trim().toString())
                 presenter.checkEdiTextLogin(model)
-                val i = Intent(this, HomeActivity::class.java)
-                startActivity(i)
             }
             R.id.forgot -> {
                 val i = Intent(this, ForgotActivity::class.java)
                 startActivity(i)
             }
             R.id.btnSubmitLoginFacebook->{
-                val intent = Intent(this, RegisterActivity::class.java)
-                intent.putExtra("keyStatusFormLoginActivity", "false")
-                startActivity(intent)
+                // TODO channel login facrbook
+
+                //val intent = Intent(this, RegisterActivity::class.java)
+                //intent.putExtra("keyStatusFormLoginActivity", "false")
+                //startActivity(intent)
+
+                val model= Login("44555","","")
+                presenter.getIdUserFacebookLogin(model)
+
             }
             else -> { }
         } }
+
+
+    override fun onSuccessValidated(model: Login) {
+        presenter.requestValidateApi(model)
+    }
+
+    override fun onErrorMessage(err: Int) {
+        Toast.makeText(this, applicationContext.getText(err), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResponseFromApi(resMessage: String) {
+        Toast.makeText(this, ""+resMessage, Toast.LENGTH_SHORT).show()
+    }
+
 
     override fun onBackPressed() {}
 

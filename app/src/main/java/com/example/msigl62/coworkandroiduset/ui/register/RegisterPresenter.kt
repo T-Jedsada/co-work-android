@@ -3,7 +3,7 @@ package com.example.msigl62.coworkandroiduset.ui.register
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
-import com.example.msigl62.coworkandroiduset.emailPattern
+import com.example.msigl62.coworkandroiduset.extension.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Register
 
 class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, Request.RegisterListener {

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork">
+
+        <include layout="@layout/layout_toolbar" />
+
+        <android.support.v4.view.ViewPager
+            android:layout_below="@+id/toolBarThem"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:ignore="UnknownIdInLayout" />
+
+        <TextView
+            android:textSize="@dimen/text_title"
+            android:id="@+id/nameCoWorking"
+            android:padding="10sp"
+            android:layout_below="@+id/container"
+            tools:text="Co-Working Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="SpUsage" />
+
+        <TextView
+            android:id="@+id/address"
+            android:padding="10sp"
+            android:layout_below="@+id/nameCoWorking"
+            tools:text="Suthep,Cjiangmai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Content"
+            android:padding="10sp"
+            android:layout_below="@+id/address"
+            tools:text="Suthep,Cjiangmai "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:id="@+id/circularPrice"
+            android:layout_below="@+id/Content"
+            android:src="@drawable/circular"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <ImageView
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/circularPrice2"
+            android:layout_below="@+id/circularPrice"
+            android:src="@drawable/circular"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_alignStart="@+id/circularPrice"
+            android:layout_below="@+id/Content"
+            tools:text="Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="40dp"
+            android:layout_alignStart="@+id/circularPrice2"
+            android:layout_below="@+id/textPrice"
+            tools:text="Contact  Information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <fragment
+            android:layout_marginTop="@dimen/text_title"
+            android:id="@+id/mapCoWork"
+            android:layout_below="@+id/circularPrice2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+        <TextView
+            android:padding="10dp"
+            android:layout_below="@+id/mapCoWork"
+            android:id="@+id/rating"
+            android:text="@string/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include layout="@layout/list_co_work_review" />
+
+    </RelativeLayout>
+</ScrollView>

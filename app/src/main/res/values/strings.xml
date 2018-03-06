@@ -33,4 +33,10 @@
     <string name="password">Password</string>
     <string name="message">Loading......</string>
     <string name="load_register">Register</string>
+    <string name="rating">Rating</string>
+    <string name="reserve_seat">Reserve Seat</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_detail_co_work">Map</string>
+    <string name="co_working_nearby_you">Co-working Nearby You</string>
+    <string name="chiang_mai_thailand">Chiang Mai, Tjailand</string>
 </resources>
