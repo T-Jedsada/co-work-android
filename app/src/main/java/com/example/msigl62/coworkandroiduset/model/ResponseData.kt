@@ -6,4 +6,6 @@ data class ResponseData(@SerializedName("success") val noticeMessage: String?
                         , @SerializedName("data") val data: Data?)
 
 data class Data(@SerializedName("message") val message: String?,
-                @SerializedName("error") val messageError: String?)
+                @SerializedName("error") val messageError: String?,
+                @SerializedName("_id")val id: String?,
+                @SerializedName("email")val email: String?)

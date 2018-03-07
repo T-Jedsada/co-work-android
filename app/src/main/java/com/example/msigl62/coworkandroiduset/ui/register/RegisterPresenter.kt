@@ -5,24 +5,25 @@ import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.extension.emailPattern
 import com.example.msigl62.coworkandroiduset.model.Register
+import com.example.msigl62.coworkandroiduset.model.ResponseData
 
 class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presenter, Request.RegisterListener {
     private val actData: InterActor.ActData = Request()
 
-    override fun onEmailSuccess(responseData: String?) {
-        view.onResponseFromApi("success")
+    override fun onEmailSuccess(responseData: ResponseData?) {
+        responseData?.data?.message?.let { view.onResponseFromApi(it) }
     }
 
-    override fun onSaveSuccess(user: Register?,noticeMessage:String?,message:String?) {
-        if(noticeMessage.equals("false")){
-            view.onResponseCheckFromEmail("false",message)
+    override fun onSaveSuccess(responseData:ResponseData?) {
+        if(responseData?.noticeMessage.equals("false")){
+            view.onResponseCheckFromEmail("false",responseData?.data?.message)
         }else{
-            user?.let { actData.requestSendEmail(user.facebookId, user.email, this) }
+             actData.requestSendEmail(responseData?.data?.id, responseData?.data?.email, this)
         }
     }
 
     override fun onImageSuccess(user: Register?, path: String?) {
-        user?.image = path
+        user?.image = "dummy path cuz s3 boomz"
         user?.let { actData.requestUploadUserData(it, this) }
     }
 

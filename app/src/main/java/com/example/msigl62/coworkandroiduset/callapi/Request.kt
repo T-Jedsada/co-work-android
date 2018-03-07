@@ -14,8 +14,8 @@ class Request : InterActor.ActData {
 
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
-    fun onSaveSuccess(user: Register?,success:String?,message: String?)
-    fun onEmailSuccess(responseData: String?) }
+    fun onSaveSuccess(responseData : ResponseData?)
+    fun onEmailSuccess(responseData: ResponseData?) }
 
     interface ForgotListener {
         fun onResponseSuccessForgot(user: Forgot?,path: String?)
@@ -48,7 +48,7 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onSaveSuccess(user,it.noticeMessage,it.data?.messageError) } }
+                        t.body()?.let { callback.onSaveSuccess(t.body()) } }
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -60,7 +60,7 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onEmailSuccess(it.data?.message) } }
+                        t.body()?.let { callback.onEmailSuccess(it) } }
                     override fun onError(e: Throwable) {}
                 })
     }
