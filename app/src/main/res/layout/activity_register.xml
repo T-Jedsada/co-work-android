@@ -104,7 +104,6 @@
                 app:passwordToggleEnabled="true" />
         </android.support.design.widget.TextInputLayout>
 
-
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="320dp"

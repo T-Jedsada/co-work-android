@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
-import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
@@ -15,7 +14,7 @@ class Request : InterActor.ActData {
 
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
-    fun onSaveSuccess(user: Register?)
+    fun onSaveSuccess(user: Register?,success:String?,message: String?)
     fun onEmailSuccess(responseData: String?) }
 
     interface ForgotListener {
@@ -23,7 +22,8 @@ class Request : InterActor.ActData {
         fun onEmailSuccessForgot(responseData: String?) }
 
     interface LoginLister{
-        fun onResponseSuccessLogin(responseData: String?)
+        fun onResponseSuccessLogin(responseData: String?,name:String?,image:String?,message:String?)
+        fun onResponseSuccessLoginFacebook(responseData: String?,name:String?,image:String?)
     }
 
     interface HomeListener {
@@ -48,7 +48,7 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onSaveSuccess(user) } }
+                        t.body()?.let { callback.onSaveSuccess(user,it.noticeMessage,it.data?.messageError) } }
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -62,18 +62,34 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseData>) {
                         t.body()?.let { callback.onEmailSuccess(it.data?.message) } }
                     override fun onError(e: Throwable) {}
-                }) }
+                })
+    }
 
-    //TODO login
-    override fun requestLogin(login: Login, callback: LoginLister) {
-        Log.e("getDataModelLogin","data="+" "+login.facebookId+" "+login.email+" "+login.password+" ")
-        BaseRetrofit.createRx()?.requestLogin(login.facebookId,login.email,login.password)
+    //TODO login Email
+    override fun requestLoginEmail(login: LoginEmail, callback: LoginLister) {
+        BaseRetrofit.createRx()?.requestLogin(login.email,login.password)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseDataLogin>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseDataLogin>) {
-                        t.body()?.let { callback.onResponseSuccessLogin(it.data?.message) } }
+                        t.body()?.let { callback.onResponseSuccessLogin(it.noticeMessage, it.data?.name, it.data?.image,it.data?.message) }
+                    }
+                    override fun onError(e: Throwable) {
+                    }
+                })
+    }
+
+    //TODO login Facebook
+    override fun requestLoginFacebook(login: LoginFacebook, callback: LoginLister) {
+        BaseRetrofit.createRx()?.requestLoginFacebook(login.facebookId)
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<ResponseDataLogin>>() {
+                    override fun onComplete() {}
+                    override fun onNext(t: Response<ResponseDataLogin>) {
+                        t.body()?.let { callback.onResponseSuccessLoginFacebook(it.noticeMessage, it.data?.name, it.data?.image) }
+                    }
                     override fun onError(e: Throwable) {
                     }
                 })
@@ -90,7 +106,8 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessForgot(forgot, it.data?.id) } }
                     override fun onError(e: Throwable) {
                     }
-                }) }
+                })
+    }
 
    //TODO send requestSendEmailForgot
     override fun requestSendEmailForgot(id: String?, email: String?, callback: ForgotListener) {

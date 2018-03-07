@@ -13,8 +13,12 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
         view.onResponseFromApi("success")
     }
 
-    override fun onSaveSuccess(user: Register?) {
-        user?.let { actData.requestSendEmail(user.facebookId, user.email, this) }
+    override fun onSaveSuccess(user: Register?,noticeMessage:String?,message:String?) {
+        if(noticeMessage.equals("false")){
+            view.onResponseCheckFromEmail("false",message)
+        }else{
+            user?.let { actData.requestSendEmail(user.facebookId, user.email, this) }
+        }
     }
 
     override fun onImageSuccess(user: Register?, path: String?) {
@@ -23,9 +27,9 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
     }
 
     override fun requestValidateApi(model: Register) {
-        if(model.image.isNullOrBlank()){
+        if (model.image.isNullOrBlank()) {
             actData.requestUploadImage(model.imageFile, model, this)
-        }else{
+        } else {
             actData.requestUploadUserData(model, this)
         }
     }
@@ -37,11 +41,12 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             model.email.isNullOrEmpty() -> view.onErrorMessage(R.string.email_empty_massage)
             !model.email.emailPattern().matches() -> view.onErrorMessage(R.string.email_format_invalid)
             model.password.isNullOrEmpty() -> view.onErrorMessage(R.string.password_empty_massage)
-            model.password?.length ?: 0 > 30 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
+            model.password?.length ?: 6 > 30 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
             model.rePassword.isNullOrEmpty() -> view.onErrorMessage(R.string.re_password_empty_massage)
             !model.rePassword.equals(model.password) -> view.onErrorMessage(R.string.invalid_re_password)
             else -> {
                 view.onSuccessValidated(model)
-            } }
+            }
+        }
     }
 }
