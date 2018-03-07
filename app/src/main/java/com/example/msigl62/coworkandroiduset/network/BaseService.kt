@@ -32,7 +32,7 @@ interface BaseService {
     @FormUrlEncoded
     @POST("register/forgot-password")
     fun requestForgotEmail(@Field("email") email: String?
-    ): Observable<Response<ResponseDataForgot>>
+    ): Observable<Response<ResponseData>>
 
     @FormUrlEncoded
     @POST("send-email/forgot-password")

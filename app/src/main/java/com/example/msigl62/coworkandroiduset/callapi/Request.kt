@@ -11,6 +11,18 @@ import okhttp3.MultipartBody
 import retrofit2.Response
 
 class Request : InterActor.ActData {
+    override fun requestForgotPassword(email: String, callback: ForgotListener) {
+        BaseRetrofit.createRx()?.requestForgotEmail(email)
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
+                    override fun onComplete() {}
+                    override fun onNext(t: Response<ResponseData>) {
+                        t.body()?.let { callback.onResponseSuccessForgot(it) } }
+                    override fun onError(e: Throwable) {
+                    }
+                })
+    }
 
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
@@ -18,7 +30,7 @@ class Request : InterActor.ActData {
     fun onEmailSuccess(responseData: ResponseData?) }
 
     interface ForgotListener {
-        fun onResponseSuccessForgot(user: Forgot?,path: String?)
+        fun onResponseSuccessForgot(responseData: ResponseData?)
         fun onEmailSuccessForgot(responseData: String?) }
 
     interface LoginLister{
@@ -95,20 +107,6 @@ class Request : InterActor.ActData {
                                 it.data?.image,
                                 it.data?.status) }
                     }
-                    override fun onError(e: Throwable) {
-                    }
-                })
-    }
-
-    //TODO requestForgotPassword
-    override fun requestForgotPassword(forgot: Forgot, callback: ForgotListener) {
-        BaseRetrofit.createRx()?.requestForgotEmail(forgot.email)
-                ?.subscribeOn(Schedulers.io())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(object : DisposableObserver<Response<ResponseDataForgot>>() {
-                    override fun onComplete() {}
-                    override fun onNext(t: Response<ResponseDataForgot>) {
-                        t.body()?.let { callback.onResponseSuccessForgot(forgot, it.data?.id) } }
                     override fun onError(e: Throwable) {
                     }
                 })

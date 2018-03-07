@@ -18,7 +18,7 @@ class InterActor {
         fun requestUploadUserData(user: Register, callback: RegisterListener)
         fun requestSendEmail(id: String?, email: String?, callback: RegisterListener)
 
-        fun requestForgotPassword(forgot: Forgot, callback: Request.ForgotListener)
+        fun requestForgotPassword(email : String, callback: Request.ForgotListener)
         fun requestSendEmailForgot(id: String?, email: String?, callback: Request.ForgotListener)
 
         fun callCoWorkNearby(callback: Request.HomeListener)
