@@ -9,13 +9,11 @@ import com.example.msigl62.coworkandroiduset.model.ResponseData
 
 class ForgotPresenter(val view: ForgotContact.View) : ForgotContact.Presenter, InterActor.OnFinishRequest, Request.ForgotListener {
     override fun onResponseSuccessForgot(responseData: ResponseData?) {
-//        user?.id = path
-//        if(user?.id.equals(null)){
-//            view.onResponseFromApi("noSuccess")
-//        }else{
-//            user?.let { actData.requestSendEmailForgot(user.id,user.email,this ) }
-//        }
-        Log.e("response" , responseData?.data?.idUser)
+        if(responseData?.data?.idUser.equals(null)){
+            view.onResponseFromApi("noSuccess")
+        }else{
+            actData.requestSendEmailForgot(responseData?.data?.idUser,responseData?.data?.email,this )
+        }
     }
 
     private val actData: InterActor.ActData = Request()
