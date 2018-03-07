@@ -238,12 +238,18 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         if (resMessage == "false") {
             getDataFacebook()
         } else {
-            val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
-            val editor = section.edit()
-            editor.putString("sectionLoginName", name)
-            editor.putString("sectionLoginImage",image)
-            editor.commit()
-            val i = Intent(this, HomeActivity::class.java)
-            startActivity(i)
-        } }
+            if(resMessage=="status-false"){
+                Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_SHORT).show()
+                val i = Intent(this, LoginActivity::class.java)
+                startActivity(i)
+            }else{
+                val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
+                val editor = section.edit()
+                editor.putString("sectionLoginName", name)
+                editor.putString("sectionLoginImage",image)
+                editor.commit()
+                val i = Intent(this, HomeActivity::class.java)
+                startActivity(i)}
+        }
+    }
 }

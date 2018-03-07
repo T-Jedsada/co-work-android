@@ -47,4 +47,5 @@
     <string name="toastResponseLogin">Do not have this email in system</string>
     <string name="payment_history">Payment History</string>
     <string name="profile">Profile</string>
+    <string name="statusFalseConfirmSingUp">PleaseConfirmEmail</string>
 </resources>

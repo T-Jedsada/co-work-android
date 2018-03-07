@@ -11,19 +11,27 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
 
     private val actData: InterActor.ActData = Request()
 
-    override fun onResponseSuccessLogin(responseData: String?,name: String?,image: String?,message:String?) {
+    override fun onResponseSuccessLogin(responseData: String?,name: String?,image: String?,message:String?,status:String?) {
         if(responseData.equals("false")){
             view.onResponseFromApiLogin("false",name,image,message)
         }else{
-            view.onResponseFromApiLogin("success",name,image,message)
+            if(status.equals("false")){
+                view.onResponseFromApiLogin("status-false",name,image,message)
+            }else{
+                view.onResponseFromApiLogin("success",name,image,message)
+            }
         }
     }
 
-    override fun onResponseSuccessLoginFacebook(responseData: String?,name: String?,image: String?) {
+    override fun onResponseSuccessLoginFacebook(responseData: String?,name: String?,image: String?,status:String?) {
         if(responseData.equals("false")){
             view.onResponseFromApiLogin("false",name,image,"")
         }else{
-            view.onResponseFromApiLogin("success",name,image,"")
+            if(status.equals("false")){
+                view.onResponseFromApiLogin("status-false",name,image,"")
+            }else{
+                view.onResponseFromApiLogin("success",name,image,"")
+            }
         }
     }
 

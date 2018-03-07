@@ -47,7 +47,7 @@ interface BaseService {
                      @Field("password") password: String?
     ): Observable<Response<ResponseDataLogin>>
 
-    //TODO login facebook** // del password
+    //TODO login facebook**
     @FormUrlEncoded
     @POST("facebook-login")
     fun requestLoginFacebook(@Field("facebook_id") facebook_id: String?

@@ -22,8 +22,8 @@ class Request : InterActor.ActData {
         fun onEmailSuccessForgot(responseData: String?) }
 
     interface LoginLister{
-        fun onResponseSuccessLogin(responseData: String?,name:String?,image:String?,message:String?)
-        fun onResponseSuccessLoginFacebook(responseData: String?,name:String?,image:String?)
+        fun onResponseSuccessLogin(responseData: String?,name:String?,image:String?,message:String?,status:String?)
+        fun onResponseSuccessLoginFacebook(responseData: String?,name:String?,image:String?,status:String?)
     }
 
     interface HomeListener {
@@ -73,7 +73,9 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseDataLogin>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseDataLogin>) {
-                        t.body()?.let { callback.onResponseSuccessLogin(it.noticeMessage, it.data?.name, it.data?.image,it.data?.message) }
+                        t.body()?.let { callback.onResponseSuccessLogin(it.noticeMessage,
+                                it.data?.name, it.data?.image,
+                                it.data?.message,it.data?.status) }
                     }
                     override fun onError(e: Throwable) {
                     }
@@ -88,7 +90,10 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseDataLogin>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseDataLogin>) {
-                        t.body()?.let { callback.onResponseSuccessLoginFacebook(it.noticeMessage, it.data?.name, it.data?.image) }
+                        t.body()?.let { callback.onResponseSuccessLoginFacebook(it.noticeMessage,
+                                it.data?.name,
+                                it.data?.image,
+                                it.data?.status) }
                     }
                     override fun onError(e: Throwable) {
                     }
