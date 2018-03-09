@@ -7,24 +7,24 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.model.Forgot
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_forgot.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 @Suppress("DEPRECATION")
-class ForgotActivity : AppCompatActivity(),ForgotContact.View  {
+class ForgotActivity : AppCompatActivity(), ForgotContact.View {
     private val presenter: ForgotContact.Presenter = ForgotPresenter(this)
     private var loadingDialog: ProgressDialog? = null
 
     override fun onSuccessValidated(email: String) {
         loadingDialog = ProgressDialog.show(this,
-        "Loading",
-        "Loading...",
-        true,
-        false)
+                "Loading",
+                "Loading...",
+                true,
+                false)
         presenter.requestValidateApi(email)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot)
@@ -48,16 +48,18 @@ class ForgotActivity : AppCompatActivity(),ForgotContact.View  {
 
     override fun onResponseFromApi(resMessage: String) {
         loadingDialog?.dismiss()
-//        if(resMessage == "noSuccess"){
-//            Toast.makeText(this,"This email do not sing up", Toast.LENGTH_SHORT).show()
-//        }else{
-//            val i = Intent(this, ForgotActivityFinish::class.java)
-//            startActivity(i)
-//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left) }
+        if(resMessage == "false"){
+            Toast.makeText(this, "This email do not sing up", Toast.LENGTH_SHORT).show()
+        }else{
+            val i = Intent(this, ForgotActivityFinish::class.java)
+            startActivity(i)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     private fun setButtonSubmitForgotPassword() {
         btnSubmitForgot.setOnClickListener {
-            presenter.checkEdiText(edt_forgot_email.text.trim().toString()) }
+            presenter.checkEdiText(edt_forgot_email.text.trim().toString())
+        }
     }
 }

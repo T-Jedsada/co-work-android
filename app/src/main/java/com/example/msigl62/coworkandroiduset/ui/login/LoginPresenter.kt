@@ -52,5 +52,6 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
             else -> {
                 view.onSuccessValidated(model)
             }
-        } }
+        }
+    }
 }

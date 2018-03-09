@@ -17,7 +17,7 @@ import com.example.msigl62.coworkandroiduset.extension.load
 import com.example.msigl62.coworkandroiduset.model.LoginEmail
 import com.example.msigl62.coworkandroiduset.model.LoginFacebook
 import com.example.msigl62.coworkandroiduset.model.Register
-import com.example.msigl62.coworkandroiduset.ui.home.HomeActivity
+import com.example.msigl62.coworkandroiduset.ui.MainActivityFragment
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.example.msigl62.coworkandroiduset.ui.login.LoginContact
 import com.example.msigl62.coworkandroiduset.ui.login.LoginPresenter
@@ -202,6 +202,12 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     //TODO checkUserIDFacebook LoginFacebook
     private fun checkUserIDFacebook() {
+        loadingDialog = ProgressDialog.show(this,
+                "Loading",
+                "Loading...",
+                true,
+                false
+        )
         btnFacebook.isClickable = false
         textUploadImage.isClickable = false
         imageView.isClickable = false
@@ -237,19 +243,23 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
     override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?) {
         if (resMessage == "false") {
             getDataFacebook()
+            loadingDialog?.dismiss()
         } else {
             if(resMessage=="status-false"){
-                Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_SHORT).show()
+                loadingDialog?.dismiss()
+                Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_LONG).show()
                 val i = Intent(this, LoginActivity::class.java)
                 startActivity(i)
             }else{
+                loadingDialog?.dismiss()
                 val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
                 val editor = section.edit()
                 editor.putString("sectionLoginName", name)
                 editor.putString("sectionLoginImage",image)
                 editor.commit()
-                val i = Intent(this, HomeActivity::class.java)
-                startActivity(i)}
+                val i = Intent(this, MainActivityFragment::class.java)
+                startActivity(i)
+            }
         }
     }
 }

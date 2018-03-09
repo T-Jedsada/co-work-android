@@ -11,18 +11,6 @@ import okhttp3.MultipartBody
 import retrofit2.Response
 
 class Request : InterActor.ActData {
-    override fun requestForgotPassword(email: String, callback: ForgotListener) {
-        BaseRetrofit.createRx()?.requestForgotEmail(email)
-                ?.subscribeOn(Schedulers.io())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
-                    override fun onComplete() {}
-                    override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onResponseSuccessForgot(it) } }
-                    override fun onError(e: Throwable) {
-                    }
-                })
-    }
 
     interface RegisterListener {
     fun onImageSuccess(user: Register?, path: String?)
@@ -107,6 +95,19 @@ class Request : InterActor.ActData {
                                 it.data?.image,
                                 it.data?.status) }
                     }
+                    override fun onError(e: Throwable) {
+                    }
+                })
+    }
+
+    override fun requestForgotPassword(email: String, callback: ForgotListener) {
+        BaseRetrofit.createRx()?.requestForgotEmail(email)
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
+                    override fun onComplete() {}
+                    override fun onNext(t: Response<ResponseData>) {
+                        t.body()?.let { callback.onResponseSuccessForgot(it) } }
                     override fun onError(e: Throwable) {
                     }
                 })

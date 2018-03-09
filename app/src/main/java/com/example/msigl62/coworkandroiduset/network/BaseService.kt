@@ -1,7 +1,6 @@
 package com.example.msigl62.coworkandroiduset.network
 
 import com.example.msigl62.coworkandroiduset.model.ResponseData
-import com.example.msigl62.coworkandroiduset.model.ResponseDataForgot
 import com.example.msigl62.coworkandroiduset.model.ResponseDataLogin
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
 import io.reactivex.Observable

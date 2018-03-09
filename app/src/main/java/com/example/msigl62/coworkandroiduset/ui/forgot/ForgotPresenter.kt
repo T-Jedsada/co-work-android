@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.forgot
 
-import android.util.Log
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
@@ -8,9 +7,10 @@ import com.example.msigl62.coworkandroiduset.extension.emailPattern
 import com.example.msigl62.coworkandroiduset.model.ResponseData
 
 class ForgotPresenter(val view: ForgotContact.View) : ForgotContact.Presenter, InterActor.OnFinishRequest, Request.ForgotListener {
+
     override fun onResponseSuccessForgot(responseData: ResponseData?) {
-        if(responseData?.data?.idUser.equals(null)){
-            view.onResponseFromApi("noSuccess")
+        if(responseData?.noticeMessage.equals("false")){
+            view.onResponseFromApi("false")
         }else{
             actData.requestSendEmailForgot(responseData?.data?.idUser,responseData?.data?.email,this )
         }

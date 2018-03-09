@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/explore"
+        icon="@drawable/circular"
+        title="Explore" />
+    <tab
+        id="@+id/saved"
+        icon="@drawable/circular"
+        title="Saved" />
+    <tab
+        id="@+id/seat"
+        icon="@drawable/circular"
+        title="Seat" />
+    <tab
+        id="@+id/profile"
+        icon="@drawable/circular"
+        title="Profile" />
+
+</tabs>

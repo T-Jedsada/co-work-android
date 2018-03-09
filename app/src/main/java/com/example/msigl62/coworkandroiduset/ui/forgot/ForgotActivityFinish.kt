@@ -32,6 +32,7 @@ class ForgotActivityFinish : AppCompatActivity() {
             val i = Intent(this, ForgotActivity::class.java)
             startActivity(i)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        } }
+        }
+    }
 
 }

@@ -28,12 +28,8 @@
             android:name="com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeActivity"
+            android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeFragment"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity"
@@ -45,8 +41,14 @@
             android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserActivity"
+            android:name="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment"
             android:screenOrientation="portrait" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.MainActivityFragment">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

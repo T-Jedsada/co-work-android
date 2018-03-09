@@ -2,7 +2,6 @@ package com.example.msigl62.coworkandroiduset
 
 import com.example.msigl62.coworkandroiduset.callapi.Request
 import com.example.msigl62.coworkandroiduset.callapi.Request.RegisterListener
-import com.example.msigl62.coworkandroiduset.model.Forgot
 import com.example.msigl62.coworkandroiduset.model.LoginEmail
 import com.example.msigl62.coworkandroiduset.model.LoginFacebook
 import com.example.msigl62.coworkandroiduset.model.Register
