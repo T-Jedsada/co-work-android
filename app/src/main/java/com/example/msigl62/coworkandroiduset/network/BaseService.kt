@@ -52,10 +52,7 @@ interface BaseService {
     fun requestLoginFacebook(@Field("facebook_id") facebook_id: String?
     ): Observable<Response<ResponseDataLogin>>
 
-
     //TODO listcowork
     @GET("api/blog")
     fun requestCoWorkNearby(): Observable<Response<ListCoWorkNearby>>
-
-
 }

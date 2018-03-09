@@ -24,6 +24,5 @@ class InterActor {
 
         fun requestLoginEmail(login: LoginEmail, callback: Request.LoginLister)
         fun requestLoginFacebook(login: LoginFacebook,callback: Request.LoginLister)
-
     }
 }

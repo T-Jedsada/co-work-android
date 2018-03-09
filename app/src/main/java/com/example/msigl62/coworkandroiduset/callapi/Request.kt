@@ -27,7 +27,8 @@ class Request : InterActor.ActData {
     }
 
     interface HomeListener {
-        fun <T> onSuccess(t: T) }
+        fun <T> onSuccess(t: T)
+    }
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
         BaseRetrofit.createRx()?.sendRequestImage(image)
@@ -39,7 +40,8 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onImageSuccess(user, it.data?.message) }
                     }
                     override fun onError(e: Throwable) {}
-                }) }
+                })
+    }
 
     override fun requestUploadUserData(user: Register, callback: RegisterListener) {
         BaseRetrofit.createRx()?.requestUploadUserData(user.name, user.email , user.facebookId,user.password, user.image)
@@ -124,7 +126,8 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onEmailSuccessForgot(it.data?.message) }
                     }
                     override fun onError(e: Throwable) {}
-                }) }
+                })
+   }
 
     //TODO listCoWorking
     override fun callCoWorkNearby(callback: HomeListener) {
