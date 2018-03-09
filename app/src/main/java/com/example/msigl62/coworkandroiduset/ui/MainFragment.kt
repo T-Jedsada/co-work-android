@@ -10,7 +10,7 @@ import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivityFragment : AppCompatActivity() {
+class MainFragment : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

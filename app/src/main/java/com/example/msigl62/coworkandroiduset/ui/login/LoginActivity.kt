@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.model.LoginEmail
-import com.example.msigl62.coworkandroiduset.ui.MainActivityFragment
+import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
 import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -73,14 +73,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
                 editor.putString("sectionLoginName", name)
                 editor.putString("sectionLoginImage",image)
                 editor.commit()
-                val i = Intent(this, MainActivityFragment::class.java)
+                val i = Intent(this, MainFragment::class.java)
                 startActivity(i)
             }
         }
     }
 
     override fun onBackPressed() {
-        val i = Intent(this, MainActivityFragment::class.java)
+        val i = Intent(this, MainFragment::class.java)
         startActivity(i)
     }
 }
