@@ -1,5 +1,7 @@
 package com.example.msigl62.coworkandroiduset.base
+
 open class BaseContract {
+
     interface View {
         fun showProgressDialog() }
 

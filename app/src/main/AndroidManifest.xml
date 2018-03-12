@@ -23,27 +23,32 @@
 
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.login.LoginActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeActivity"
-            android:screenOrientation="portrait" />
+            android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeFragment"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivityFinish"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork"></activity>
-
+        <activity
+            android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.MainFragment">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

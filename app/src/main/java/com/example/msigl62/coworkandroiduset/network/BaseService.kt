@@ -1,7 +1,6 @@
 package com.example.msigl62.coworkandroiduset.network
 
 import com.example.msigl62.coworkandroiduset.model.ResponseData
-import com.example.msigl62.coworkandroiduset.model.ResponseDataForgot
 import com.example.msigl62.coworkandroiduset.model.ResponseDataLogin
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
 import io.reactivex.Observable
@@ -32,25 +31,28 @@ interface BaseService {
     @FormUrlEncoded
     @POST("register/forgot-password")
     fun requestForgotEmail(@Field("email") email: String?
-    ): Observable<Response<ResponseDataForgot>>
+    ): Observable<Response<ResponseData>>
 
     @FormUrlEncoded
-    @POST("send-email/change-password")
+    @POST("send-email/forgot-password")
     fun requestSendEmailForgot(@Field("id") id: String?,
                                @Field("email") email: String?
     ): Observable<Response<ResponseData>>
 
-    //TODO login **
+    //TODO login email **
     @FormUrlEncoded
-    @POST("register/forgot-password")
-    fun requestLogin(@Field("facrbook_id") email: String?,
-                     @Field("email") facebook_id: String?,
+    @POST("email-login")
+    fun requestLogin(@Field("email") email: String?,
                      @Field("password") password: String?
+    ): Observable<Response<ResponseDataLogin>>
+
+    //TODO login facebook**
+    @FormUrlEncoded
+    @POST("facebook-login")
+    fun requestLoginFacebook(@Field("facebook_id") facebook_id: String?
     ): Observable<Response<ResponseDataLogin>>
 
     //TODO listcowork
     @GET("api/blog")
     fun requestCoWorkNearby(): Observable<Response<ListCoWorkNearby>>
-
-
 }

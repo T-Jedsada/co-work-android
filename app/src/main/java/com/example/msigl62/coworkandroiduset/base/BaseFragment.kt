@@ -1,4 +1,5 @@
 package com.example.msigl62.coworkandroiduset.base
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -17,5 +18,6 @@ abstract class BaseFragment <V : BaseContract.View, P : BaseContract.Presenter<V
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setup() }
+        setup()
+    }
 }

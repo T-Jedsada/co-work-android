@@ -10,5 +10,6 @@ class CoWorkPopularHolder (view: View) : RecyclerView.ViewHolder(view) {
     fun onBind(coWork: CoWorkNearby) {
         itemView.apply {
             imageCoWorkPopular.load( coWork.header_blog_image)
-        } }
+        }
+    }
 }

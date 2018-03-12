@@ -40,4 +40,12 @@
     <string name="title_activity_detail_co_work">Map</string>
     <string name="co_working_nearby_you">Co-working Nearby You</string>
     <string name="chiang_mai_thailand">Chiang Mai, Tjailand</string>
+    <string name="logout">Logout</string>
+    <string name="aboutus">AboutUs</string>
+    <string name="paymenthistory">PaymentHistory</string>
+    <string name="change_password">Change Password</string>
+    <string name="toastResponseLogin">Do not have this email in system</string>
+    <string name="payment_history">Payment History</string>
+    <string name="profile">Profile</string>
+    <string name="statusFalseConfirmSingUp">PleaseConfirmEmail</string>
 </resources>

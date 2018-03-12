@@ -7,4 +7,7 @@ class ResponseDataLogin (@SerializedName("success") val noticeMessage: String?,
 
 data class DataLogin(@SerializedName("error") val message: String?,
                       @SerializedName("email") val email: String?,
-                      @SerializedName("_id") val id: String?)
+                      @SerializedName("_id") val id: String?,
+                     @SerializedName("name") val name: String?,
+                     @SerializedName("image") val image: String?,
+                     @SerializedName("status") val status: String?)

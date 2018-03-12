@@ -3,6 +3,7 @@ package com.example.msigl62.coworkandroiduset.ui.register
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -13,8 +14,13 @@ import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.extension.getPath
 import com.example.msigl62.coworkandroiduset.extension.load
+import com.example.msigl62.coworkandroiduset.model.LoginEmail
+import com.example.msigl62.coworkandroiduset.model.LoginFacebook
 import com.example.msigl62.coworkandroiduset.model.Register
+import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
+import com.example.msigl62.coworkandroiduset.ui.login.LoginContact
+import com.example.msigl62.coworkandroiduset.ui.login.LoginPresenter
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -30,46 +36,18 @@ import java.io.File
 import java.util.*
 
 @Suppress("DEPRECATION")
-class RegisterActivity : AppCompatActivity(), RegisterContact.View {
+class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact.View {
+
     private var idFacebook: String? = null
     private var imageBodyPartImage: MultipartBody.Part? = null
     private var imagePathFacebook: String? = null
     private lateinit var presenter: RegisterContact.Presenter
     private var callbackManager: CallbackManager? = null
     private var loadingDialog: ProgressDialog? = null
+    private val presenterLoginContact: LoginContact.Presenter by lazy { LoginPresenter(this) }
 
     companion object {
         const val REQUEST_CODE = 1
-    }
-
-    override fun onResponseFromApi(resMessage: String) {
-        loadingDialog?.dismiss()
-        val simpleAlert = AlertDialog.Builder(this).create()
-        simpleAlert.setTitle(resMessage)
-        simpleAlert.setMessage("Verify Email")
-        simpleAlert.setCancelable(false)
-        simpleAlert.setCanceledOnTouchOutside(false)
-        simpleAlert.setButton(AlertDialog.BUTTON_POSITIVE, "Enter", { _, _ ->
-            val i = Intent(this, LoginActivity::class.java)
-            startActivity(i)
-        })
-        simpleAlert.show()
-    }
-
-    override fun onSuccessValidated(model: Register) {
-        loadingDialog = ProgressDialog.show(this,
-                "Loading",
-                "Loading...",
-                true,
-                false
-        )
-        presenter.requestValidateApi(model)
-        btnSubmit.isClickable = false
-        btnFacebook.isClickable = false
-    }
-
-    override fun onErrorMessage(err: Int) {
-        Toast.makeText(this, applicationContext.getText(err), Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,8 +65,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
 
     private fun getIntentFromLoginActivity() {
         val status = intent.extras!!.getString("keyStatusFormLoginActivity")
-        if (status == "false") {
-            getDataFacebook()
+        if (status == "true") {
+            checkUserIDFacebook()
         } else { }
     }
 
@@ -106,17 +84,19 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         btnSubmit.setOnClickListener {
             val model = imageBodyPartImage?.let { it1 ->
                 Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
-                        , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imagePathFacebook, it1) }
-
+                        , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imagePathFacebook, it1)
+            }
             imageBodyPartImage?.let { model?.let { it1 -> presenter.checkEdiText(it1) } }
-                    ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show() }
-        btnFacebook.setOnClickListener { getDataFacebook() }
+                    ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show()
+        }
+        btnFacebook.setOnClickListener { checkUserIDFacebook() }
     }
 
     private fun setImageViewUser() {
         imageView.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(intent, REQUEST_CODE) }
+            startActivityForResult(intent, REQUEST_CODE)
+        }
     }
 
     private fun getDataFacebook() {
@@ -127,6 +107,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                     override fun onSuccess(loginResult: LoginResult) {
                         btnFacebook.visibility = GONE
                         textOR.visibility = GONE
+                        btnSubmit.isClickable = true
                         textUploadImage.visibility = GONE
                         val request = GraphRequest.newMeRequest(
                                 loginResult.accessToken
@@ -151,6 +132,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                         request.parameters = parameters
                         request.executeAsync()
                     }
+
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -169,7 +151,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
                 textUploadImage.visibility = GONE
-            } }
+            }
+        }
     }
 
     private fun setImageView(imageUri: Uri?) {
@@ -181,14 +164,102 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View {
         LoginManager.getInstance().logOut()
     }
 
-    override fun onBackPressed() {
+    override fun onResponseFromApi(resMessage: String) {
+        loadingDialog?.dismiss()
         val simpleAlert = AlertDialog.Builder(this).create()
-        simpleAlert.setTitle("Exit")
-        simpleAlert.setMessage("Register")
+        simpleAlert.setTitle(resMessage)
+        simpleAlert.setMessage("Verify Email")
+        simpleAlert.setCancelable(false)
+        simpleAlert.setCanceledOnTouchOutside(false)
         simpleAlert.setButton(AlertDialog.BUTTON_POSITIVE, "Enter", { _, _ ->
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         })
         simpleAlert.show()
+    }
+
+    override fun onResponseCheckFromEmail(resMessageCheckFromEmail: String,messageError:String?) {
+        loadingDialog?.dismiss()
+        btnSubmit.isClickable = true
+        Toast.makeText(this, messageError, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSuccessValidated(model: Register) {
+        loadingDialog = ProgressDialog.show(this,
+                "Loading",
+                "Loading...",
+                true,
+                false
+        )
+        presenter.requestValidateApi(model)
+        btnSubmit.isClickable = false
+        btnFacebook.isClickable = false
+    }
+
+    override fun onErrorMessage(err: Int) {
+        Toast.makeText(this, applicationContext.getText(err), Toast.LENGTH_SHORT).show()
+    }
+
+    //TODO checkUserIDFacebook LoginFacebook
+    private fun checkUserIDFacebook() {
+        loadingDialog = ProgressDialog.show(this,
+                "Loading",
+                "Loading...",
+                true,
+                false
+        )
+        btnFacebook.isClickable = false
+        textUploadImage.isClickable = false
+        imageView.isClickable = false
+        edt_Email.isClickable = false
+        edt_Name.isClickable = false
+        edt_Password.isClickable = false
+        edt_re_Password.isClickable = false
+        btnSubmit.isClickable = false
+        callbackManager = CallbackManager.Factory.create()
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
+        LoginManager.getInstance().registerCallback(callbackManager,
+                object : FacebookCallback<LoginResult> {
+                    override fun onSuccess(loginResult: LoginResult) {
+                        val request = GraphRequest.newMeRequest(
+                                loginResult.accessToken
+                        ) { `object`, _ ->
+                            idFacebook = `object`.getString("id")
+                            val model = LoginFacebook(idFacebook)
+                            presenterLoginContact.checkIdUserFacebookLogin(model)
+                        }
+                        val parameters = Bundle()
+                        parameters.putString("fields", "id")
+                        request.parameters = parameters
+                        request.executeAsync()
+                    }
+                    override fun onCancel() {}
+                    override fun onError(error: FacebookException) {}
+                })
+    }
+
+    override fun onSuccessValidated(model: LoginEmail) {}
+
+    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?) {
+        if (resMessage == "false") {
+            getDataFacebook()
+            loadingDialog?.dismiss()
+        } else {
+            if(resMessage=="status-false"){
+                loadingDialog?.dismiss()
+                Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_LONG).show()
+                val i = Intent(this, LoginActivity::class.java)
+                startActivity(i)
+            }else{
+                loadingDialog?.dismiss()
+                val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
+                val editor = section.edit()
+                editor.putString("sectionLoginName", name)
+                editor.putString("sectionLoginImage",image)
+                editor.commit()
+                val i = Intent(this, MainFragment::class.java)
+                startActivity(i)
+            }
+        }
     }
 }
