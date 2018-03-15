@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-
+//TODO model  Wait API CoWorkNearby
 data class CoWorkNearby (val id: Int? = null,
                         val title: String? = null,
                         val is_schedule: String? = null,

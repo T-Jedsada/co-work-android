@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.login.LoginActivity"
             android:screenOrientation="portrait" />
@@ -29,8 +29,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.home.HomeFragment"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity"
             android:screenOrientation="portrait" />
@@ -39,13 +38,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment"
             android:screenOrientation="portrait" />
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.MainFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

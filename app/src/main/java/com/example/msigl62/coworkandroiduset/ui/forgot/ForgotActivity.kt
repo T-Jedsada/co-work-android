@@ -49,7 +49,9 @@ class ForgotActivity : AppCompatActivity(), ForgotContact.View {
     override fun onResponseFromApi(resMessage: String) {
         loadingDialog?.dismiss()
         if(resMessage == "false"){
-            Toast.makeText(this, "This email do not sing up", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toastResponseForgot, Toast.LENGTH_SHORT).show()
+        }else if(resMessage == "statusFalse"){
+            Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_SHORT).show()
         }else{
             val i = Intent(this, ForgotActivityFinish::class.java)
             startActivity(i)

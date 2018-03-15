@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.msi_gl62.co_work_android_uset.R
+import com.example.msigl62.coworkandroiduset.extension.DialogUtil
 import com.example.msigl62.coworkandroiduset.ui.home.HomeFragment
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment
@@ -42,14 +43,12 @@ class MainFragment : AppCompatActivity() {
                                 .replace(R.id.containerFragment, ProfileUserFragment(), "")
                                 .commit()
                     } else {
-                        val i = Intent(this, LoginActivity::class.java)
-                        startActivity(i)
+                        DialogUtil.showDialogMessage(this, R.string.msg_dialog_login)
                     }
                 }
                 else -> {
                 }
-            }
-        }
+            } }
     }
 
     override fun onBackPressed() {}

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <Toolbar
-        android:id="@+id/toolBar"
+        android:id="@+id/toolBarDetail"
         android:background="@color/colorToolBar"
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -29,4 +29,23 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="53dp"
         android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/share_toolbar"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="320dp"
+        android:src="@drawable/heart" />
+
+    <ImageView
+        android:id="@+id/heart_toolbar"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="280dp"
+        android:src="@drawable/share" />
+
 </RelativeLayout>

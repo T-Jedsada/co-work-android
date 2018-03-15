@@ -10,4 +10,5 @@ data class Data(@SerializedName("message") val message: String?,
                 @SerializedName("error") val messageError: String?,
                 @SerializedName("_id")val id: String?,
                 @SerializedName("id")val idUser: String?,
-                @SerializedName("email")val email: String?)
+                @SerializedName("email")val email: String?,
+                @SerializedName("status") val status: String?)

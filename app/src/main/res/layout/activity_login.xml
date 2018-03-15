@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,7 +10,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.msigl62.coworkandroiduset.ui.login.LoginActivity">
 
+    <include layout="@layout/layout_toolbar" />
+
     <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+        android:layout_below="@+id/toolBarThem"
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -92,7 +99,6 @@
         android:layout_marginEnd="8dp"
         android:text="Forgot Password" />
 
-
     <Button
         android:textAllCaps="false"
         android:layout_marginTop="20dp"
@@ -103,7 +109,5 @@
         android:layout_centerHorizontal="true"
         android:text="@string/submit_btn_with_facebook" />
 
-
-
-
 </RelativeLayout>
+</ScrollView>

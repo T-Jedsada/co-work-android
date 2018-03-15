@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
     }
 
     private fun getIntentFromLoginActivity() {
-        val status = intent.extras!!.getString("keyStatusFormLoginActivity")
+        val status = intent.extras?.getString("keyStatusFormLoginActivity")
         if (status == "true") {
             checkUserIDFacebook()
         } else { }

@@ -12,7 +12,12 @@ class ForgotPresenter(val view: ForgotContact.View) : ForgotContact.Presenter, I
         if(responseData?.noticeMessage.equals("false")){
             view.onResponseFromApi("false")
         }else{
-            actData.requestSendEmailForgot(responseData?.data?.idUser,responseData?.data?.email,this )
+            //TODO Wait API register/forgot-password response check status true or false
+            if(responseData?.data?.status.equals("false")){
+                view.onResponseFromApi("statusFalse")
+            }else{
+                actData.requestSendEmailForgot(responseData?.data?.idUser,responseData?.data?.email,this )
+            }
         }
     }
 

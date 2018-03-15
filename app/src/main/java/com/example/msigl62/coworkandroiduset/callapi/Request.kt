@@ -1,5 +1,6 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
+import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
@@ -109,7 +110,8 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseData>) {
-                        t.body()?.let { callback.onResponseSuccessForgot(it) } }
+                        t.body()?.let { callback.onResponseSuccessForgot(it) }
+                    }
                     override fun onError(e: Throwable) {
                     }
                 })

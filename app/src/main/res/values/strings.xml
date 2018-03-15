@@ -42,10 +42,13 @@
     <string name="chiang_mai_thailand">Chiang Mai, Tjailand</string>
     <string name="logout">Logout</string>
     <string name="aboutus">AboutUs</string>
-    <string name="paymenthistory">PaymentHistory</string>
     <string name="change_password">Change Password</string>
     <string name="toastResponseLogin">Do not have this email in system</string>
+    <string name="toastResponseForgot">This email do not sing up</string>
     <string name="payment_history">Payment History</string>
     <string name="profile">Profile</string>
     <string name="statusFalseConfirmSingUp">PleaseConfirmEmail</string>
+    <string name="dialog">Login</string>
+    <string name="dialog_button">ok</string>
+    <string name="msg_dialog_login">You Login App?</string>
 </resources>
