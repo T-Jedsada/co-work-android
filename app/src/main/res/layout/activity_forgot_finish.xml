@@ -6,44 +6,42 @@
 
     <include layout="@layout/layout_toolbar" />
 
-    <TextView
-        android:textStyle="bold"
-        android:layout_marginTop="150dp"
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/textTitle"
-        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolBarThem"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
         android:text="@string/text_forgot_title_finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textSize="@dimen/text_title"
-        />
+        android:textStyle="bold"
+        tools:ignore="SpUsage,UnknownIdInLayout" />
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:text="@string/text_forgot_Sub_finish"
-        android:layout_below="@+id/textTitle"
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/textSub"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/textSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_forgot_Sub_finish_Sub"
-        />
+        android:layout_below="@+id/textTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_forgot_Sub_finish" />
 
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textSub"
+        android:layout_centerHorizontal="true"
+        android:text="@string/text_forgot_Sub_finish_Sub" />
 
-    <Button
-        android:textAllCaps="false"
-        android:layout_marginTop="30dp"
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btnBackToLogin"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_below="@+id/textSub"
         android:layout_centerHorizontal="true"
-        android:text="@string/submit_forgot_finish" />
+        android:layout_marginTop="30dp"
+        android:text="@string/submit_forgot_finish"
+        android:textAllCaps="false" />
 
 </RelativeLayout>

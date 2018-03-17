@@ -20,7 +20,7 @@ class InterActor {
         fun requestForgotPassword(email : String, callback: Request.ForgotListener)
         fun requestSendEmailForgot(id: String?, email: String?, callback: Request.ForgotListener)
 
-        fun callCoWorkNearby(callback: Request.HomeListener)
+        fun callCoWorkPopular(callback: Request.HomeListener)
 
         fun requestLoginEmail(login: LoginEmail, callback: Request.LoginLister)
         fun requestLoginFacebook(login: LoginFacebook,callback: Request.LoginLister)

@@ -3,6 +3,7 @@ package com.example.msigl62.coworkandroiduset.network
 import com.example.msigl62.coworkandroiduset.model.ResponseData
 import com.example.msigl62.coworkandroiduset.model.ResponseDataLogin
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
+import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -53,6 +54,6 @@ interface BaseService {
     ): Observable<Response<ResponseDataLogin>>
 
     //TODO listcowork
-    @GET("api/blog")
-    fun requestCoWorkNearby(): Observable<Response<ListCoWorkNearby>>
+    @GET("list-cowork")
+    fun requestCoWorkPopular(): Observable<Response<ListCoWorkPopular>>
 }

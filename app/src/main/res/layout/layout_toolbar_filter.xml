@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolBarFilterLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Toolbar
+        android:id="@+id/toolBarFilter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorToolBar" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"
+        android:text="@string/reset"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_sub"
+        tools:ignore="SpUsage" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="@string/filter"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_sub"
+        tools:ignore="SpUsage" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        android:text="@string/apply"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_sub"
+        tools:ignore="RelativeOverlap,SpUsage" />
+
+</RelativeLayout>

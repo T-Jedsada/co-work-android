@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.holder.CoWorkPopularHolder
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkNearby
+import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 
-class AdapterCoWorkPopular (private var coWork: List<CoWorkNearby>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterCoWorkPopular (private var coWork: List<CoWorkPopular>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    fun setItem(items: List<CoWorkNearby>) {
+    fun setItem(items: List<CoWorkPopular>) {
         coWork = items
         notifyDataSetChanged()
     }

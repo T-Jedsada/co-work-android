@@ -51,4 +51,12 @@
     <string name="dialog">Login</string>
     <string name="dialog_button">ok</string>
     <string name="msg_dialog_login">You Login App?</string>
+    <string name="search">search</string>
+    <string name="apply">Apply</string>
+    <string name="filter">Filter</string>
+    <string name="reset">Reset</string>
+    <string name="price">Price</string>
+    <string name="from_you_current_location">From your current location</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="allow_open_current_location">Allow Open Current location</string>
 </resources>

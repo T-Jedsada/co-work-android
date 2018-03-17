@@ -1,9 +1,9 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
-import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
+import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
@@ -132,12 +132,12 @@ class Request : InterActor.ActData {
    }
 
     //TODO listCoWorking
-    override fun callCoWorkNearby(callback: HomeListener) {
+    override fun callCoWorkPopular(callback: HomeListener) {
         val baseService by lazy { BaseRetrofit.createRx() }
-        baseService?.requestCoWorkNearby()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(object : DisposableObserver<Response<ListCoWorkNearby>>() {
+        baseService?.requestCoWorkPopular()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<ListCoWorkPopular>>() {
                     override fun onComplete() {}
-                    override fun onNext(t: Response<ListCoWorkNearby>) {
+                    override fun onNext(t: Response<ListCoWorkPopular>) {
                         t.body()?.let { callback.onSuccess(it) }
                     }
                     override fun onError(e: Throwable) {} })

@@ -40,7 +40,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/Content"
+            android:id="@+id/content"
             android:padding="10sp"
             android:layout_below="@+id/address"
             tools:text="Suthep,Cjiangmai "
@@ -51,7 +51,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
             android:id="@+id/circularPrice"
-            android:layout_below="@+id/Content"
+            android:layout_below="@+id/content"
             android:src="@drawable/circular"
             android:layout_width="20dp"
             android:layout_height="20dp" />
@@ -70,7 +70,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="40dp"
             android:layout_alignStart="@+id/circularPrice"
-            android:layout_below="@+id/Content"
+            android:layout_below="@+id/content"
             tools:text="Price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

@@ -40,7 +40,7 @@
             android:textStyle="bold"
             tools:text="sdsd" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_scan_qr"
             android:layout_width="150dp"
             android:layout_height="30dp"
@@ -48,9 +48,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_states"
-            android:text="Edit Profile"
+            android:text="@string/edit_profile"
             android:textAllCaps="false"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <RelativeLayout
             android:id="@+id/layOutChangePassword"
@@ -60,7 +60,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="90dp">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/textChang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/cardview_shadow_start_color" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
@@ -91,7 +91,7 @@
             android:layout_below="@+id/layOutChangePassword"
             android:layout_marginStart="30dp">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/textPaymentHistory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/cardview_shadow_start_color" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
@@ -123,7 +123,7 @@
             android:layout_below="@+id/layOutPaymentHistory"
             android:layout_marginStart="30dp">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/textAboutUs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/cardview_shadow_start_color" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
@@ -155,7 +155,7 @@
             android:layout_below="@+id/layOutAboutUs"
             android:layout_marginStart="30dp">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/logOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/cardview_shadow_start_color" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
