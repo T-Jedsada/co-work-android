@@ -4,10 +4,12 @@ import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 
 interface HomeContact {
     interface Presenter {
-        fun callCoWorkNearby(key: String? = null)
+        fun callCoWorkPopular(key: String? = null)
+        fun callCoWorkNearby(longtitude: Double,latitude: Double)
     }
 
     interface View {
         fun onCallSuccessCoWorkPopular(coWorkPopular: List<CoWorkPopular>?)
+        fun onCallSuccessCoWorkNearby()
     }
 }

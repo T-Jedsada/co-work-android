@@ -3,102 +3,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork">
 
         <include layout="@layout/layout_toolbar_detail" />
 
         <android.support.v4.view.ViewPager
-            android:layout_below="@+id/toolBarThem"
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:layout_below="@+id/toolBarThem"
             android:background="@color/cardview_dark_background"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:ignore="UnknownIdInLayout" />
 
+        <LinearLayout
+            android:id="@+id/sliderDots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" />
+
         <TextView
-            android:textSize="@dimen/text_title"
             android:id="@+id/nameCoWorking"
-            android:padding="10sp"
-            android:layout_below="@+id/container"
-            tools:text="Co-Working Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="SpUsage" />
+            android:layout_below="@+id/container"
+            android:padding="10sp"
+            android:textSize="@dimen/text_title"
+            tools:ignore="SpUsage"
+            tools:text="Co-Working Name" />
 
         <TextView
             android:id="@+id/address"
-            android:padding="10sp"
-            android:layout_below="@+id/nameCoWorking"
-            tools:text="Suthep,Cjiangmai"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameCoWorking"
+            android:padding="10sp"
+            tools:text="Suthep,Cjiangmai" />
 
         <TextView
             android:id="@+id/content"
-            android:padding="10sp"
-            android:layout_below="@+id/address"
-            tools:text="Suthep,Cjiangmai "
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/address"
+            android:padding="10sp"
+            tools:text="Suthep,Cjiangmai" />
 
         <ImageView
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
             android:id="@+id/circularPrice"
-            android:layout_below="@+id/content"
-            android:src="@drawable/circular"
             android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_height="20dp"
+            android:layout_below="@+id/content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/circular" />
 
         <ImageView
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:id="@+id/circularPrice2"
-            android:layout_below="@+id/circularPrice"
-            android:src="@drawable/circular"
             android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_height="20dp"
+            android:layout_below="@+id/circularPrice"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/circular" />
 
         <TextView
             android:id="@+id/textPrice"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignStart="@+id/circularPrice"
             android:layout_below="@+id/content"
-            tools:text="Price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            tools:text="Price" />
 
         <TextView
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="40dp"
+            android:id="@+id/textContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignStart="@+id/circularPrice2"
             android:layout_below="@+id/textPrice"
-            tools:text="Contact  Information"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="11dp"
+            tools:text="Contact  Information" />
 
         <fragment
-            android:layout_marginTop="@dimen/text_title"
             android:id="@+id/mapCoWork"
-            android:layout_below="@+id/circularPrice2"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:name="com.google.android.gms.maps.SupportMapFragment" />
+            android:layout_below="@+id/circularPrice2"
+            android:layout_marginTop="@dimen/text_title" />
 
         <TextView
-            android:padding="10dp"
-            android:layout_below="@+id/mapCoWork"
             android:id="@+id/rating"
-            android:text="@string/rating"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapCoWork"
+            android:padding="10dp"
+            android:text="@string/rating" />
 
         <include layout="@layout/list_co_work_review" />
 

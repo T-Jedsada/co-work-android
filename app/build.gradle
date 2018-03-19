@@ -50,11 +50,10 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:4.30.0'
 
-    compile 'org.mockito:mockito-inline:2.7.22'
+    implementation 'org.mockito:mockito-inline:2.7.22'
     androidTestCompile 'org.mockito:mockito-android:2.7.22'
 
-    compile 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
-
 
 }

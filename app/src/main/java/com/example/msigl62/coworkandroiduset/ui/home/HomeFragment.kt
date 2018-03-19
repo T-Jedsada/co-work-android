@@ -38,10 +38,8 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = HomePresenter(this)
-        presenter.callCoWorkNearby()
+        presenter.callCoWorkPopular()
         setFilter()
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,24 +73,20 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     }
 
     override fun onCallSuccessCoWorkPopular(coWorkPopular: List<CoWorkPopular>?) {
-//        val adapterCoWorkNearby: AdapterCoWorkNearby by lazy { AdapterCoWorkNearby(listOf()) }
-//        listCoWorkNearby?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//        listCoWorkNearby?.adapter = adapterCoWorkNearby
-//        coWorkNearby?.let { adapterCoWorkNearby.setItem(it) }
-
-        //TODO change onCallSuccessCoWorkNearby
-        //TODO   Wait API CoWorkPopular
         val adapterCoWorkPopular: AdapterCoWorkPopular by lazy { AdapterCoWorkPopular(listOf()) }
         listCoWorkPopular?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         listCoWorkPopular?.adapter = adapterCoWorkPopular
         coWorkPopular?.let { adapterCoWorkPopular.setItem(it) }
-
-        Log.e("getdata","datalist"+coWorkPopular)
-
     }
 
+    override fun onCallSuccessCoWorkNearby() {
+        TODO("not implemented")
+    }
+
+    //TODO getLocation send API
     override fun onLocationChanged(location: Location?) {
         Log.e("getLocationUser","LocationUser:= "+location?.latitude+"\n"+location?.longitude)
+        //presenter.callCoWorkNearby(location.longitude,location.latitude)
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {

@@ -2,6 +2,7 @@ package com.example.msigl62.coworkandroiduset.ui.home
 
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.callapi.Request
+import com.example.msigl62.coworkandroiduset.model.ResponseDataCoWorkNearby
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
 
 class HomePresenter (val view: HomeContact.View) : HomeContact.Presenter,Request.HomeListener {
@@ -12,7 +13,16 @@ class HomePresenter (val view: HomeContact.View) : HomeContact.Presenter,Request
         view.onCallSuccessCoWorkPopular(coWorkPopular = (t as ListCoWorkPopular).results)
     }
 
-    override fun callCoWorkNearby(key: String?) {
+    override fun callCoWorkPopular(key: String?) {
         actData.callCoWorkPopular(this)
+    }
+
+
+    override fun onResponseSuccessListCoWorkNearby(responseData: ResponseDataCoWorkNearby?) {
+      //TODO Request api CoWorkNearby **
+    }
+
+    override fun callCoWorkNearby(longtitude: Double, latitude: Double) {
+        //TODO Request api CoWorkNearby **
     }
 }

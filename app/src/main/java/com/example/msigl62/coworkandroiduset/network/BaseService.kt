@@ -1,8 +1,8 @@
 package com.example.msigl62.coworkandroiduset.network
 
 import com.example.msigl62.coworkandroiduset.model.ResponseData
+import com.example.msigl62.coworkandroiduset.model.ResponseDataCoWorkNearby
 import com.example.msigl62.coworkandroiduset.model.ResponseDataLogin
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkNearby
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
 import io.reactivex.Observable
 import okhttp3.MultipartBody
@@ -40,20 +40,27 @@ interface BaseService {
                                @Field("email") email: String?
     ): Observable<Response<ResponseData>>
 
-    //TODO login email **
+
     @FormUrlEncoded
     @POST("email-login")
     fun requestLogin(@Field("email") email: String?,
                      @Field("password") password: String?
     ): Observable<Response<ResponseDataLogin>>
 
-    //TODO login facebook**
     @FormUrlEncoded
     @POST("facebook-login")
     fun requestLoginFacebook(@Field("facebook_id") facebook_id: String?
     ): Observable<Response<ResponseDataLogin>>
 
-    //TODO listcowork
+    //TODO listcoworkPopular
     @GET("list-cowork")
     fun requestCoWorkPopular(): Observable<Response<ListCoWorkPopular>>
+
+    //TODO onCallCoWorkNearby
+    @FormUrlEncoded
+    @POST("")
+    fun requestCoWorkNearby(@Field("longtitude") longtitude: Double?,
+                            @Field("latitude")latitude:Double?
+    ): Observable<Response<ResponseDataCoWorkNearby>>
+
 }
