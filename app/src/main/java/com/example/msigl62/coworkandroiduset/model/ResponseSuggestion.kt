@@ -2,8 +2,8 @@ package com.example.msigl62.coworkandroiduset.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseDataCoWorkNearby(@SerializedName("success") val noticeMessage: String?
-                                    , @SerializedName("data") val data: Data?)
+data class ResponseSuggestion(@SerializedName("success") val noticeMessage: String?
+                              , @SerializedName("data") val data: Data?)
 
 data class DataCoWorkNearby(@SerializedName("coworking_id") val details: String?,
                 @SerializedName("provider_id") val latitude: Double?,

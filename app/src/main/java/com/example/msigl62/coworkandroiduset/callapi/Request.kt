@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
-import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
@@ -32,7 +31,7 @@ class Request : InterActor.ActData {
 
     interface HomeListener {
         fun <T> onSuccess(t: T)
-        fun onResponseSuccessListCoWorkNearby(responseData: ResponseDataCoWorkNearby?)
+        fun onResponseSuccessListCoWorkNearby(responseData: ResponseSuggestion?)
     }
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
@@ -167,9 +166,9 @@ class Request : InterActor.ActData {
         BaseRetrofit.createRx(BaseUrl.baseUrlSuggest)?.requestCoWorkNearby(longitude,latitude)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(object : DisposableObserver<Response<ResponseDataCoWorkNearby>>() {
+                ?.subscribe(object : DisposableObserver<Response<ResponseSuggestion>>() {
                     override fun onComplete() {}
-                    override fun onNext(t: Response<ResponseDataCoWorkNearby>) {
+                    override fun onNext(t: Response<ResponseSuggestion>) {
                         t.body()?.let {callback.onResponseSuccessListCoWorkNearby(it)}
                     }
                     override fun onError(e: Throwable) {
