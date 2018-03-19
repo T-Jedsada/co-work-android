@@ -1,7 +1,7 @@
 package com.example.msigl62.coworkandroiduset.network
 
 import com.example.msigl62.coworkandroiduset.model.ResponseData
-import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
+import com.example.msigl62.coworkandroiduset.model.modellistcowork.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.model.ResponseDataLogin
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
 import io.reactivex.Observable
@@ -58,7 +58,7 @@ interface BaseService {
 
     //TODO onCallCoWorkNearby
     @FormUrlEncoded
-    @POST("")
+    @POST("suggestion/")
     fun requestCoWorkNearby(@Field("longtitude") longitude: Double?,
                             @Field("latitude") latitude: Double?
     ): Observable<Response<ResponseSuggestion>>
