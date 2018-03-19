@@ -23,7 +23,7 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
     }
 
     override fun onImageSuccess(user: Register?, path: String?) {
-        user?.image = "dummy path cuz s3 boomz.jpg"
+        user?.image = path
         user?.let { actData.requestUploadUserData(it, this) }
     }
 

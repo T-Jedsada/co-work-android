@@ -5,7 +5,7 @@ import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 interface HomeContact {
     interface Presenter {
         fun callCoWorkPopular(key: String? = null)
-        fun callCoWorkNearby(longtitude: Double,latitude: Double)
+        fun callCoWorkNearby(longitude: Double,latitude: Double)
     }
 
     interface View {
