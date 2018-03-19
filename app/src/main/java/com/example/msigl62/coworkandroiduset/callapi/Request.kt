@@ -1,8 +1,10 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
+import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
+import com.example.msigl62.coworkandroiduset.model.modellistcowork.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
 import com.example.msigl62.coworkandroiduset.network.BaseUrl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -169,7 +171,9 @@ class Request : InterActor.ActData {
                 ?.subscribe(object : DisposableObserver<Response<ResponseSuggestion>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseSuggestion>) {
-                        t.body()?.let {callback.onResponseSuccessListCoWorkNearby(it)}
+                        t.body()?.let {
+                            Log.e("apweofkapwkef : " , t.body().toString())
+                            callback.onResponseSuccessListCoWorkNearby(it)}
                     }
                     override fun onError(e: Throwable) {
                     }
