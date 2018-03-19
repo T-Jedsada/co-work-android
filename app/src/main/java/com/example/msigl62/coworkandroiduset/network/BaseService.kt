@@ -59,8 +59,7 @@ interface BaseService {
     //TODO onCallCoWorkNearby
     @FormUrlEncoded
     @POST("")
-    fun requestCoWorkNearby(@Field("longtitude") longtitude: Double?,
-                            @Field("latitude")latitude:Double?
+    fun requestCoWorkNearby(@Field("longtitude") longitude: Double?,
+                            @Field("latitude") latitude: Double?
     ): Observable<Response<ResponseDataCoWorkNearby>>
-
 }

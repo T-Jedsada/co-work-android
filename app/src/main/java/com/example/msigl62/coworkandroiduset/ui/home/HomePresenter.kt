@@ -22,7 +22,5 @@ class HomePresenter (val view: HomeContact.View) : HomeContact.Presenter,Request
       //TODO Request api CoWorkNearby **
     }
 
-    override fun callCoWorkNearby(longtitude: Double, latitude: Double) {
-        //TODO Request api CoWorkNearby **
-    }
+    override fun callCoWorkNearby(longitude: Double, latitude: Double) = actData.callCoWorkNearby(longitude , latitude,this)
 }

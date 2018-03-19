@@ -42,10 +42,6 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
         setFilter()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onStart() {
         super.onStart()
         getLocationUser()
@@ -84,9 +80,9 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     }
 
     //TODO getLocation send API
-    override fun onLocationChanged(location: Location?) {
-        Log.e("getLocationUser","LocationUser:= "+location?.latitude+"\n"+location?.longitude)
-        //presenter.callCoWorkNearby(location.longitude,location.latitude)
+    override fun onLocationChanged(location: Location) {
+        Log.e("getLocationUser","LocationUser:= "+location.latitude+"\n"+location.longitude)
+        presenter.callCoWorkNearby(location.longitude , location.latitude)
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
