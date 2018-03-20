@@ -23,6 +23,8 @@ class InterActor {
         fun callCoWorkPopular(callback: Request.HomeListener)
         fun callCoWorkNearby(longitude:Double,latitude:Double,callback: Request.HomeListener)
 
+        fun callCoWorkDetail(id: String?,callback: Request.DetailCoWorkListener)
+
         fun requestLoginEmail(login: LoginEmail, callback: Request.LoginLister)
         fun requestLoginFacebook(login: LoginFacebook,callback: Request.LoginLister)
     }

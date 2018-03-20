@@ -8,11 +8,12 @@ import com.example.msigl62.coworkandroiduset.model.ResponseData
 
 class ForgotPresenter(val view: ForgotContact.View) : ForgotContact.Presenter, InterActor.OnFinishRequest, Request.ForgotListener {
 
+    private val actData: InterActor.ActData = Request()
+
     override fun onResponseSuccessForgot(responseData: ResponseData?) {
         if(responseData?.noticeMessage.equals("false")){
             view.onResponseFromApi("false")
         }else{
-            //TODO Wait API register/forgot-password response check status true or false
             if(responseData?.data?.status.equals("false")){
                 view.onResponseFromApi("statusFalse")
             }else{
@@ -20,8 +21,6 @@ class ForgotPresenter(val view: ForgotContact.View) : ForgotContact.Presenter, I
             }
         }
     }
-
-    private val actData: InterActor.ActData = Request()
 
     override fun requestValidateApi(email: String) {
         actData.requestForgotPassword(email, this)

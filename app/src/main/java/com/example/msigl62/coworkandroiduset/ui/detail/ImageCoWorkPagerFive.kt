@@ -10,13 +10,13 @@ import kotlinx.android.synthetic.main.pager_theme.*
 
 @SuppressLint("ValidFragment")
 class ImageCoWorkPagerFive(imageGalleryFive:String): BaseFragment<ContractMain.View, PresenterMain>() {
-    var text: String =imageGalleryFive
+    var url: String =imageGalleryFive
 
     override fun showProgressDialog() {}
 
     override fun layoutToInflate(): Int = R.layout.pager_theme
 
     override fun setup() {
-        imagePager.load(text)
+        imagePager.load(url)
     }
 }

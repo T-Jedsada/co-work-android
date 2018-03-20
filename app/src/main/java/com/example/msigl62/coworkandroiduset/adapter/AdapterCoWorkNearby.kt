@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.holder.CoWorkNearbyHolder
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkNearby
+import com.example.msigl62.coworkandroiduset.model.DataCoWorkNearby
 
-class AdapterCoWorkNearby (private var coWork: List<CoWorkNearby>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterCoWorkNearby (private var coWork: List<DataCoWorkNearby>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    fun setItem(items: List<CoWorkNearby>) {
-        coWork = items
+    fun setItem(items: List<DataCoWorkNearby>?) {
+         items?.let {coWork = it}
         notifyDataSetChanged()
     }
 
@@ -19,7 +19,7 @@ class AdapterCoWorkNearby (private var coWork: List<CoWorkNearby>) : RecyclerVie
         return CoWorkNearbyHolder(view)
     }
 
-    override fun getItemCount(): Int =coWork.size
+    override fun getItemCount():  Int = coWork.size
 
     override fun getItemViewType(position: Int): Int = R.layout.list_item_co_working_nearby
 

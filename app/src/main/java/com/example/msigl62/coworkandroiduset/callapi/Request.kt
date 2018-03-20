@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.ResponseSuggestion
+import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
 import com.example.msigl62.coworkandroiduset.network.BaseUrl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -34,6 +34,10 @@ class Request : InterActor.ActData {
     interface HomeListener {
         fun <T> onSuccess(t: T)
         fun onResponseSuccessListCoWorkNearby(responseData: ResponseSuggestion?)
+    }
+
+    interface DetailCoWorkListener {
+        fun onResponseSuccessDetail(responseDetail: ResponseDetail?)
     }
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
@@ -165,19 +169,34 @@ class Request : InterActor.ActData {
 
     //TODO listCoWorking CoWorkNearby **
     override fun callCoWorkNearby(longitude: Double, latitude: Double, callback: HomeListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrlSuggest)?.requestCoWorkNearby(longitude,latitude)
+        BaseRetrofit.createRx(BaseUrl.baseUrlSuggest)?.requestCoWorkNearby(longitude, latitude)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseSuggestion>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ResponseSuggestion>) {
-                        t.body()?.let {
-                            Log.e("apweofkapwkef : " , t.body().toString())
-                            callback.onResponseSuccessListCoWorkNearby(it)}
+                        t.body()?.let { callback.onResponseSuccessListCoWorkNearby(it) }
                     }
+
                     override fun onError(e: Throwable) {
                     }
                 })
     }
 
+    //TODO Call Detail
+    override fun callCoWorkDetail(id: String?, callback: DetailCoWorkListener) {
+        BaseRetrofit.createRx(BaseUrl.baseUrlLocal)?.requestDetailCoWorkPoppular(id)
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<ResponseDetail>>() {
+                    override fun onComplete() {}
+                    override fun onNext(t: Response<ResponseDetail>) {
+                        t.body()?.let { callback.onResponseSuccessDetail(it) }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.e("sdsd",e.message)
+                    }
+                })
+    }
 }

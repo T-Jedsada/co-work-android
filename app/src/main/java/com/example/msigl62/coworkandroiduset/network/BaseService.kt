@@ -1,8 +1,6 @@
 package com.example.msigl62.coworkandroiduset.network
 
-import com.example.msigl62.coworkandroiduset.model.ResponseData
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.ResponseSuggestion
-import com.example.msigl62.coworkandroiduset.model.ResponseDataLogin
+import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
 import io.reactivex.Observable
 import okhttp3.MultipartBody
@@ -40,7 +38,6 @@ interface BaseService {
                                @Field("email") email: String?
     ): Observable<Response<ResponseData>>
 
-
     @FormUrlEncoded
     @POST("email-login")
     fun requestLogin(@Field("email") email: String?,
@@ -62,4 +59,11 @@ interface BaseService {
     fun requestCoWorkNearby(@Field("longtitude") longitude: Double?,
                             @Field("latitude") latitude: Double?
     ): Observable<Response<ResponseSuggestion>>
+
+    //TODO onCallDetailCoWork
+    @FormUrlEncoded
+    @POST("detail-cowork")
+    fun requestDetailCoWorkPoppular(@Field("id") id: String?
+    ): Observable<Response<ResponseDetail>>
+
 }

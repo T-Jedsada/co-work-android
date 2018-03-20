@@ -7,7 +7,6 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetDialog
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
@@ -17,12 +16,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkNearby
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkPopular
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkNearby
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
+import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.list_co_work_nearby_you.*
 import kotlinx.android.synthetic.main.list_co_work_popular.*
@@ -30,7 +28,7 @@ import kotlinx.android.synthetic.main.list_co_work_popular.*
 class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
     private lateinit var presenter: HomeContact.Presenter
-    lateinit var locationManager: LocationManager
+    private lateinit var locationManager: LocationManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater!!.inflate(R.layout.activity_home, container, false)
@@ -45,6 +43,7 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     override fun onStart() {
         super.onStart()
         getLocationUser()
+
     }
 
     private fun getLocationUser() {
@@ -75,8 +74,13 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
         coWorkPopular?.let { adapterCoWorkPopular.setItem(it) }
     }
 
-    override fun onCallSuccessCoWorkNearby() {
-        TODO("not implemented")
+    override fun onCallSuccessCoWorkNearby(responseSuggestion: ResponseSuggestion?) {
+
+        val adapterCoWorkPopular: AdapterCoWorkNearby by lazy { AdapterCoWorkNearby(listOf()) }
+        listCoWorkNearby?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        listCoWorkNearby?.adapter = adapterCoWorkPopular
+        responseSuggestion?.let { adapterCoWorkPopular.setItem(it.data) }
+
     }
 
     //TODO getLocation send API
@@ -85,13 +89,13 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
         location?.let { presenter.callCoWorkNearby(location.longitude , location.latitude) }
     }
 
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?){
     }
 
-    override fun onProviderEnabled(provider: String?) {
+    override fun onProviderEnabled(provider: String?){
     }
 
-    override fun onProviderDisabled(provider: String?) {
+    override fun onProviderDisabled(provider: String?){
     }
 
 }

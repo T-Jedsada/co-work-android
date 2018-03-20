@@ -2,6 +2,8 @@ package com.example.msigl62.coworkandroiduset.ui.home
 
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 
+import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
+
 interface HomeContact {
     interface Presenter {
         fun callCoWorkPopular(key: String? = null)
@@ -10,6 +12,6 @@ interface HomeContact {
 
     interface View {
         fun onCallSuccessCoWorkPopular(coWorkPopular: List<CoWorkPopular>?)
-        fun onCallSuccessCoWorkNearby()
+        fun onCallSuccessCoWorkNearby(responseSuggestion: ResponseSuggestion?)
     }
 }

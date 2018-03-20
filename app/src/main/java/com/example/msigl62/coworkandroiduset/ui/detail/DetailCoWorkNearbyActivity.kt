@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
@@ -16,6 +17,9 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
+import com.example.msigl62.coworkandroiduset.model.DataCoWorkDetail
+import com.example.msigl62.coworkandroiduset.model.DataCoWorkNearby
+import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -28,9 +32,16 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detail_co_work.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class DetailCoWork : AppCompatActivity(), OnMapReadyCallback {
-    companion object { const val Key = "KEY_DATA" }
+class DetailCoWorkNearbyActivity  : AppCompatActivity(), OnMapReadyCallback,DetailContact.View {
+
+    companion object {
+        const val Key = "KEY_DATA"
+    }
+
     private lateinit var mMap: GoogleMap
+    private val presenter: DetailContact.Presenter = DetailPresenter(this)
+    private var lat: Double? = null
+    private var lng: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +52,8 @@ class DetailCoWork : AppCompatActivity(), OnMapReadyCallback {
         setPagerImage()
         setDetailCoWork()
         setToolBar()
+        val id = intent.extras?.getString("key")
+        //presenter.checkIdProvider(id)
     }
 
     @SuppressLint("SetTextI18n")
@@ -53,26 +66,22 @@ class DetailCoWork : AppCompatActivity(), OnMapReadyCallback {
     }
 
     //TODO set Tel:
-    private fun setDetailCoWork(){
-        val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
-        nameCoWorking.text = dataCoWork.name
-        content.text=dataCoWork.details
-        address.text=dataCoWork.address
-        textContact.text="0816117137"  //TODO
-        textPrice.text=(dataCoWork.price_per_hour.toString()+"Baht")
+    private fun setDetailCoWork() {
         textContact.setOnClickListener {
-            val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "0816117137", null))
+            val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.toString(), null))
             startActivity(intent)
         }
     }
 
-    //TODO Pager
     private fun setPagerImage() {
         var mSectionsPagerAdapter: SectionsPagerAdapter?
-        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager,""
-        ,"","","","")
+        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager,
+                "",
+                "",
+                "",
+                "",
+                "")
         container.adapter = mSectionsPagerAdapter
-
         var dotscount: Int
         var dots: Array<ImageView?>
         dotscount = mSectionsPagerAdapter.count
@@ -93,25 +102,33 @@ class DetailCoWork : AppCompatActivity(), OnMapReadyCallback {
                 }
                 dots[position]?.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.active_dot))
             }
+
             override fun onPageScrollStateChanged(state: Int) {}
         })
     }
 
-    //TODO Map
     override fun onMapReady(googleMap: GoogleMap) {
-        val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
-        val lat:Double?= dataCoWork.latitude
-        val lng:Double?= dataCoWork.longitude
-        mMap = googleMap
-        val sydney = lat?.let { lng?.let { it1 -> LatLng(it, it1) } }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,19.0f))
-        Glide.with(this)
-                .asBitmap().load("")
-                .apply(RequestOptions().override(110, 110).apply(RequestOptions().circleCrop()))
-                .into(object : SimpleTarget<Bitmap>() {
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                        val i = BitmapDescriptorFactory.fromBitmap((resource))
-                        mMap.addMarker(sydney?.let { MarkerOptions().position(it).title(dataCoWork.name).icon(i) }) }
-                })
+//        val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
+//        mMap = googleMap
+//        val sydney = lat?.let { lng?.let { it1 -> LatLng(it, it1) } }
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 19.0f))
+//        Glide.with(this)
+//                .asBitmap().load(dataCoWork.gellery?.image_01)
+//                .apply(RequestOptions().override(110, 110).apply(RequestOptions().circleCrop()))
+//                .into(object : SimpleTarget<Bitmap>() {
+//                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+//                        val i = BitmapDescriptorFactory.fromBitmap((resource))
+//                        mMap.addMarker(sydney?.let { MarkerOptions().position(it).title(dataCoWork.name).icon(i) })
+//                    }
+//                })
+    }
+
+    override fun onResponseFromApi(responseDetail: ResponseDetail?) {
+//        nameCoWorking.text= responseDetail?.data?.get(0)?.name
+//        content.text=responseDetail?.data?.get(0)?.details
+//        address.text=responseDetail?.data?.get(0)?.address
+//        textPrice.text=(responseDetail?.data?.get(0)?.price_per_hour+"Baht")
+//        lat=responseDetail?.data?.get(0)?.latitude
+//        lng=responseDetail?.data?.get(0)?.longitude
     }
 }

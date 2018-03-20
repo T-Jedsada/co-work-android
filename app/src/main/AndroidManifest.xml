@@ -38,9 +38,11 @@
             android:name="com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivityFinish"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWork"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWorkPoppularActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWorkNearbyActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment"
             android:screenOrientation="portrait" />
