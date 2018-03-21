@@ -1,10 +1,8 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
-import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
-import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
 import com.example.msigl62.coworkandroiduset.network.BaseUrl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -41,7 +39,8 @@ class Request : InterActor.ActData {
     }
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.sendRequestImage(image)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.sendRequestImage(image)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
@@ -55,7 +54,8 @@ class Request : InterActor.ActData {
     }
 
     override fun requestUploadUserData(user: Register, callback: RegisterListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestUploadUserData(user.name, user.email, user.facebookId, user.password, user.image)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.requestUploadUserData(user.name, user.email, user.facebookId, user.password, user.image)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
@@ -69,7 +69,8 @@ class Request : InterActor.ActData {
     }
 
     override fun requestSendEmail(id: String?, email: String?, callback: RegisterListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestSendEmail(id, email)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.requestSendEmail(id, email)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
@@ -84,7 +85,8 @@ class Request : InterActor.ActData {
 
     //TODO login Email
     override fun requestLoginEmail(login: LoginEmail, callback: LoginLister) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestLogin(login.email, login.password)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.requestLogin(login.email, login.password)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseDataLogin>>() {
@@ -97,14 +99,14 @@ class Request : InterActor.ActData {
                         }
                     }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
     //TODO login Facebook
     override fun requestLoginFacebook(login: LoginFacebook, callback: LoginLister) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestLoginFacebook(login.facebookId)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.requestLoginFacebook(login.facebookId)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseDataLogin>>() {
@@ -118,13 +120,13 @@ class Request : InterActor.ActData {
                         }
                     }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
     override fun requestForgotPassword(email: String, callback: ForgotListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestForgotEmail(email)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.requestForgotEmail(email)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
@@ -133,14 +135,14 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessForgot(it) }
                     }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
     //TODO send requestSendEmailForgot
     override fun requestSendEmailForgot(id: String?, email: String?, callback: ForgotListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestSendEmailForgot(id, email)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)
+                ?.requestSendEmailForgot(id, email)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseData>>() {
@@ -156,7 +158,9 @@ class Request : InterActor.ActData {
     //TODO listCoWorking
     override fun callCoWorkPopular(callback: HomeListener) {
         val baseService by lazy { BaseRetrofit.createRx(BaseUrl.baseUrl) }
-        baseService?.requestCoWorkPopular()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
+        baseService?.requestCoWorkPopular()
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ListCoWorkPopular>>() {
                     override fun onComplete() {}
                     override fun onNext(t: Response<ListCoWorkPopular>) {
@@ -169,7 +173,8 @@ class Request : InterActor.ActData {
 
     //TODO listCoWorking CoWorkNearby **
     override fun callCoWorkNearby(longitude: Double, latitude: Double, callback: HomeListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrlSuggest)?.requestCoWorkNearby(longitude, latitude)
+        BaseRetrofit.createRx(BaseUrl.baseUrlSuggest)
+                ?.requestCoWorkNearby(longitude, latitude)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseSuggestion>>() {
@@ -178,14 +183,14 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessListCoWorkNearby(it) }
                     }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
     //TODO Call Detail
     override fun callCoWorkDetail(id: String?, callback: DetailCoWorkListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrlLocal)?.requestDetailCoWorkPoppular(id)
+        BaseRetrofit.createRx(BaseUrl.baseUrlLocal)
+                ?.requestDetailCoWorkPoppular(id)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseDetail>>() {
@@ -194,9 +199,7 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessDetail(it) }
                     }
 
-                    override fun onError(e: Throwable) {
-                        Log.e("sdsd",e.message)
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 }

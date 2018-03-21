@@ -8,6 +8,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface BaseService {
+
     @Multipart
     @POST("upload-image")
     fun sendRequestImage(@Part image: MultipartBody.Part?

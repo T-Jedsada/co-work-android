@@ -3,7 +3,7 @@ package com.example.msigl62.coworkandroiduset.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
-abstract class BaseActivity <V : BaseContract.View, P : BaseContract.Presenter<V>> :
+abstract class BaseActivity<V : BaseContract.View, P : BaseContract.Presenter<V>> :
         AppCompatActivity(), BaseContract.View {
 
     protected abstract fun layoutToInflate(): Int

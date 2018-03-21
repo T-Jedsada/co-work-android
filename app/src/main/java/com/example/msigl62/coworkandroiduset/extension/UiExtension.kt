@@ -2,7 +2,6 @@ package com.example.msigl62.coworkandroiduset.extension
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.app.ProgressDialog
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
@@ -26,7 +25,7 @@ fun View.simpleFadeInAnimation() = let {
     this.show()
 }
 
-fun String?.emailPattern():Matcher{
+fun String?.emailPattern(): Matcher {
     val validEmail = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" +
             "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." +
             "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
@@ -34,7 +33,8 @@ fun String?.emailPattern():Matcher{
 }
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-fun String?.requestBody():RequestBody =  RequestBody.create(MediaType.parse("text/plain"), (this ?: ""))
+fun String?.requestBody(): RequestBody = RequestBody.create(MediaType.parse("text/plain"), (this
+        ?: ""))
 
 
 fun View.simpleFadeOutAnimation(): ViewPropertyAnimator = let {

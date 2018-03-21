@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -30,7 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detail_co_work.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class DetailCoWorkPoppularActivity : AppCompatActivity(), OnMapReadyCallback,DetailContact.View {
+class DetailCoWorkPoppularActivity : AppCompatActivity(), OnMapReadyCallback, DetailContact.View {
 
     companion object {
         const val Key = "KEY_DATA"
@@ -51,7 +51,7 @@ class DetailCoWorkPoppularActivity : AppCompatActivity(), OnMapReadyCallback,Det
         setDetailCoWork()
         setToolBar()
         val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
-        Log.e("sdsdsd","ssdsdsd"+dataCoWork)
+        Log.e("sdsdsd", "ssdsdsd" + dataCoWork)
         presenter.checkIdProvider(dataCoWork._id)
     }
 
@@ -124,11 +124,11 @@ class DetailCoWorkPoppularActivity : AppCompatActivity(), OnMapReadyCallback,Det
     }
 
     override fun onResponseFromApi(responseDetail: ResponseDetail?) {
-        nameCoWorking.text= responseDetail?.data?.get(0)?.name
-        content.text=responseDetail?.data?.get(0)?.details
-        address.text=responseDetail?.data?.get(0)?.address
-        textPrice.text=(responseDetail?.data?.get(0)?.price_per_hour+"Baht")
-        lat=responseDetail?.data?.get(0)?.latitude
-        lng=responseDetail?.data?.get(0)?.longitude
+        nameCoWorking.text = responseDetail?.data?.get(0)?.name
+        content.text = responseDetail?.data?.get(0)?.details
+        address.text = responseDetail?.data?.get(0)?.address
+        textPrice.text = (responseDetail?.data?.get(0)?.price_per_hour + "Baht")
+        lat = responseDetail?.data?.get(0)?.latitude
+        lng = responseDetail?.data?.get(0)?.longitude
     }
 }

@@ -2,37 +2,24 @@ package com.example.msigl62.coworkandroiduset.ui.detail
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
-import com.example.msigl62.coworkandroiduset.model.DataCoWorkDetail
-import com.example.msigl62.coworkandroiduset.model.DataCoWorkNearby
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
-import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 import com.example.msigl62.coworkandroiduset.ui.MainFragment
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detail_co_work.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class DetailCoWorkNearbyActivity  : AppCompatActivity(), OnMapReadyCallback,DetailContact.View {
+class DetailCoWorkNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailContact.View {
 
     companion object {
         const val Key = "KEY_DATA"

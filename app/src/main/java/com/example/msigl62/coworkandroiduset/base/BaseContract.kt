@@ -3,7 +3,8 @@ package com.example.msigl62.coworkandroiduset.base
 open class BaseContract {
 
     interface View {
-        fun showProgressDialog() }
+        fun showProgressDialog()
+    }
 
     interface Presenter<V : View> {
         fun onViewCreate()

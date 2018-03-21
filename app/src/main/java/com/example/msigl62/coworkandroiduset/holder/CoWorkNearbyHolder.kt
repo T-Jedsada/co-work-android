@@ -8,6 +8,7 @@ import com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWorkNearbyActivit
 import kotlinx.android.synthetic.main.list_item_co_working_nearby.view.*
 
 class CoWorkNearbyHolder (view: View) : RecyclerView.ViewHolder(view) {
+
     fun onBind(coWork: DataCoWorkNearby) {
         itemView.apply {
             textCoWorkName.text=coWork.name
