@@ -47,7 +47,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
                 startActivity(i)
             }
             R.id.btnSubmitLogin -> {
-                // TODO channel login email
                 val model = LoginEmail(edt_Email_Login.text.trim().toString(), edt_Password_Login.text.trim().toString())
                 presenter.checkEdiTextLogin(model)
             }
@@ -56,7 +55,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
                 startActivity(i)
             }
             R.id.btnSubmitLoginFacebook -> {
-                // TODO channel login facebook
                 val intent = Intent(this, RegisterActivity::class.java)
                 intent.putExtra("keyStatusFormLoginActivity", "true")
                 startActivity(intent)

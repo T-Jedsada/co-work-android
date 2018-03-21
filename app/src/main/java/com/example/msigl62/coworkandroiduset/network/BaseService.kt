@@ -66,4 +66,12 @@ interface BaseService {
     fun requestDetailCoWorkPoppular(@Field("id") id: String?
     ): Observable<Response<ResponseDetail>>
 
+    //TODO Review
+    @FormUrlEncoded
+    @POST("admin/show-comment/")
+    fun requestDetailReView(@Field("id") id: String?
+    ): Observable<Response<ResponseReView>>
+
+
+
 }

@@ -2,7 +2,6 @@ package com.example.msigl62.coworkandroiduset.extension
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.app.ProgressDialog
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
@@ -35,7 +34,6 @@ fun String?.emailPattern():Matcher{
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 fun String?.requestBody():RequestBody =  RequestBody.create(MediaType.parse("text/plain"), (this ?: ""))
-
 
 fun View.simpleFadeOutAnimation(): ViewPropertyAnimator = let {
     this.animate()

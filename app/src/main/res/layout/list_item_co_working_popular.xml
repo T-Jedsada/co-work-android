@@ -6,12 +6,21 @@
     android:padding="10dp">
 
     <ImageView
-        android:background="@color/colorPrimary"
+        android:background="@color/bb_inActiveBottomBarItemColor"
         android:id="@+id/imageCoWorkPopular"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:clickable="true"
         android:scaleType="fitXY" />
+
+    <Button
+        android:textAllCaps="false"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#ff6e6e"
+        android:text="@string/busy"
+        android:layout_width="45dp"
+        android:layout_height="30dp" />
 
     <TextView
         android:layout_below="@+id/imageCoWorkPopular"

@@ -56,7 +56,9 @@
     <string name="filter">Filter</string>
     <string name="reset">Reset</string>
     <string name="price">Price</string>
+    <string name="baht">Baht</string>
     <string name="from_you_current_location">From your current location</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="allow_open_current_location">Allow Open Current location</string>
+    <string name="busy">Busy</string>
 </resources>

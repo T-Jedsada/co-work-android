@@ -1,13 +1,11 @@
 package com.example.msigl62.coworkandroiduset.ui
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.extension.DialogUtil
 import com.example.msigl62.coworkandroiduset.ui.home.HomeFragment
-import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 

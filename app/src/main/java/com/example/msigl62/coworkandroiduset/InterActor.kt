@@ -17,15 +17,16 @@ class InterActor {
         fun requestUploadUserData(user: Register, callback: RegisterListener)
         fun requestSendEmail(id: String?, email: String?, callback: RegisterListener)
 
-        fun requestForgotPassword(email : String, callback: Request.ForgotListener)
+        fun requestForgotPassword(email: String, callback: Request.ForgotListener)
         fun requestSendEmailForgot(id: String?, email: String?, callback: Request.ForgotListener)
 
         fun callCoWorkPopular(callback: Request.HomeListener)
-        fun callCoWorkNearby(longitude:Double,latitude:Double,callback: Request.HomeListener)
+        fun callCoWorkNearby(longitude: Double, latitude: Double, callback: Request.HomeListener)
 
-        fun callCoWorkDetail(id: String?,callback: Request.DetailCoWorkListener)
+        fun callCoWorkDetail(id: String?, callback: Request.DetailCoWorkListener)
+        fun callCoWorkDetailReView(id: String?, callback: Request.DetailReView)
 
         fun requestLoginEmail(login: LoginEmail, callback: Request.LoginLister)
-        fun requestLoginFacebook(login: LoginFacebook,callback: Request.LoginLister)
+        fun requestLoginFacebook(login: LoginFacebook, callback: Request.LoginLister)
     }
 }

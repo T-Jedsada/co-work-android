@@ -51,20 +51,20 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context as Activity,
                         android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(context as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 101)
-        }else{
-            locationManager = activity?.getSystemService(Context.LOCATION_SERVICE)as LocationManager
+        } else {
+            locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5f, this)
         }
     }
 
     private fun setFilter() {
-       filter.setOnClickListener {
-           val bottomSheetView = layoutInflater.inflate(R.layout.layout_filter_home, null)
-           val bottomSheetDialog = BottomSheetDialog(context as Activity)
-           bottomSheetDialog.setContentView(bottomSheetView)
-           bottomSheetDialog.show()
-           bottomSheetDialog.show()
-       }
+        filter.setOnClickListener {
+            val bottomSheetView = layoutInflater.inflate(R.layout.layout_filter_home, null)
+            val bottomSheetDialog = BottomSheetDialog(context as Activity)
+            bottomSheetDialog.setContentView(bottomSheetView)
+            bottomSheetDialog.show()
+            bottomSheetDialog.show()
+        }
     }
 
     override fun onCallSuccessCoWorkPopular(coWorkPopular: List<CoWorkPopular>?) {
@@ -75,7 +75,6 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     }
 
     override fun onCallSuccessCoWorkNearby(responseSuggestion: ResponseSuggestion?) {
-
         val adapterCoWorkPopular: AdapterCoWorkNearby by lazy { AdapterCoWorkNearby(listOf()) }
         listCoWorkNearby?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         listCoWorkNearby?.adapter = adapterCoWorkPopular
@@ -85,17 +84,16 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
     //TODO getLocation send API
     override fun onLocationChanged(location: Location?) {
-        Log.e("getLocationUser","LocationUser:= "+location?.latitude+"\n"+location?.longitude)
-        location?.let { presenter.callCoWorkNearby(location.longitude , location.latitude) }
+        location?.let { presenter.callCoWorkNearby(location.longitude, location.latitude) }
     }
 
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?){
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
     }
 
-    override fun onProviderEnabled(provider: String?){
+    override fun onProviderEnabled(provider: String?) {
     }
 
-    override fun onProviderDisabled(provider: String?){
+    override fun onProviderDisabled(provider: String?) {
     }
 
 }

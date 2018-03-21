@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.callapi
 
-import android.util.Log
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
@@ -38,6 +37,10 @@ class Request : InterActor.ActData {
 
     interface DetailCoWorkListener {
         fun onResponseSuccessDetail(responseDetail: ResponseDetail?)
+    }
+
+    interface DetailReView {
+        fun onResponseSuccessReView(responseReView: ResponseReView?)
     }
 
     override fun requestUploadImage(image: MultipartBody.Part, user: Register, callback: RegisterListener) {
@@ -178,14 +181,13 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessListCoWorkNearby(it) }
                     }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
     //TODO Call Detail
     override fun callCoWorkDetail(id: String?, callback: DetailCoWorkListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrlLocal)?.requestDetailCoWorkPoppular(id)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestDetailCoWorkPoppular(id)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseDetail>>() {
@@ -194,9 +196,22 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessDetail(it) }
                     }
 
-                    override fun onError(e: Throwable) {
-                        Log.e("sdsd",e.message)
+                    override fun onError(e: Throwable) {}
+                })
+    }
+
+    //TODO Call DetailReView
+    override fun callCoWorkDetailReView(id: String?, callback: DetailReView) {
+        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestDetailReView(id)
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(object : DisposableObserver<Response<ResponseReView>>() {
+                    override fun onComplete() {}
+                    override fun onNext(t: Response<ResponseReView>) {
+                        t.body()?.let { callback.onResponseSuccessReView(it) }
                     }
+
+                    override fun onError(e: Throwable) {}
                 })
     }
 }

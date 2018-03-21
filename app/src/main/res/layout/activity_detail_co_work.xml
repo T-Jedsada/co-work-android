@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="com.example.msigl62.coworkandroiduset.ui.detail.DetailCoWorkPoppularActivity">
+        tools:context="com.example.msigl62.coworkandroiduset.ui.detail.DetailPopularActivity">
 
         <include layout="@layout/layout_toolbar_detail" />
 
@@ -109,6 +109,20 @@
             android:layout_below="@+id/mapCoWork"
             android:padding="10dp"
             android:text="@string/rating" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rating"
+            android:layout_below="@+id/mapCoWork"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="12dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1" />
+
 
         <include layout="@layout/list_co_work_review" />
 

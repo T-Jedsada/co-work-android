@@ -16,7 +16,5 @@ class ImageCoWorkPagerTwo (imageGalleryTwo:String): BaseFragment<ContractMain.Vi
 
     override fun layoutToInflate(): Int = R.layout.pager_theme
 
-    override fun setup() {
-        imagePager.load(url)
-    }
+    override fun setup() { imagePager.load(url) }
 }
