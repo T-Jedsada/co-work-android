@@ -9,8 +9,9 @@ import com.example.msigl62.coworkandroiduset.extension.load
 import kotlinx.android.synthetic.main.pager_theme.*
 
 @SuppressLint("ValidFragment")
-class ImageCoWorkPagerFive(imageGalleryFive:String): BaseFragment<ContractMain.View, PresenterMain>() {
-    var url: String =imageGalleryFive
+class ImageCoWorkPagerFive(imageGalleryFive: String) : BaseFragment<ContractMain.View, PresenterMain>() {
+
+    var url: String = imageGalleryFive
 
     override fun showProgressDialog() {}
 

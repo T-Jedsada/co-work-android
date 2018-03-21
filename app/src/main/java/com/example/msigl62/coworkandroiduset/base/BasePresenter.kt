@@ -1,6 +1,6 @@
 package com.example.msigl62.coworkandroiduset.base
 
-abstract class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V>{
+abstract class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
 
     override fun onViewCreate() {}
 

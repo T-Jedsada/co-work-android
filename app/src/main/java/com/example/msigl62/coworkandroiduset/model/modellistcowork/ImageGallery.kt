@@ -9,6 +9,7 @@ data class ImageGallery(val image_01: String? = null,
                         val image_03: String? = null,
                         val image_04: String? = null,
                         val image_05: String? = null) : Parcelable {
+
     constructor(source: Parcel) : this(
             source.readString(),
             source.readString(),

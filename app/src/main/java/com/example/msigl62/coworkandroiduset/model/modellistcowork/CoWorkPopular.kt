@@ -15,6 +15,7 @@ data class CoWorkPopular(val _id: String? = null,
                          val provider_id: String? = null,
                          val status: Boolean? = null,
                          val gellery: ImageGallery? = null) : Parcelable {
+
     constructor(source: Parcel) : this(
             source.readString(),
             source.readString(),
@@ -55,4 +56,3 @@ data class CoWorkPopular(val _id: String? = null,
 }
 
 data class ListCoWorkPopular(@SerializedName("data") var results: List<CoWorkPopular>? = null)
-

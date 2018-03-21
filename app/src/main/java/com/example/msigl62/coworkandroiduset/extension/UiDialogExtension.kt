@@ -1,14 +1,15 @@
 package com.example.msigl62.coworkandroiduset.extension
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.support.annotation.StringRes
 import android.support.v7.app.AlertDialog
 import com.example.msi_gl62.co_work_android_uset.R
-import android.content.DialogInterface
-import android.content.Intent
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 
 object DialogUtil {
+
     fun showDialogMessage(context: Context, @StringRes message: Int) {
         showDialogMessage(context, context.getString(message))
     }

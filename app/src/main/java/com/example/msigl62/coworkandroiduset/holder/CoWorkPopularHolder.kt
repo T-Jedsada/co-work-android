@@ -9,6 +9,7 @@ import com.example.msigl62.coworkandroiduset.ui.detail.DetailPopularActivity
 import kotlinx.android.synthetic.main.list_item_co_working_popular.view.*
 
 class CoWorkPopularHolder (view: View) : RecyclerView.ViewHolder(view) {
+
     fun onBind(coWork: CoWorkPopular) {
         itemView.apply {
             imageCoWorkPopular.load( coWork.gellery?.image_01)
