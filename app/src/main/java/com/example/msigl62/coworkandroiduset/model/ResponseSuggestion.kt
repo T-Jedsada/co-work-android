@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName
 data class ResponseSuggestion(@SerializedName("success") val noticeMessage: String?
                               , @SerializedName("data") val data: List<DataCoWorkNearby>?)
 
-data class DataCoWorkNearby(@SerializedName("coworking_id") val id: String,
+data class DataCoWorkNearby(@SerializedName("_id") val id: String,
                             @SerializedName("name") val name: String,
-                            @SerializedName("address") val address:String,
+                            @SerializedName("address") val address: String,
                             @SerializedName("latitude") val latitude: Double,
                             @SerializedName("longitude") val longitude: Double,
                             @SerializedName("provider_id") val providerId: String,

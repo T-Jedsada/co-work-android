@@ -29,10 +29,8 @@ class MainFragment : AppCompatActivity() {
                             .replace(R.id.containerFragment, HomeFragment(), "")
                             .commit()
                 }
-                R.id.seat -> {
-                }
-                R.id.saved -> {
-                }
+                R.id.seat -> { }
+                R.id.saved -> { }
                 R.id.profile -> {
                     val sh1 = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
                     val nameUserLogin = sh1.getString("sectionLoginName", "")

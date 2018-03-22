@@ -20,6 +20,5 @@ class CoWorkPopularHolder (view: View) : RecyclerView.ViewHolder(view) {
                        itemView.context, DetailPopularActivity::class.java
                ).putExtra(DetailPopularActivity.Key, coWork))
             }
-        }
-    }
+        } }
 }

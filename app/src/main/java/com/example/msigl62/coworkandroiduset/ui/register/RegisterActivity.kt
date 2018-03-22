@@ -67,7 +67,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         val status = intent.extras?.getString("keyStatusFormLoginActivity")
         if (status == "true") {
             checkUserIDFacebook()
-        } else { }
+        } else {
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -132,7 +133,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
                         request.parameters = parameters
                         request.executeAsync()
                     }
-
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -178,7 +178,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         simpleAlert.show()
     }
 
-    override fun onResponseCheckFromEmail(resMessageCheckFromEmail: String,messageError:String?) {
+    override fun onResponseCheckFromEmail(resMessageCheckFromEmail: String, messageError: String?) {
         loadingDialog?.dismiss()
         btnSubmit.isClickable = true
         Toast.makeText(this, messageError, Toast.LENGTH_SHORT).show()
@@ -202,19 +202,13 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     //TODO checkUserIDFacebook LoginFacebook
     private fun checkUserIDFacebook() {
-        loadingDialog = ProgressDialog.show(this,
-                "Loading",
-                "Loading...",
-                true,
-                false
-        )
         btnFacebook.isClickable = false
         textUploadImage.isClickable = false
         imageView.isClickable = false
-        edt_Email.isClickable = false
-        edt_Name.isClickable = false
-        edt_Password.isClickable = false
-        edt_re_Password.isClickable = false
+        edt_Email.isFocusable = false
+        edt_Name.isFocusable = false
+        edt_Password.isFocusable = false
+        edt_re_Password.isFocusable = false
         btnSubmit.isClickable = false
         callbackManager = CallbackManager.Factory.create()
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
@@ -240,26 +234,28 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     override fun onSuccessValidated(model: LoginEmail) {}
 
-    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?) {
+    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?, message: String?) {
         if (resMessage == "false") {
             getDataFacebook()
             loadingDialog?.dismiss()
         } else {
-            if(resMessage=="status-false"){
+            if (resMessage == "status-false") {
                 loadingDialog?.dismiss()
                 Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_LONG).show()
                 val i = Intent(this, LoginActivity::class.java)
                 startActivity(i)
-            }else{
+            } else {
                 loadingDialog?.dismiss()
                 val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
                 val editor = section.edit()
                 editor.putString("sectionLoginName", name)
-                editor.putString("sectionLoginImage",image)
+                editor.putString("sectionLoginImage", image)
                 editor.commit()
                 val i = Intent(this, MainFragment::class.java)
                 startActivity(i)
             }
         }
     }
+
+
 }

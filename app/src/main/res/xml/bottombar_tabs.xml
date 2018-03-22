@@ -2,7 +2,7 @@
 <tabs>
     <tab
         id="@+id/explore"
-        icon="@drawable/circular"
+        icon="@drawable/home"
         title="Explore" />
     <tab
         id="@+id/saved"

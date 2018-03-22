@@ -64,7 +64,7 @@ interface BaseService {
     //TODO onCallDetailCoWork
     @FormUrlEncoded
     @POST("detail-cowork")
-    fun requestDetailCoWorkPoppular(@Field("id") id: String?
+    fun requestDetailCoWork(@Field("id") id: String?
     ): Observable<Response<ResponseDetail>>
 
     //TODO Review
@@ -72,7 +72,6 @@ interface BaseService {
     @POST("admin/show-comment/")
     fun requestDetailReView(@Field("id") id: String?
     ): Observable<Response<ResponseReView>>
-
 
 
 }

@@ -11,13 +11,13 @@ class ForgotPresenter(val view: ForgotContact.View) : ForgotContact.Presenter, I
     private val actData: InterActor.ActData = Request()
 
     override fun onResponseSuccessForgot(responseData: ResponseData?) {
-        if(responseData?.noticeMessage.equals("false")){
+        if (responseData?.noticeMessage.equals("false")) {
             view.onResponseFromApi("false")
-        }else{
-            if(responseData?.data?.status.equals("false")){
+        } else {
+            if (responseData?.data?.status.equals("false")) {
                 view.onResponseFromApi("statusFalse")
-            }else{
-                actData.requestSendEmailForgot(responseData?.data?.idUser,responseData?.data?.email,this )
+            } else {
+                actData.requestSendEmailForgot(responseData?.data?.idUser, responseData?.data?.email, this)
             }
         }
     }

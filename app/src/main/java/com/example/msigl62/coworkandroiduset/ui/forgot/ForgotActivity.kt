@@ -3,8 +3,8 @@ package com.example.msigl62.coworkandroiduset.ui.forgot
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
@@ -48,14 +48,14 @@ class ForgotActivity : AppCompatActivity(), ForgotContact.View {
 
     override fun onResponseFromApi(resMessage: String) {
         loadingDialog?.dismiss()
-        if(resMessage == "false"){
-            Toast.makeText(this, R.string.toastResponseForgot, Toast.LENGTH_SHORT).show()
-        }else if(resMessage == "statusFalse"){
-            Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_SHORT).show()
-        }else{
-            val i = Intent(this, ForgotActivityFinish::class.java)
-            startActivity(i)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        when (resMessage) {
+            "false" -> Toast.makeText(this, R.string.toastResponseForgot, Toast.LENGTH_SHORT).show()
+            "statusFalse" -> Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_SHORT).show()
+            else -> {
+                val i = Intent(this, ForgotActivityFinish::class.java)
+                startActivity(i)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
         }
     }
 

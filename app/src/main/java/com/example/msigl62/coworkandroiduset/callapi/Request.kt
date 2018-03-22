@@ -3,7 +3,6 @@ package com.example.msigl62.coworkandroiduset.callapi
 import com.example.msigl62.coworkandroiduset.InterActor
 import com.example.msigl62.coworkandroiduset.model.*
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.ListCoWorkPopular
-import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.network.BaseRetrofit
 import com.example.msigl62.coworkandroiduset.network.BaseUrl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -105,7 +104,7 @@ class Request : InterActor.ActData {
                 })
     }
 
-    //TODO login Facebook
+    //TODO loginFacebook
     override fun requestLoginFacebook(login: LoginFacebook, callback: LoginLister) {
         BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestLoginFacebook(login.facebookId)
                 ?.subscribeOn(Schedulers.io())
@@ -118,11 +117,9 @@ class Request : InterActor.ActData {
                                     it.data?.name,
                                     it.data?.image,
                                     it.data?.status)
-                        }
-                    }
+                        } }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
@@ -136,8 +133,7 @@ class Request : InterActor.ActData {
                         t.body()?.let { callback.onResponseSuccessForgot(it) }
                     }
 
-                    override fun onError(e: Throwable) {
-                    }
+                    override fun onError(e: Throwable) {}
                 })
     }
 
@@ -187,7 +183,7 @@ class Request : InterActor.ActData {
 
     //TODO Call Detail
     override fun callCoWorkDetail(id: String?, callback: DetailCoWorkListener) {
-        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestDetailCoWorkPoppular(id)
+        BaseRetrofit.createRx(BaseUrl.baseUrl)?.requestDetailCoWork(id)
                 ?.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(object : DisposableObserver<Response<ResponseDetail>>() {

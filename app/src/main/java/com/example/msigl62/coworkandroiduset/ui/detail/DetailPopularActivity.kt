@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
@@ -123,7 +124,7 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
         nameCoWorking.text = responseDetail?.data?.get(0)?.name
         content.text = responseDetail?.data?.get(0)?.details
         address.text = responseDetail?.data?.get(0)?.address
-        textPrice.text = (responseDetail?.data?.get(0)?.price_per_hour + R.string.baht)
+        textPrice.text = responseDetail?.data?.get(0)?.price_per_hour
         textContact.text = "0816117137"
         textContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))

@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:id="@+id/myCoordinator"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:fitsSystemWindows="true">
-
-<android.support.v4.widget.NestedScrollView
-    android:id="@+id/myScrollingContent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/myCoordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <RelativeLayout
-        android:id="@+id/layoutSearch"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/myScrollingContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <FrameLayout
-            android:id="@+id/containerFragment"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layoutSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </FrameLayout>
+            <FrameLayout
+                android:id="@+id/containerFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-</android.support.v4.widget.NestedScrollView>
-
-<com.roughike.bottombar.BottomBar
-    android:id="@+id/bottomBar"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_alignParentBottom="true"
-    android:layout_gravity="bottom"
-    app:bb_tabXmlResource="@xml/bottombar_tabs"
-    app:bb_behavior="underNavbar|shy"/>
-
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:bb_behavior="underNavbar|shy"/>
 </android.support.design.widget.CoordinatorLayout>

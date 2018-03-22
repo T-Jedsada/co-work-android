@@ -48,7 +48,7 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         setToolBar()
         val id = intent.extras?.getString("key")
         presenter.checkIdProvider(id)
-        presenter.checkIdreView("5aafe91005ace400144e2b9a")
+        presenter.checkIdreView("5aafe91005ace400144e2b9a")  //TODO make value
     }
 
     @SuppressLint("SetTextI18n")
@@ -117,8 +117,8 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         nameCoWorking.text = responseDetail?.data?.get(0)?.name
         content.text = responseDetail?.data?.get(0)?.details
         address.text = responseDetail?.data?.get(0)?.address
-        textPrice.text = (responseDetail?.data?.get(0)?.price_per_hour + R.string.baht)
-        textContact.text = "0816117137"
+        textPrice.text = responseDetail?.data?.get(0)?.price_per_hour
+        textContact.text = "0816117137"  //TODO make value
         textContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))
             startActivity(intent)
