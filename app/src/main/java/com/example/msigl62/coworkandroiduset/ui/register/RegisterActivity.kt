@@ -142,8 +142,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode === Activity.RESULT_OK) {
-            if (requestCode === REQUEST_CODE) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_CODE) {
                 val imageUri = data?.data.let { it }
                 setImageView(imageUri)
                 val fileImage = File(imageUri?.getPath(this))
