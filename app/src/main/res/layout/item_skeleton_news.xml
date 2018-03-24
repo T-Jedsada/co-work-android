@@ -59,11 +59,4 @@
         app:layout_constraintBottom_toBottomOf="@+id/img_news"
         app:layout_constraintLeft_toLeftOf="@+id/tv_title"/>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1px"
-        android:background="@color/colorLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

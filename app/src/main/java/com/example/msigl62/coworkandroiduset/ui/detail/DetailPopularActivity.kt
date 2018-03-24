@@ -20,6 +20,8 @@ import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
+import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -51,6 +53,15 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
                 .findFragmentById(R.id.mapCoWork) as SupportMapFragment
         mapFragment.getMapAsync(this)
         setGallery()
+        setId()
+    }
+
+    private fun setId() {
+        backMain.setOnClickListener {
+            val i = Intent(this, MainFragment::class.java)
+            startActivity(i)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     private fun setGallery() {

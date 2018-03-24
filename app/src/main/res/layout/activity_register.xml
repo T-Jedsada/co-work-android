@@ -18,7 +18,6 @@
             android:layout_below="@+id/toolBarThem"
             android:layout_marginStart="30dp"
             android:text="@string/btn_register_title"
-            android:textColor="@color/colorToolText"
             android:textSize="24sp"
             android:textStyle="bold" />
 

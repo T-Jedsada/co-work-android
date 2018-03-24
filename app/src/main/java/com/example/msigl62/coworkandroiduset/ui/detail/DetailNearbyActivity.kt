@@ -20,6 +20,7 @@ import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
 import com.example.msigl62.coworkandroiduset.model.Gallery
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
+import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -45,6 +46,15 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         presenter.checkIdProvider(id)
         presenter.checkIdreView("5aafe91005ace400144e2b9a")  //TODO make value
         setGallery()
+        setId()
+    }
+
+    private fun setId() {
+        backMain.setOnClickListener {
+            val i = Intent(this, MainFragment::class.java)
+            startActivity(i)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
     }
 
     private fun setGallery() {
@@ -55,7 +65,6 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
-
 
     private fun setPagerImage() {
         val mSectionsPagerAdapter: SectionsPagerAdapter?

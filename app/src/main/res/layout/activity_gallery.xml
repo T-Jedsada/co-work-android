@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         tools:context="com.example.msigl62.coworkandroiduset.ui.detail.GalleryActivity">
 
         <android.support.v7.widget.AppCompatImageView
@@ -17,29 +16,41 @@
             android:layout_height="250dp"
             android:scaleType="fitXY" />
 
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="13.17dp"
+            android:src="@drawable/shape_left" />
+
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imGallery2"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_below="@+id/imGallery"
             android:scaleType="fitXY" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imGallery3"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_below="@+id/imGallery2"
             android:scaleType="fitXY" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imGallery4"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_below="@+id/imGallery3"
             android:scaleType="fitXY" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imGallery5"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_below="@+id/imGallery4"
             android:scaleType="fitXY" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

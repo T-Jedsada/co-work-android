@@ -20,6 +20,7 @@
             tools:ignore="UnknownIdInLayout" />
 
         <ImageView
+            android:id="@+id/backMain"
             android:layout_width="30dp"
             android:layout_height="13dp"
             android:layout_marginStart="13.4dp"
@@ -46,7 +47,7 @@
             android:id="@+id/sliderDots"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_marginLeft="290dp"
             android:layout_marginTop="230dp"
             android:orientation="horizontal" />
 
@@ -67,7 +68,7 @@
             android:layout_height="18dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/sliderDots"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="25dp"
             android:src="@drawable/gallery" />
 
@@ -84,7 +85,7 @@
         <RelativeLayout
             android:id="@+id/layout_data"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="90dp"
             android:layout_below="@+id/address"
             android:layout_marginTop="20dp"
             android:orientation="vertical">
@@ -105,12 +106,23 @@
                 android:layout_marginTop="40dp"
                 android:src="@drawable/ellipse" />
 
+            <ImageView
+                android:id="@+id/dot3"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/ellipse" />
+
+
             <TextView
                 android:id="@+id/textPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/dot1"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/colorAccent"
                 android:textSize="12sp"
                 tools:text="sdsdsdsdsdsd" />
 
@@ -120,22 +132,33 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/dot2"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="33dp"
+                android:textColor="@color/colorAccent"
                 android:textSize="12sp"
                 tools:text="sdsdsdsdsdsd" />
+
+            <TextView
+                android:id="@+id/textEmailUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/dot3"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="62dp"
+                android:text="sdsdsdsdsdsd"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
         <TextView
             android:id="@+id/content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layout_data"
             android:layout_marginStart="13.4dp"
             android:layout_marginTop="9dp"
             android:textSize="12sp"
-            tools:text="Suthep,Cjiangmai" />
-
+            tools:text="Suthep,Cjangmai" />
 
         <fragment
             android:id="@+id/mapCoWork"
@@ -146,26 +169,43 @@
             android:layout_marginTop="250dp" />
 
         <TextView
+            android:id="@+id/openTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mapCoWork"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="10dp"
+            android:text="Open time"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/openTime"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="5dp"
+            android:text="Monday" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/openTime"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:text="10.00Am-11.00PM" />
+
+        <TextView
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mapCoWork"
-            android:padding="10dp"
-            android:text="@string/rating" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/rating"
-            android:layout_below="@+id/mapCoWork"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="12dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:stepSize="0.1" />
-
+            android:layout_below="@+id/day"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="26dp"
+            android:text="Rating"
+            android:textStyle="bold" />
 
         <include layout="@layout/list_co_work_review" />
 

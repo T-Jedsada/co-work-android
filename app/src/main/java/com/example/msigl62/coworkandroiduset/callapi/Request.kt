@@ -51,7 +51,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseData>) {
                         t.body()?.let { callback.onImageSuccess(user, it.data?.message) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -65,7 +64,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseData>) {
                         t.body()?.let { callback.onSaveSuccess(t.body()) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -79,7 +77,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseData>) {
                         t.body()?.let { callback.onEmailSuccess(it) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -98,7 +95,6 @@ class Request : InterActor.ActData {
                                     it.data?.message, it.data?.status)
                         }
                     }
-
                     override fun onError(e: Throwable) {
                     }
                 })
@@ -118,7 +114,6 @@ class Request : InterActor.ActData {
                                     it.data?.image,
                                     it.data?.status)
                         } }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -132,7 +127,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseData>) {
                         t.body()?.let { callback.onResponseSuccessForgot(it) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -147,7 +141,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseData>) {
                         t.body()?.let { callback.onEmailSuccessForgot(it.data?.message) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -161,7 +154,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ListCoWorkPopular>) {
                         t.body()?.let { callback.onSuccess(it) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -176,7 +168,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseSuggestion>) {
                         t.body()?.let { callback.onResponseSuccessListCoWorkNearby(it) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -191,7 +182,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseDetail>) {
                         t.body()?.let { callback.onResponseSuccessDetail(it) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
@@ -206,7 +196,6 @@ class Request : InterActor.ActData {
                     override fun onNext(t: Response<ResponseReView>) {
                         t.body()?.let { callback.onResponseSuccessReView(it) }
                     }
-
                     override fun onError(e: Throwable) {}
                 })
     }
