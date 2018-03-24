@@ -1,113 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.msigl62.coworkandroiduset.ui.login.LoginActivity">
 
-    <include layout="@layout/layout_toolbar" />
-
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:layout_below="@+id/toolBarThem"
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        app:bootstrapBrand="primary"
-        app:hasBorder="true" />
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/baclogin" />
 
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_marginTop="20dp"
-        android:id="@+id/edt_Email_Login"
-        android:layout_below="@id/imageView"
-        android:inputType="textFilter"
-        android:layout_centerHorizontal="true"
-        android:hint="E-mail"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        />
-    <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/edt_Email_Login"
-        android:id="@+id/re_password_layout_login"
-        android:layout_width="320dp"
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/hiTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:passwordToggleEnabled="true">
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:inputType="textPassword"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/edt_Password_Login"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/edt_Email_Login"
-        android:padding="10dp" />
-    </android.support.design.widget.TextInputLayout>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="59dp"
+        android:text="@string/hi_worker"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hiTextView"
+        android:layout_marginStart="30dp"
+        android:text="@string/welcome_back_to_co_working_community"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold" />
 
     <Button
-        android:textAllCaps="false"
+        android:id="@+id/btnSubmitLoginFacebook"
+        android:layout_width="230dp"
+        android:layout_height="32dp"
+        android:layout_below="@+id/textWelcome"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/btnlogin" />
+
+    <Button
         android:id="@+id/btnSubmitLogin"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/re_password_layout_login"
-        android:layout_centerHorizontal="true"
-        android:text="@string/submit_btn" />
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/disable" />
+
+    <TextView
+        android:id="@+id/topicEmail"
+        android:textColor="@color/colorAccent"
+        android:textSize="10sp"
+        android:layout_marginTop="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/topic_email" />
+
+    <TextView
+        android:id="@+id/topicPass"
+        android:textColor="@color/colorAccent"
+        android:textSize="10sp"
+        android:layout_below="@+id/topicEmail"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/topic_password" />
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtEmailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@+id/topicEmail"
+            android:ems="10"
+            android:hint="@string/e_mail"
+            android:inputType="textEmailAddress" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/signup_input_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtEmailLogin"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        app:passwordToggleEnabled="true">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edtPasswordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSubmitLoginFacebook"
-        android:layout_alignStart="@+id/btnSubmitLogin"
-        android:layout_marginStart="8dp"
-        android:text="Don't have account" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="400dp"
+        android:text="Not have an account"
+        android:textColor="#AD5BE6"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:layout_marginTop="23dp"
-        android:layout_below="@id/btnSubmitLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Or"
-        android:id="@+id/textOr" />
-    <View
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:layout_alignStart="@+id/register"
-        android:layout_below="@+id/register"
-        android:background="@color/colorToolText"
-        android:id="@+id/view" />
-    <View
-        android:layout_width="105dp"
-        android:layout_height="1dp"
-        android:layout_alignStart="@+id/forgot"
-        android:layout_below="@+id/view"
-        android:background="@color/colorToolText" />
+
     <TextView
         android:id="@+id/forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textOr"
-        android:layout_alignBottom="@+id/textOr"
-        android:layout_alignEnd="@+id/btnSubmitLogin"
-        android:layout_marginEnd="8dp"
-        android:text="Forgot Password" />
+        android:layout_alignBaseline="@+id/register"
+        android:layout_alignBottom="@+id/register"
+        android:layout_alignEnd="@+id/signup_input_layout_password"
+        android:text="Forgot password?"
+        android:textColor="#AD5BE6"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:textAllCaps="false"
-        android:layout_marginTop="20dp"
-        android:id="@+id/btnSubmitLoginFacebook"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/textOr"
-        android:layout_centerHorizontal="true"
-        android:text="@string/submit_btn_with_facebook" />
 
 </RelativeLayout>
-</ScrollView>

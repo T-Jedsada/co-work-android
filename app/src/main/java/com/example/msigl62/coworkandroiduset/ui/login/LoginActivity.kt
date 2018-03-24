@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.login
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +12,6 @@ import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
 import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.View {
     private lateinit var presenter: LoginContact.Presenter
@@ -26,18 +24,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
         forgot.setOnClickListener(this)
         btnSubmitLoginFacebook.setOnClickListener(this)
         presenter = LoginPresenter(this)
-        edt_Password_Login.hint="Password"
-        setToolBar()
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun setToolBar() {
-        text_toolbar.text = getString(R.string.login_header)
-        image_arrow.setOnClickListener {
-            val i = Intent(this, MainFragment::class.java)
-            startActivity(i)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        }
+        edtPasswordLogin.hint = "Password"
     }
 
     override fun onClick(v: View) {
@@ -45,22 +32,24 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
             R.id.register -> {
                 val i = Intent(this, RegisterActivity::class.java)
                 startActivity(i)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
             R.id.btnSubmitLogin -> {
-                val model = LoginEmail(edt_Email_Login.text.trim().toString(), edt_Password_Login.text.trim().toString())
+                val model = LoginEmail(edtEmailLogin.text.trim().toString(), edtPasswordLogin.text.trim().toString())
                 presenter.checkEdiTextLogin(model)
             }
             R.id.forgot -> {
                 val i = Intent(this, ForgotActivity::class.java)
                 startActivity(i)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
             R.id.btnSubmitLoginFacebook -> {
                 val intent = Intent(this, RegisterActivity::class.java)
                 intent.putExtra("keyStatusFormLoginActivity", "true")
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
-            else -> {
-            }
+            else -> { }
         }
     }
 

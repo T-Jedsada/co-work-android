@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="com.example.msigl62.coworkandroiduset.ui.detail.GalleryActivity">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imGallery"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imGallery2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imGallery3"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imGallery4"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imGallery5"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY" />
+
+    </LinearLayout>
+</ScrollView>

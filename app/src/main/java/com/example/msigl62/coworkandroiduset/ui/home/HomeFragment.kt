@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ethanhua.skeleton.Skeleton
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkNearby
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkPopular
@@ -42,8 +43,8 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
     override fun onStart() {
         super.onStart()
-        getLocationUser()
-
+        presenter.callCoWorkNearby(98.9487219,18.770992)
+        //getLocationUser()
     }
 
     private fun getLocationUser() {
@@ -53,7 +54,7 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
             ActivityCompat.requestPermissions(context as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 101)
         } else {
             locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5f, this)
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 70000, 5f, this)
         }
     }
 
@@ -75,10 +76,22 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     }
 
     override fun onCallSuccessCoWorkNearby(responseSuggestion: ResponseSuggestion?) {
-        val adapterCoWorkPopular: AdapterCoWorkNearby by lazy { AdapterCoWorkNearby(listOf()) }
+        val adapterCoWorkNearby: AdapterCoWorkNearby by lazy { AdapterCoWorkNearby(listOf()) }
         listCoWorkNearby?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        listCoWorkNearby?.adapter = adapterCoWorkPopular
-        responseSuggestion?.let { adapterCoWorkPopular.setItem(it.data) }
+        listCoWorkNearby?.adapter = adapterCoWorkNearby
+        responseSuggestion?.let { adapterCoWorkNearby.setItem(it.data) }
+
+        val skeletonScreen = Skeleton.bind(listCoWorkNearby)
+                .adapter(adapterCoWorkNearby)
+                .shimmer(true)
+                .angle(20)
+                .frozen(false)
+                .duration(1200)
+                .count(10)
+                .load(R.layout.item_skeleton_news)
+                .show()
+        listCoWorkNearby.postDelayed(Runnable { skeletonScreen.hide() }, 3000)
+        return
 
     }
 

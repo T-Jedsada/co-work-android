@@ -8,11 +8,11 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/textTitle"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolBarThem"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
         android:text="@string/text_forgot_title_finish"
         android:textSize="@dimen/text_title"
         android:textStyle="bold"
@@ -23,7 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textTitle"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:text="@string/text_forgot_Sub_finish" />
 
@@ -31,17 +32,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textSub"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:text="@string/text_forgot_Sub_finish_Sub" />
 
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:id="@+id/btnBackToLogin"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/textSub"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/submit_forgot_finish"
-        android:textAllCaps="false" />
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/back_login" />
 
 </RelativeLayout>

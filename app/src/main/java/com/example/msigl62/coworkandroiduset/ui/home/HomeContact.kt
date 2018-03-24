@@ -1,7 +1,6 @@
 package com.example.msigl62.coworkandroiduset.ui.home
 
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
-
 import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 
 interface HomeContact {

@@ -13,7 +13,8 @@ class CoWorkPopularHolder (view: View) : RecyclerView.ViewHolder(view) {
     fun onBind(coWork: CoWorkPopular) {
         itemView.apply {
             imageCoWorkPopular.load( coWork.gellery?.image_01)
-            rating.rating= coWork.rarting.toFloat()
+            //rating.rating= coWork.rarting.toFloat()
+            ratingTextPop.text=coWork.rarting
             textCoWorkPopularName.text = coWork.name
             imageCoWorkPopular.setOnClickListener {
               itemView.context.startActivity(Intent(

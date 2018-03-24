@@ -11,96 +11,139 @@
         android:layout_height="wrap_content"
         tools:context="com.example.msigl62.coworkandroiduset.ui.detail.DetailPopularActivity">
 
-        <include layout="@layout/layout_toolbar_detail" />
-
         <android.support.v4.view.ViewPager
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_below="@+id/toolBarThem"
+            android:layout_height="250dp"
             android:background="@color/cardview_dark_background"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:ignore="UnknownIdInLayout" />
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="13.17dp"
+            android:src="@drawable/shape_left" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="14.17dp"
+            android:src="@drawable/icon_share" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="14.17dp"
+            android:src="@drawable/favorite_vector" />
+
         <LinearLayout
             android:id="@+id/sliderDots"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_gravity="bottom|right"
+            android:layout_marginTop="230dp"
             android:orientation="horizontal" />
 
         <TextView
             android:id="@+id/nameCoWorking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/container"
-            android:padding="10sp"
-            android:textSize="@dimen/text_title"
+            android:layout_below="@+id/sliderDots"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
             tools:ignore="SpUsage"
             tools:text="Co-Working Name" />
+
+        <ImageView
+            android:id="@+id/gallery"
+            android:layout_width="52dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/sliderDots"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/gallery" />
 
         <TextView
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameCoWorking"
-            android:padding="10sp"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
             tools:text="Suthep,Cjiangmai" />
+
+        <RelativeLayout
+            android:id="@+id/layout_data"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/address"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/dot1"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ellipse" />
+
+            <ImageView
+                android:id="@+id/dot2"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ellipse" />
+
+            <TextView
+                android:id="@+id/textPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/dot1"
+                android:layout_marginStart="20dp"
+                android:textSize="12sp"
+                tools:text="sdsdsdsdsdsd" />
+
+            <TextView
+                android:id="@+id/textContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/dot2"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:textSize="12sp"
+                tools:text="sdsdsdsdsdsd" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:padding="10sp"
+            android:layout_below="@+id/layout_data"
+            android:layout_marginStart="13.4dp"
+            android:layout_marginTop="9dp"
+            android:textSize="12sp"
             tools:text="Suthep,Cjiangmai" />
 
-        <ImageView
-            android:id="@+id/circularPrice"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/circular" />
-
-        <ImageView
-            android:id="@+id/circularPrice2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/circularPrice"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/circular" />
-
-        <TextView
-            android:id="@+id/textPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/circularPrice"
-            android:layout_below="@+id/content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            tools:text="Price" />
-
-        <TextView
-            android:id="@+id/textContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/circularPrice2"
-            android:layout_below="@+id/textPrice"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="11dp"
-            tools:text="Contact  Information" />
 
         <fragment
             android:id="@+id/mapCoWork"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_below="@+id/circularPrice2"
-            android:layout_marginTop="@dimen/text_title" />
+            android:layout_below="@+id/container"
+            android:layout_marginTop="250dp" />
 
         <TextView
             android:id="@+id/rating"

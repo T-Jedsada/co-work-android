@@ -12,12 +12,17 @@ class CoWorkNearbyHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun onBind(coWork: DataCoWorkNearby) {
         itemView.apply {
             textCoWorkName.text = coWork.name
-            rating.rating = coWork.averageRating.toFloat()
+            //textCoWorkNameAddress.text=coWork.address
+            ratingText.text=coWork.averageRating
+            //rating.rating = coWork.averageRating.toFloat()
             imageCoWorkNearby.load(coWork.poster)
+            if(coWork.status == "false"){
+                status.visibility = View.GONE
+            }else{ }
             imageCoWorkNearby.setOnClickListener {
                 itemView.context.startActivity(Intent(
                         itemView.context, DetailNearbyActivity::class.java
-                ).putExtra("key", coWork.id)
+                ).putExtra("key", coWork._id)
                         .putExtra("latitude", coWork.latitude)
                         .putExtra("longitude", coWork.longitude)
                         .putExtra("poster", coWork.poster)

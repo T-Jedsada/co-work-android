@@ -34,7 +34,6 @@ class ForgotActivity : AppCompatActivity(), ForgotContact.View {
 
     @SuppressLint("SetTextI18n")
     private fun setToolBar() {
-        text_toolbar.text = getString(R.string.login_header)
         image_arrow.setOnClickListener {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)

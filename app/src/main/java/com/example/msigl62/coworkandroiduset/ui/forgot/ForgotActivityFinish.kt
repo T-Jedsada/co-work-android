@@ -27,7 +27,6 @@ class ForgotActivityFinish : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun setToolBar() {
-        text_toolbar.text = getString(R.string.forgot_header)
         image_arrow.setOnClickListener {
             val i = Intent(this, ForgotActivity::class.java)
             startActivity(i)

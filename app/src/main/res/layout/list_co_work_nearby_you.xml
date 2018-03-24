@@ -10,20 +10,44 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:textSize="@dimen/text_title"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
         android:id="@+id/textCoWorkNearby"
         android:text="@string/co_working_nearby_you"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="SpUsage" />
 
+    <ImageView
+        android:id="@+id/imLocal"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="19dp"
+        android:layout_below="@+id/textCoWorkNearby"
+        android:src="@drawable/local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/textCoWorkChiangMai"
+        android:textSize="10sp"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/imLocal"
+        android:textStyle="bold"
+        android:id="@+id/textNearby"
         android:layout_marginStart="20dp"
         android:layout_below="@+id/textCoWorkNearby"
+        android:text="NEARBY YOU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:textStyle="bold"
+        android:id="@+id/textCoWorkChiangMai"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/textNearby"
         android:text="@string/chiang_mai_thailand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listCoWorkNearby"

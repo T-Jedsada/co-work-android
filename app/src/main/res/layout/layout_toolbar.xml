@@ -7,19 +7,18 @@
 
     <Toolbar
         android:id="@+id/toolBar"
-        android:background="@color/colorToolBar"
         android:layout_width="match_parent"
         android:layout_height="50dp">
     </Toolbar>
 
     <ImageView
+        android:layout_marginStart="30dp"
         android:id="@+id/image_arrow"
-        android:layout_width="35dp"
-        android:layout_height="20dp"
+        android:layout_width="14.17dp"
+        android:layout_height="10.61dp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="9dp"
-        android:src="@drawable/leftarrow" />
+        android:src="@drawable/arrow" />
 
     <TextView
         android:id="@+id/text_toolbar"

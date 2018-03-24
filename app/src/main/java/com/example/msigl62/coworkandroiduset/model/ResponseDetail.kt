@@ -11,6 +11,7 @@ data class DataCoWorkDetail(@SerializedName("name") val name: String?,
                             @SerializedName("name_co-working")val name_CoWork: String?,
                             @SerializedName("price_per_hour")val price_per_hour: String?,
                             @SerializedName("address") val address: String?,
+                            @SerializedName("gellery") val gallery: Gallery,
                             @SerializedName("latitude") val latitude: Double?,
                             @SerializedName("longitude") val longitude: Double? )
 

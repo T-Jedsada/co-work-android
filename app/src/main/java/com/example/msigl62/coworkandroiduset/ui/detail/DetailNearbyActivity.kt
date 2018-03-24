@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.detail
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -21,7 +20,6 @@ import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
 import com.example.msigl62.coworkandroiduset.model.Gallery
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -30,7 +28,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detail_co_work.*
-import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.android.synthetic.main.list_co_work_review.*
 
 class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailContact.View {
@@ -41,27 +38,27 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_co_work)
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.mapCoWork) as SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapCoWork) as SupportMapFragment
         mapFragment.getMapAsync(this)
         setPagerImage()
-        setToolBar()
         val id = intent.extras?.getString("key")
         presenter.checkIdProvider(id)
         presenter.checkIdreView("5aafe91005ace400144e2b9a")  //TODO make value
+        setGallery()
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun setToolBar() {
-        image_arrow.setOnClickListener {
-            val i = Intent(this, MainFragment::class.java)
+    private fun setGallery() {
+        gallery.setOnClickListener {
+            val id = intent.extras?.getString("key")
+            val i=Intent(this, GalleryActivity::class.java).putExtra("id", id)
             startActivity(i)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 
+
     private fun setPagerImage() {
-        var mSectionsPagerAdapter: SectionsPagerAdapter?
+        val mSectionsPagerAdapter: SectionsPagerAdapter?
         val im: Gallery = intent.getParcelableExtra("im")
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager,
                 im.img1,
@@ -70,11 +67,11 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
                 im.img4,
                 im.img5)
         container.adapter = mSectionsPagerAdapter
-        var dotscount: Int
-        var dots: Array<ImageView?>
-        dotscount = mSectionsPagerAdapter.count
-        dots = arrayOfNulls(dotscount)
-        for (i in 0 until dotscount) {
+        val dot: Int
+        val dots: Array<ImageView?>
+        dot = mSectionsPagerAdapter.count
+        dots = arrayOfNulls(dot)
+        for (i in 0 until dot) {
             dots[i] = ImageView(this)
             dots[i]?.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.nonactive_dot))
             val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -85,7 +82,7 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
-                for (i in 0 until dotscount) {
+                for (i in 0 until dot) {
                     dots[i]?.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.nonactive_dot))
                 }
                 dots[position]?.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.active_dot))

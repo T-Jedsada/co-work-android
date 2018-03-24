@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.detail
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -9,7 +8,6 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
@@ -22,7 +20,6 @@ import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -31,7 +28,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detail_co_work.*
-import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.android.synthetic.main.list_co_work_review.*
 
 class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailContact.View {
@@ -46,7 +42,6 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_co_work)
         setPagerImage()
-        setToolBar()
         val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
         val id = intent.extras?.getString("key")
         presenter.checkIdProvider(id)
@@ -55,20 +50,21 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.mapCoWork) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        setGallery()
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun setToolBar() {
-        image_arrow.setOnClickListener {
-            val i = Intent(this, MainFragment::class.java)
+    private fun setGallery() {
+        gallery.setOnClickListener {
+            val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
+            val i=Intent(this, GalleryActivity::class.java
+            ).putExtra("id", dataCoWork._id)
             startActivity(i)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 
     private fun setPagerImage() {
         val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
-        var mSectionsPagerAdapter: SectionsPagerAdapter?
+        val mSectionsPagerAdapter: SectionsPagerAdapter?
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager,
                 dataCoWork.gellery?.image_01.toString(),
                 dataCoWork.gellery?.image_02.toString(),
@@ -77,8 +73,8 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
                 dataCoWork.gellery?.image_05.toString()
         )
         container.adapter = mSectionsPagerAdapter
-        var dot: Int
-        var dots: Array<ImageView?>
+        val dot: Int
+        val dots: Array<ImageView?>
         dot = mSectionsPagerAdapter.count
         dots = arrayOfNulls(dot)
         for (i in 0 until dot) {

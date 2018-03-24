@@ -6,7 +6,6 @@ import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
 
 class DetailPresenter(val view: DetailContact.View): DetailContact.Presenter, InterActor.OnFinishRequest, Request.DetailCoWorkListener,Request.DetailReView {
-
     private val actData: InterActor.ActData = Request()
 
     override fun checkIdProvider(id: String?) {

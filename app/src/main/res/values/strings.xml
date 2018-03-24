@@ -2,17 +2,16 @@
     <string name="app_name">co-work-android-user</string>
     <string name="facebook_app_id">207669949811265</string>
     <string name="fb_login_protocol_scheme">fb1768282206580252</string>
-    <string name="fb_btn">Facebook</string>
     <string name="submit_btn">Log in</string>
     <string name="submit_forgot_email">Send</string>
     <string name="submit_forgot_finish">Back to Login</string>
-    <string name="text_forgot_title_finish">Thanks !</string>
+    <string name="text_forgot_title_finish">Thanks :)</string>
     <string name="text_forgot_Sub_finish">Please follow the link in the email</string>
     <string name="text_forgot_Sub_finish_Sub">to reset your password</string>
-    <string name="btn_register_title">Registration</string>
+    <string name="btn_register_title">Create Account</string>
     <string name="btn_register">Register</string>
     <string name="submit_btn_with_facebook">Log in with facebook</string>
-    <string name="text_forgot_title">Reset your password</string>
+    <string name="text_forgot_title">Reset password</string>
     <string name="text_forgot_Sub">Well send you an email with a reset link</string>
     <string name="email_format_invalid">invalid email format</string>
     <string name="name_empty_message">Name should not empty</string>
@@ -27,10 +26,9 @@
     <string name="login_header">Login</string>
     <string name="forgot_header">Forgot Password</string>
     <string name="upload_image_profile">Upload Image Profile</string>
-    <string name="e_mail">E-mail</string>
-    <string name="name">Name</string>
+    <string name="e_mail">E-mail address</string>
+    <string name="name">You name</string>
     <string name="re_password">Re-Password</string>
-    <string name="or">Or</string>
     <string name="password">Password</string>
     <string name="message">Loading......</string>
     <string name="load_register">Register</string>
@@ -38,7 +36,7 @@
     <string name="reserve_seat">Reserve Seat</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_detail_co_work">Map</string>
-    <string name="co_working_nearby_you">Co-working Nearby You</string>
+    <string name="co_working_nearby_you">Co-working</string>
     <string name="chiang_mai_thailand">Chiang Mai, Tjailand</string>
     <string name="logout">Logout</string>
     <string name="aboutus">AboutUs</string>
@@ -51,7 +49,6 @@
     <string name="dialog">Login</string>
     <string name="dialog_button">ok</string>
     <string name="msg_dialog_login">You Login App?</string>
-    <string name="search">search</string>
     <string name="apply">Apply</string>
     <string name="filter">Filter</string>
     <string name="reset">Reset</string>
@@ -60,5 +57,10 @@
     <string name="from_you_current_location">From your current location</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="allow_open_current_location">Allow Open Current location</string>
-    <string name="busy">Busy</string>
+    <string name="hi_worker">Hi! Worker</string>
+    <string name="welcome_back_to_co_working_community">Welcome back to co-working community</string>
+    <string name="topic_email">EMAIL</string>
+    <string name="topic_password">PASSWORD</string>
+    <string name="topic_re_password">RE-PASSWORD</string>
+    <string name="topic_name">NAME</string>
 </resources>

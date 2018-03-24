@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.view.View.GONE
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.extension.getPath
@@ -46,9 +45,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
     private var loadingDialog: ProgressDialog? = null
     private val presenterLoginContact: LoginContact.Presenter by lazy { LoginPresenter(this) }
 
-    companion object {
-        const val REQUEST_CODE = 1
-    }
+    companion object { const val REQUEST_CODE = 1 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +70,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     @SuppressLint("SetTextI18n")
     private fun setToolBar() {
-        text_toolbar.text = getString(R.string.login_header)
         image_arrow.setOnClickListener {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
@@ -84,13 +80,16 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
     private fun setButtonSubmitRegister() {
         btnSubmit.setOnClickListener {
             val model = imageBodyPartImage?.let { it1 ->
-                Register(idFacebook, edt_Name.text.trim().toString(), edt_Email.text.trim().toString()
-                        , edt_Password.text.trim().toString(), edt_re_Password.text.trim().toString(), imagePathFacebook, it1)
+                Register(idFacebook,
+                        edtName.text.trim().toString(),
+                        edt_Email.text.trim().toString(),
+                        edt_Password.text.trim().toString(),
+                        edt_re_Password.text.trim().toString(),
+                        imagePathFacebook, it1)
             }
             imageBodyPartImage?.let { model?.let { it1 -> presenter.checkEdiText(it1) } }
                     ?: Toast.makeText(applicationContext, "Please upload image", Toast.LENGTH_SHORT).show()
         }
-        btnFacebook.setOnClickListener { checkUserIDFacebook() }
     }
 
     private fun setImageViewUser() {
@@ -98,44 +97,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
             val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, REQUEST_CODE)
         }
-    }
-
-    private fun getDataFacebook() {
-        callbackManager = CallbackManager.Factory.create()
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
-        LoginManager.getInstance().registerCallback(callbackManager,
-                object : FacebookCallback<LoginResult> {
-                    override fun onSuccess(loginResult: LoginResult) {
-                        btnFacebook.visibility = GONE
-                        textOR.visibility = GONE
-                        btnSubmit.isClickable = true
-                        textUploadImage.visibility = GONE
-                        val request = GraphRequest.newMeRequest(
-                                loginResult.accessToken
-                        ) { `object`, _ ->
-                            val name = `object`.getString("name")
-                            edt_Name.setText(name)
-                            val email: Boolean? = `object`.has("email")
-                            if (email == false) {
-                                Toast.makeText(applicationContext, "NoEmail", Toast.LENGTH_LONG).show()
-                            } else {
-                                edt_Email.setText(`object`.getString("email"))
-                            }
-                            idFacebook = `object`.getString("id")
-                            val profilePicUrl = `object`.getJSONObject("picture").getJSONObject("data").getString("url")
-                            imageView.load(profilePicUrl)
-                            val bodyPartImage = MultipartBody.Part.createFormData(profilePicUrl, profilePicUrl)
-                            imageBodyPartImage = bodyPartImage
-                            imagePathFacebook = profilePicUrl
-                        }
-                        val parameters = Bundle()
-                        parameters.putString("fields", "id,name,link,email,picture.type(large)")
-                        request.parameters = parameters
-                        request.executeAsync()
-                    }
-                    override fun onCancel() {}
-                    override fun onError(error: FacebookException) {}
-                })
     }
 
     @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -150,7 +111,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
                 val requestFileImage = RequestBody.create(MediaType.parse("multipart/form-data"), fileImage)
                 val bodyPartImage = MultipartBody.Part.createFormData("image", fileImage.name, requestFileImage)
                 imageBodyPartImage = bodyPartImage
-                textUploadImage.visibility = GONE
             }
         }
     }
@@ -193,7 +153,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         )
         presenter.requestValidateApi(model)
         btnSubmit.isClickable = false
-        btnFacebook.isClickable = false
     }
 
     override fun onErrorMessage(err: Int) {
@@ -202,22 +161,13 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     //TODO checkUserIDFacebook LoginFacebook
     private fun checkUserIDFacebook() {
-        btnFacebook.isClickable = false
-        textUploadImage.isClickable = false
-        imageView.isClickable = false
-        edt_Email.isFocusable = false
-        edt_Name.isFocusable = false
-        edt_Password.isFocusable = false
-        edt_re_Password.isFocusable = false
-        btnSubmit.isClickable = false
         callbackManager = CallbackManager.Factory.create()
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
         LoginManager.getInstance().registerCallback(callbackManager,
                 object : FacebookCallback<LoginResult> {
                     override fun onSuccess(loginResult: LoginResult) {
-                        val request = GraphRequest.newMeRequest(
-                                loginResult.accessToken
-                        ) { `object`, _ ->
+                        val request = GraphRequest.newMeRequest(loginResult.accessToken)
+                        { `object`, _ ->
                             idFacebook = `object`.getString("id")
                             val model = LoginFacebook(idFacebook)
                             presenterLoginContact.checkIdUserFacebookLogin(model)
@@ -227,6 +177,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
                         request.parameters = parameters
                         request.executeAsync()
                     }
+
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -257,5 +208,38 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         }
     }
 
+    private fun getDataFacebook() {
+        callbackManager = CallbackManager.Factory.create()
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
+        LoginManager.getInstance().registerCallback(callbackManager,
+                object : FacebookCallback<LoginResult> {
+                    override fun onSuccess(loginResult: LoginResult) {
+                        val request = GraphRequest.newMeRequest(
+                                loginResult.accessToken
+                        ) { `object`, _ ->
+                            val name = `object`.getString("name")
+                            edtName.setText(name)
+                            val email: Boolean? = `object`.has("email")
+                            if (email == false) {
+                                Toast.makeText(applicationContext, "NoEmail", Toast.LENGTH_LONG).show()
+                            } else {
+                                edt_Email.setText(`object`.getString("email"))
+                            }
+                            idFacebook = `object`.getString("id")
+                            val profilePicUrl = `object`.getJSONObject("picture").getJSONObject("data").getString("url")
+                            imageView.load(profilePicUrl)
+                            val bodyPartImage = MultipartBody.Part.createFormData(profilePicUrl, profilePicUrl)
+                            imageBodyPartImage = bodyPartImage
+                            imagePathFacebook = profilePicUrl
+                        }
+                        val parameters = Bundle()
+                        parameters.putString("fields", "id,name,link,email,picture.type(large)")
+                        request.parameters = parameters
+                        request.executeAsync()
+                    }
 
+                    override fun onCancel() {}
+                    override fun onError(error: FacebookException) {}
+                })
+    }
 }

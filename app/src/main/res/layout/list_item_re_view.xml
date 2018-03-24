@@ -8,12 +8,12 @@
     <ImageView
         android:background="@drawable/button_states"
         android:id="@+id/imageReView"
-        android:layout_width="70dp"
-        android:layout_height="70dp" />
+        android:layout_width="32dp"
+        android:layout_height="32dp" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="61dp"
         android:text="Name | Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -22,7 +22,7 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/name"
         android:id="@+id/comment"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="61dp"
         android:text="Name | Date "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

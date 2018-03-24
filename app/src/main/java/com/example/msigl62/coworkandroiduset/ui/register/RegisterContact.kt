@@ -7,7 +7,6 @@ interface RegisterContact {
         fun checkEdiText(model: Register)
         fun requestValidateApi(model: Register)
     }
-
     interface View {
         fun onSuccessValidated(model: Register)
         fun onErrorMessage(err: Int)

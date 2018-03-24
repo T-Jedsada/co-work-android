@@ -2,28 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp">
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        app:cardCornerRadius="7dp"
+        android:elevation="3dp">
 
     <ImageView
         android:background="@color/bb_inActiveBottomBarItemColor"
         android:id="@+id/imageCoWorkPopular"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="184dp"
         android:clickable="true"
         android:scaleType="fitXY" />
 
-    <Button
-        android:textAllCaps="false"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#ff6e6e"
-        android:text="@string/busy"
-        android:layout_width="45dp"
-        android:layout_height="30dp" />
-
     <TextView
-        android:layout_below="@+id/imageCoWorkPopular"
+        android:textSize="15sp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="190dp"
         android:id="@+id/textCoWorkPopularName"
         android:textStyle="bold"
         android:text="Co-Working Name"
@@ -31,30 +36,36 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_below="@+id/textCoWorkPopularName"
+        android:textSize="13sp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="212dp"
         android:id="@+id/textCoWorkPopularAddress"
         android:text="Suthep, Chiangmai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_marginLeft="200dp"
+        android:id="@+id/ratingTextPop"
+        android:textSize="13sp"
+        android:layout_marginTop="212dp"
+        android:layout_marginLeft="310dp"
         android:layout_below="@+id/imageCoWorkPopular"
-        android:id="@+id/textRating"
-        android:text="Rating"
+        android:text="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <RatingBar
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="250dp"
-        android:layout_below="@+id/imageCoWorkPopular"
-        android:id="@+id/rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?android:attr/ratingBarStyleSmall"
-        android:numStars="5"
-        android:stepSize="0.1"
-        android:isIndicator="true" />
-    
+        <ImageView
+            android:layout_marginLeft="310dp"
+            android:src="@drawable/favorite"
+            android:layout_width="17dp"
+            android:layout_height="27dp" />
+
+        <ImageView
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="217dp"
+            android:src="@drawable/rating"
+            android:layout_width="48dp"
+            android:layout_height="8dp" />
+
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

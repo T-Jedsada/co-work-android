@@ -14,9 +14,8 @@ class MainFragment : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         supportFragmentManager.beginTransaction()
-                .replace(R.id.containerFragment, HomeFragment(), "")
+                .replace(R.id.containerFragment, HomeFragment())
                 .commit()
         setUpBottomBar()
     }
@@ -26,7 +25,7 @@ class MainFragment : AppCompatActivity() {
             when (tabId) {
                 R.id.explore -> {
                     supportFragmentManager.beginTransaction()
-                            .replace(R.id.containerFragment, HomeFragment(), "")
+                            .replace(R.id.containerFragment, HomeFragment())
                             .commit()
                 }
                 R.id.seat -> { }
@@ -36,14 +35,13 @@ class MainFragment : AppCompatActivity() {
                     val nameUserLogin = sh1.getString("sectionLoginName", "")
                     if (nameUserLogin.isNotEmpty()) {
                         supportFragmentManager.beginTransaction()
-                                .replace(R.id.containerFragment, ProfileUserFragment(), "")
+                                .replace(R.id.containerFragment, ProfileUserFragment())
                                 .commit()
                     } else {
                         DialogUtil.showDialogMessage(this, R.string.msg_dialog_login)
                     }
                 }
-                else -> {
-                }
+                else -> { }
             } }
     }
 

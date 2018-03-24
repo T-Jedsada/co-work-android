@@ -14,11 +14,11 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
         responseData?.data?.message?.let { view.onResponseFromApi(it) }
     }
 
-    override fun onSaveSuccess(responseData:ResponseData?) {
-        if(responseData?.noticeMessage.equals("false")){
-            view.onResponseCheckFromEmail("false",responseData?.data?.messageError)
-        }else{
-             actData.requestSendEmail(responseData?.data?.id, responseData?.data?.email, this)
+    override fun onSaveSuccess(responseData: ResponseData?) {
+        if (responseData?.noticeMessage.equals("false")) {
+            view.onResponseCheckFromEmail("false", responseData?.data?.messageError)
+        } else {
+            actData.requestSendEmail(responseData?.data?.id, responseData?.data?.email, this)
         }
     }
 

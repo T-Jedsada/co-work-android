@@ -3,12 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <ImageView
         android:id="@+id/imagePager"
         android:scaleType="fitXY"
         android:background="@color/cardview_dark_background"
         android:layout_width="match_parent"
-        android:layout_height="190dp" />
+        android:layout_height="250dp" />
 
 </FrameLayout>
