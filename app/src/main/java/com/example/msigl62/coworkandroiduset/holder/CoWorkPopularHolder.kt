@@ -16,9 +16,11 @@ class CoWorkPopularHolder (view: View) : RecyclerView.ViewHolder(view) {
             //rating.rating= coWork.rarting.toFloat()
             ratingTextPop.text=coWork.rarting
             textCoWorkPopularName.text = coWork.name
-            imageCoWorkPopular.setOnClickListener {
-              itemView.context.startActivity(Intent(
-                       itemView.context, DetailPopularActivity::class.java
+            if(coWork.status == "false"){
+                statusPop.visibility = View.GONE
+            }else{ }
+             imageCoWorkPopular.setOnClickListener {
+              itemView.context.startActivity(Intent(itemView.context, DetailPopularActivity::class.java
                ).putExtra(DetailPopularActivity.Key, coWork))
             }
         } }

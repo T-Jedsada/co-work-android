@@ -13,24 +13,24 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
 
     override fun onResponseSuccessLogin(responseData: String?,name: String?,image: String?,message:String?,status:String?) {
         if(responseData.equals("false")){
-            view.onResponseFromApiLogin("false",name,image,message)
+            view.onResponseFromApiLogin("false",name,image,message,"")
         }else{
             if(status.equals("false")){
-                view.onResponseFromApiLogin("status-false",name,image,message)
+                view.onResponseFromApiLogin("status-false",name,image,message,"")
             }else{
-                view.onResponseFromApiLogin("success",name,image,message)
+                view.onResponseFromApiLogin("success",name,image,message,"")
             }
         }
     }
 
-    override fun onResponseSuccessLoginFacebook(responseData: String?,name: String?,image: String?,status:String?) {
+    override fun onResponseSuccessLoginFacebook(responseData: String?,name: String?,image: String?,message: String?,status:String?) {
         if(responseData.equals("false")){
-            view.onResponseFromApiLogin("false",name,image,"")
+            view.onResponseFromApiLogin("false",name,image,message,"")
         }else{
             if(status.equals("false")){
-                view.onResponseFromApiLogin("status-false",name,image,"")
+                view.onResponseFromApiLogin("status-false",name,image,"","false")
             }else{
-                view.onResponseFromApiLogin("success",name,image,"")
+                view.onResponseFromApiLogin("success",name,image,"","")
             }
         }
     }

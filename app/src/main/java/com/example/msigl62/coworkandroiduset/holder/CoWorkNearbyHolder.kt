@@ -20,8 +20,7 @@ class CoWorkNearbyHolder(view: View) : RecyclerView.ViewHolder(view) {
                 status.visibility = View.GONE
             }else{ }
             imageCoWorkNearby.setOnClickListener {
-                itemView.context.startActivity(Intent(
-                        itemView.context, DetailNearbyActivity::class.java
+                itemView.context.startActivity(Intent(itemView.context, DetailNearbyActivity::class.java
                 ).putExtra("key", coWork._id)
                         .putExtra("latitude", coWork.latitude)
                         .putExtra("longitude", coWork.longitude)

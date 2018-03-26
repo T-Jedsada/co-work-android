@@ -22,6 +22,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.login.LoginActivity"
             android:screenOrientation="portrait" />
@@ -52,10 +53,15 @@
             android:theme="@style/AppTheme.TransNav">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.detail.GalleryActivity" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.profile.EditProfileUserActivity" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveSummaryActivity" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity"></activity>
     </application>
 
 </manifest>

@@ -37,7 +37,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_detail_co_work">Map</string>
     <string name="co_working_nearby_you">Co-working</string>
-    <string name="chiang_mai_thailand">Chiang Mai, Tjailand</string>
+    <string name="chiang_mai_thailand">Chiang Mai, Thailand</string>
     <string name="logout">Logout</string>
     <string name="aboutus">AboutUs</string>
     <string name="change_password">Change Password</string>
@@ -63,5 +63,9 @@
     <string name="topic_password">PASSWORD</string>
     <string name="topic_re_password">RE-PASSWORD</string>
     <string name="topic_name">NAME</string>
+    <string name="text_reserve">This seat is ideal for athletes who enjoy a lower position inside the kayak.</string>
+    <string name="reserve">Reserve</string>
+    <string name="poolsub_the_pool_of_doers">POOLSUB - the Pool of Doers</string>
+    <string name="reserve_name">RESERVE NAME</string>
 
 </resources>

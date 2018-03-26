@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment">
 
     <TextView
@@ -23,40 +23,25 @@
         android:layout_below="@id/profile"
         android:layout_marginStart="15dp"
         android:textSize="14sp"
-        tools:text="Hello Nawakarn" />
-
-    <ImageView
-        android:id="@+id/imEditProfile"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_below="@id/profileName"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/tab_edit_profile">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/imChangePassword"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_below="@id/imEditProfile"
-        android:src="@drawable/tab_chang_password">
-
-    </ImageView>
+        android:text="Please login for more information" />
 
     <ImageView
         android:id="@+id/imAboutUs"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_below="@id/imChangePassword"
+        android:layout_below="@id/profileName"
+        android:layout_marginTop="24dp"
         android:src="@drawable/tab_about">
     </ImageView>
 
     <ImageView
-        android:id="@+id/logOut"
+        android:id="@+id/imLogin"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_below="@id/imAboutUs"
         android:src="@drawable/tab_about">
     </ImageView>
+
+
 
 </RelativeLayout>

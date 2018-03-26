@@ -18,7 +18,6 @@ class HomePresenter (val view: HomeContact.View) : HomeContact.Presenter,Request
     }
 
     override fun onResponseSuccessListCoWorkNearby(responseData: ResponseSuggestion?) {
-
         view.onCallSuccessCoWorkNearby(responseData)
     }
 

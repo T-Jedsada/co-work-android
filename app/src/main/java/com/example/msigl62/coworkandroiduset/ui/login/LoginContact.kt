@@ -13,6 +13,6 @@ class LoginContact {
     interface View {
         fun onSuccessValidated(model: LoginEmail)
         fun onErrorMessage(err: Int)
-        fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?)
+        fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?,status:String?)
     }
 }

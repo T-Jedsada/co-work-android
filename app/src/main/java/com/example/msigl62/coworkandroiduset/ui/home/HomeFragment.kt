@@ -2,6 +2,7 @@ package com.example.msigl62.coworkandroiduset.ui.home
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -12,17 +13,19 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import bolts.AppLinkNavigation.navigate
 import com.ethanhua.skeleton.Skeleton
+import com.ethanhua.skeleton.SkeletonScreen
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkNearby
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkPopular
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
-import kotlinx.android.synthetic.main.activity_home.*
+import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity
 import kotlinx.android.synthetic.main.list_co_work_nearby_you.*
 import kotlinx.android.synthetic.main.list_co_work_popular.*
 
@@ -30,6 +33,7 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
     private lateinit var presenter: HomeContact.Presenter
     private lateinit var locationManager: LocationManager
+    private var skeletonScreen: SkeletonScreen? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater!!.inflate(R.layout.activity_home, container, false)
@@ -39,12 +43,18 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
         presenter = HomePresenter(this)
         presenter.callCoWorkPopular()
         setFilter()
+        showAll.setOnClickListener {
+            val i = Intent(context, ShowAllNearbyActivity::class.java)
+            startActivity(i)
+        }
+
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.callCoWorkNearby(98.9487219,18.770992)
-        //getLocationUser()
+        //TODO undo Edit getLocation bug view and lifecycle
+        // presenter.callCoWorkNearby(98.9487219,18.770992)
+         getLocationUser()
     }
 
     private fun getLocationUser() {
@@ -54,7 +64,7 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
             ActivityCompat.requestPermissions(context as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 101)
         } else {
             locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 70000, 5f, this)
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5f, this)
         }
     }
 
@@ -80,19 +90,6 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
         listCoWorkNearby?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         listCoWorkNearby?.adapter = adapterCoWorkNearby
         responseSuggestion?.let { adapterCoWorkNearby.setItem(it.data) }
-
-        val skeletonScreen = Skeleton.bind(listCoWorkNearby)
-                .adapter(adapterCoWorkNearby)
-                .shimmer(true)
-                .angle(20)
-                .frozen(false)
-                .duration(1200)
-                .count(10)
-                .load(R.layout.item_skeleton_news)
-                .show()
-        listCoWorkNearby.postDelayed(Runnable { skeletonScreen.hide() }, 3000)
-        return
-
     }
 
     //TODO getLocation send API
@@ -100,13 +97,10 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
         location?.let { presenter.callCoWorkNearby(location.longitude, location.latitude) }
     }
 
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-    }
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
 
-    override fun onProviderEnabled(provider: String?) {
-    }
+    override fun onProviderEnabled(provider: String?) {}
 
-    override fun onProviderDisabled(provider: String?) {
-    }
+    override fun onProviderDisabled(provider: String?) {}
 
 }

@@ -6,14 +6,14 @@
         title="Explore" />
     <tab
         id="@+id/saved"
-        icon="@drawable/ellipse"
+        icon="@drawable/saved"
         title="Saved" />
     <tab
         id="@+id/seat"
-        icon="@drawable/ellipse"
+        icon="@drawable/seat"
         title="Seat" />
     <tab
         id="@+id/profile"
-        icon="@drawable/ellipse"
+        icon="@drawable/profile"
         title="Profile" />
 </tabs>

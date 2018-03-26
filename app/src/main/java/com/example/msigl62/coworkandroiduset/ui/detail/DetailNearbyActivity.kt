@@ -21,6 +21,7 @@ import com.example.msigl62.coworkandroiduset.model.Gallery
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
 import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -60,7 +61,7 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
     private fun setGallery() {
         gallery.setOnClickListener {
             val id = intent.extras?.getString("key")
-            val i=Intent(this, GalleryActivity::class.java).putExtra("id", id)
+            val i = Intent(this, GalleryActivity::class.java).putExtra("id", id)
             startActivity(i)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
@@ -129,6 +130,14 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))
             startActivity(intent)
         }
+        if (responseDetail?.data?.get(0)?.status.equals("true")) {
+            btnReserveSeat.setImageResource(R.drawable.reserve_seat)
+            btnReserveSeat.setOnClickListener {
+                val i = Intent(this, ReserveActivity::class.java)
+                startActivity(i)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
+        } else { }
     }
 
     override fun onResponseFromApiReView(responseReView: ResponseReView?) {
@@ -137,5 +146,4 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         recyclerViewReview?.adapter = adapterReView
         responseReView?.let { adapterReView.setItem(it.data) }
     }
-
 }

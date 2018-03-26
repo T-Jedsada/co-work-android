@@ -12,6 +12,7 @@ data class DataCoWorkDetail(@SerializedName("name") val name: String?,
                             @SerializedName("price_per_hour")val price_per_hour: String?,
                             @SerializedName("address") val address: String?,
                             @SerializedName("gellery") val gallery: Gallery,
+                            @SerializedName("status") val status: String,
                             @SerializedName("latitude") val latitude: Double?,
                             @SerializedName("longitude") val longitude: Double? )
 

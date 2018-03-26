@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
+import com.example.msigl62.coworkandroiduset.extension.navigate
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_forgot.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -32,12 +33,9 @@ class ForgotActivity : AppCompatActivity(), ForgotContact.View {
         setButtonSubmitForgotPassword()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setToolBar() {
         image_arrow.setOnClickListener {
-            val i = Intent(this, LoginActivity::class.java)
-            startActivity(i)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            navigate<LoginActivity> {  }
         }
     }
 

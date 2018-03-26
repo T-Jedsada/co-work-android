@@ -7,12 +7,12 @@ abstract class BaseActivity<V : BaseContract.View, P : BaseContract.Presenter<V>
 
     protected abstract fun layoutToInflate(): Int
     protected abstract fun setUpView()
-    protected abstract fun setUpBottomBar()
+    protected abstract fun setUpToolBar()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutToInflate())
         setUpView()
-        setUpBottomBar()
+        setUpToolBar()
     }
 }

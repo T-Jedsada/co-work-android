@@ -141,10 +141,10 @@
         </android.support.design.widget.TextInputLayout>
 
         <RelativeLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/re_password_layout">
-
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"

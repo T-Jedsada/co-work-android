@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
+import com.example.msigl62.coworkandroiduset.extension.navigate
 import com.example.msigl62.coworkandroiduset.model.LoginEmail
 import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
@@ -30,24 +31,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
     override fun onClick(v: View) {
         when (v.id) {
             R.id.register -> {
-                val i = Intent(this, RegisterActivity::class.java)
-                startActivity(i)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                navigate<RegisterActivity> {}
             }
             R.id.btnSubmitLogin -> {
                 val model = LoginEmail(edtEmailLogin.text.trim().toString(), edtPasswordLogin.text.trim().toString())
                 presenter.checkEdiTextLogin(model)
             }
             R.id.forgot -> {
-                val i = Intent(this, ForgotActivity::class.java)
-                startActivity(i)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                navigate<ForgotActivity> {}
             }
             R.id.btnSubmitLoginFacebook -> {
-                val intent = Intent(this, RegisterActivity::class.java)
-                intent.putExtra("keyStatusFormLoginActivity", "true")
-                startActivity(intent)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                navigate<RegisterActivity> {
+                    putExtra("keyStatusFormLoginActivity", "true")
+                }
             }
             else -> { }
         }
@@ -61,7 +57,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
         Toast.makeText(this, applicationContext.getText(err), Toast.LENGTH_SHORT).show()
     }
 
-    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?) {
+    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?,message:String?,status:String?) {
         if (resMessage == "false") {
             Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show()
         } else {

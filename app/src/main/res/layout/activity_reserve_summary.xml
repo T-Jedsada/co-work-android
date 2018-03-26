@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity">
+
+        <include layout="@layout/layout_toolbar" />
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolBarThem"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:text="@string/reserve"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            tools:ignore="SpUsage,UnknownIdInLayout" />
+
+        <TextView
+            android:id="@+id/textSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textTitle"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="10dp"
+            android:text="@string/poolsub_the_pool_of_doers" />
+
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textSub"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="16dp"
+            android:text="2561.03.19" />
+
+        <TextView
+            android:id="@+id/textReserve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textTime"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="16dp"
+            android:text="@string/reserve_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/nameUserReserve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textReserve"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="16dp"
+            android:text="Nawakarn"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="SmallSp" />
+
+        <RelativeLayout
+            android:id="@+id/layout_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameUserReserve"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                android:id="@+id/normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NORMAL SEAT"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/priceNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/normal"
+                android:layout_marginTop="2dp"
+                android:text="500 Bath"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailNormal"
+                android:layout_width="150dp"
+                android:layout_height="46dp"
+                android:layout_below="@id/priceNormal"
+                android:layout_marginTop="2dp"
+                android:text="@string/text_reserve"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_meeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_normal"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/meeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MEETING ROOM"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/priceMeeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/meeting"
+                android:layout_marginTop="2dp"
+                android:text="500 Bath"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailMeeting"
+                android:layout_width="150dp"
+                android:layout_height="46dp"
+                android:layout_below="@id/priceMeeting"
+                android:layout_marginTop="2dp"
+                android:text="@string/text_reserve"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_exclusive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_meeting"
+            android:layout_marginEnd="@dimen/margin_right"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/exclusive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EXCLUSIVE ROOM"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/priceExclusive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exclusive"
+                android:layout_marginTop="2dp"
+                android:text="500 Bath"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailExclusive"
+                android:layout_width="150dp"
+                android:layout_height="46dp"
+                android:layout_below="@id/priceExclusive"
+                android:layout_marginTop="2dp"
+                android:text="@string/text_reserve"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+
+
+         <TextView
+             android:id="@+id/textTotal"
+             android:layout_below="@+id/layout_exclusive"
+             android:layout_marginStart="30dp"
+             android:textStyle="bold"
+             android:textSize="10sp"
+             android:text="TOTAL (Baht)"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textTotal">
+
+            <Button
+                android:id="@+id/btnSubmitLogin"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/confirm" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

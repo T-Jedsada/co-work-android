@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolBarThemShow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Toolbar
+        android:id="@+id/toolBarShowAll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </Toolbar>
+
+    <ImageView
+        android:layout_marginStart="30dp"
+        android:id="@+id/image_arrow"
+        android:layout_width="14.17dp"
+        android:layout_height="10.61dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/imLocal"
+        android:src="@drawable/local"
+        android:layout_width="15dp"
+        android:layout_marginStart="70dp"
+        android:layout_height="12dp" />
+
+    <TextView
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:text="NEARBY YOU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:textSize="9sp" />
+    
+    <TextView
+        android:textColor="@color/cardview_dark_background"
+        android:layout_marginTop="25dp"
+        android:text="Chiang Mai, Thailand"
+        android:id="@+id/text_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:textSize="15sp" />
+</RelativeLayout>

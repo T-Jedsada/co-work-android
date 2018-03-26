@@ -2,13 +2,16 @@ package com.example.msigl62.coworkandroiduset.extension
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.support.v4.content.CursorLoader
 import android.view.View
 import android.view.ViewPropertyAnimator
 import android.widget.ImageView
+import com.example.msi_gl62.co_work_android_uset.R
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import java.util.regex.Matcher
@@ -65,6 +68,14 @@ fun Uri.getPath(context: Context): String? {
     cursor?.close()
     return result
 }
+
+inline fun <reified T:Activity> Activity.navigate(func:Intent.()->Unit){
+    val intent=Intent(this,T::class.java)
+    intent.func()
+    startActivity(intent)
+    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+}
+
 
 
 

@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
@@ -21,7 +22,9 @@ import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
 import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
+import com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -49,8 +52,7 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
         presenter.checkIdProvider(id)
         presenter.checkIdProvider(dataCoWork._id)
         presenter.checkIdreView("5aafe91005ace400144e2b9a")
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.mapCoWork) as SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapCoWork) as SupportMapFragment
         mapFragment.getMapAsync(this)
         setGallery()
         setId()
@@ -132,11 +134,19 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
         content.text = responseDetail?.data?.get(0)?.details
         address.text = responseDetail?.data?.get(0)?.address
         textPrice.text = responseDetail?.data?.get(0)?.price_per_hour
-        textContact.text = "0816117137"
+        textContact.text = "0816117137" //TODO make value
         textContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))
             startActivity(intent)
         }
+        if(responseDetail?.data?.get(0)?.status.equals("true")){
+            btnReserveSeat.setImageResource(R.drawable.reserve_seat)
+            btnReserveSeat.setOnClickListener {
+                val i = Intent(this, ReserveActivity::class.java)
+                startActivity(i)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
+        }else{}
     }
 
     override fun onResponseFromApiReView(responseReView: ResponseReView?) {

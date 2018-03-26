@@ -1,6 +1,5 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
@@ -64,11 +63,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         val status = intent.extras?.getString("keyStatusFormLoginActivity")
         if (status == "true") {
             checkUserIDFacebook()
-        } else {
-        }
+        } else { }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setToolBar() {
         image_arrow.setOnClickListener {
             val i = Intent(this, LoginActivity::class.java)
@@ -177,7 +174,6 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
                         request.parameters = parameters
                         request.executeAsync()
                     }
-
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -185,26 +181,22 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     override fun onSuccessValidated(model: LoginEmail) {}
 
-    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?, message: String?) {
+    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?, message: String?,status:String?) {
         if (resMessage == "false") {
-            getDataFacebook()
-            loadingDialog?.dismiss()
-        } else {
-            if (resMessage == "status-false") {
-                loadingDialog?.dismiss()
-                Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_LONG).show()
-                val i = Intent(this, LoginActivity::class.java)
-                startActivity(i)
-            } else {
-                loadingDialog?.dismiss()
-                val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
-                val editor = section.edit()
-                editor.putString("sectionLoginName", name)
-                editor.putString("sectionLoginImage", image)
-                editor.commit()
-                val i = Intent(this, MainFragment::class.java)
-                startActivity(i)
+            if(message.equals("Account not verify")){
+                Toast.makeText(this, ""+message, Toast.LENGTH_LONG).show()
+            }else{
+                getDataFacebook()
             }
+        } else {
+            loadingDialog?.dismiss()
+            val section = getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
+            val editor = section.edit()
+            editor.putString("sectionLoginName", name)
+            editor.putString("sectionLoginImage", image)
+            editor.commit()
+            val i = Intent(this, MainFragment::class.java)
+            startActivity(i)
         }
     }
 

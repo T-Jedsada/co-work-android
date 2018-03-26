@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.extension.load
 import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import kotlinx.android.synthetic.main.activity_profile_user.*
 
@@ -21,22 +20,33 @@ class ProfileUserFragment : Fragment() {
     @SuppressLint("ApplySharedPref")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sh1 = this.activity?.getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
-        val nameUserLogin = sh1?.getString("sectionLoginName", "")
-        val imageUserLogin = sh1?.getString("sectionLoginImage", "")
-        nameUser.text = nameUserLogin
-        imageViewProfile.load(imageUserLogin)
-        layOutLogOut.setOnClickListener {
+        setLogOut()
+        setEditProfil()
+        setProfileUser()
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) }
+
+    private fun setEditProfil() {
+        imEditProfile.setOnClickListener {
+            startActivity(Intent(context, EditProfileUserActivity::class.java))
+        }
+    }
+
+    private fun setLogOut(){
+        logOut.setOnClickListener {
             val section = this.activity?.getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
             val editor = section?.edit()
             editor?.putString("sectionLoginName",null)
             editor?.commit()
-            val i = Intent(context, MainFragment::class.java)
-            startActivity(i)
+            startActivity(Intent(context, MainFragment::class.java))
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private fun setProfileUser(){
+        val sh1 = this.activity?.getSharedPreferences("sectionLogin", Context.MODE_PRIVATE)
+        val nameUserLogin = sh1?.getString("sectionLoginName", "")
+        profileName.text = "Hello,"+nameUserLogin
     }
 }

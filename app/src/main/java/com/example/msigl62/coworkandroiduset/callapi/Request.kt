@@ -26,7 +26,7 @@ class Request : InterActor.ActData {
 
     interface LoginLister {
         fun onResponseSuccessLogin(responseData: String?, name: String?, image: String?, message: String?, status: String?)
-        fun onResponseSuccessLoginFacebook(responseData: String?, name: String?, image: String?, status: String?)
+        fun onResponseSuccessLoginFacebook(responseData: String?, name: String?, image: String?, status: String?,message: String?)
     }
 
     interface HomeListener {
@@ -112,6 +112,7 @@ class Request : InterActor.ActData {
                             callback.onResponseSuccessLoginFacebook(it.noticeMessage,
                                     it.data?.name,
                                     it.data?.image,
+                                    it.data?.message,
                                     it.data?.status)
                         } }
                     override fun onError(e: Throwable) {}

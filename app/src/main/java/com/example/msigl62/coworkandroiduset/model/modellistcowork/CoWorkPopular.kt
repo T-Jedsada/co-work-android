@@ -13,7 +13,7 @@ data class CoWorkPopular(val _id: String? = null,
                          val rarting: String,
                          val address: String? = null,
                          val provider_id: String? = null,
-                         val status: Boolean? = null,
+                         val status: String? = null,
                          val gellery: ImageGallery? = null) : Parcelable {
 
     constructor(source: Parcel) : this(
@@ -26,7 +26,7 @@ data class CoWorkPopular(val _id: String? = null,
             source.readString(),
             source.readString(),
             source.readString(),
-            source.readValue(Boolean::class.java.classLoader) as Boolean?,
+            source.readValue(String::class.java.classLoader) as String?,
             source.readParcelable<ImageGallery>(ImageGallery::class.java.classLoader)
     )
 
