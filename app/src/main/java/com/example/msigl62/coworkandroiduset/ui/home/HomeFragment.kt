@@ -16,14 +16,21 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkNearby
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkPopular
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.list_co_work_nearby_you.*
 import kotlinx.android.synthetic.main.list_co_work_popular.*
+import android.support.v4.view.ViewParentCompat.onNestedFling
+import android.support.design.widget.AppBarLayout
+import android.support.design.widget.CoordinatorLayout
+
+
 
 class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
@@ -42,7 +49,9 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
             val i = Intent(context, ShowAllNearbyActivity::class.java)
             startActivity(i)
         }
-
+        btnBackToTop.setOnClickListener {
+            myScrollingContent.fullScroll(ScrollView.FOCUS_UP)
+        }
     }
 
     override fun onStart() {
@@ -76,6 +85,7 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     override fun onCallSuccessCoWorkPopular(coWorkPopular: List<CoWorkPopular>?) {
         val adapterCoWorkPopular: AdapterCoWorkPopular by lazy { AdapterCoWorkPopular(listOf()) }
         listCoWorkPopular?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        listCoWorkPopular?.isNestedScrollingEnabled = false
         listCoWorkPopular?.adapter = adapterCoWorkPopular
         coWorkPopular?.let { adapterCoWorkPopular.setItem(it) }
     }

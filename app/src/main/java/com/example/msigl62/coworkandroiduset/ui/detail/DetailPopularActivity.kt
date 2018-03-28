@@ -31,7 +31,10 @@ import kotlinx.android.synthetic.main.list_co_work_review.*
 
 class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailContact.View {
 
-    companion object { const val Key = "KEY_DATA" }
+    companion object {
+        const val Key = "KEY_DATA"
+    }
+
     private lateinit var mMap: GoogleMap
     private val presenter: DetailContact.Presenter = DetailPresenter(this)
     private var lat: Double? = null
@@ -58,7 +61,7 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
 
     private fun setId() {
         backMain.setOnClickListener {
-            navigate<MainFragment> {  }
+            navigate<MainFragment> { }
         }
     }
 
@@ -66,7 +69,7 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
         gallery.setOnClickListener {
             val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
             navigate<GalleryActivity> {
-                putExtra("id",dataCoWork._id)
+                putExtra("id", dataCoWork._id)
             }
         }
     }
@@ -109,34 +112,38 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        lat=18.8002242256
-        lng=98.9668986925
+        lat = 18.8002242256
+        lng = 98.9668986925
         val sydney = lat?.let { lng?.let { it1 -> LatLng(it, it1) } }
         mMap.addMarker(sydney?.let { MarkerOptions().position(it).title("") })
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 19.0f))
     }
 
     override fun onResponseFromApi(responseDetail: ResponseDetail?) {
-        nameCoWorking.text = responseDetail?.data?.get(0)?.name
-        content.text = responseDetail?.data?.get(0)?.details
-        address.text = responseDetail?.data?.get(0)?.address
-        textPrice.text = responseDetail?.data?.get(0)?.price_per_hour
-        ratingTextDetail.text=responseDetail?.data?.get(0)?.rarting
-        rat.rating=responseDetail?.data?.get(0)?.rarting?.toFloat()!!
+        responseDetail?.data?.get(0).let {
+            nameCoWorking.text = it?.name
+            content.text = it?.details
+            address.text = it?.address
+            textPrice.text = it?.price_per_hour
+            ratingTextDetail.text = it?.rarting
+            rat.numStars = it?.rarting?.toInt() ?: 0
+            rat.rating = it?.rarting?.toFloat() ?: 0.toFloat()
+        }
+
         textContact.text = "0816117137" //TODO make value
         textContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))
             startActivity(intent)
         }
-        if(responseDetail?.data?.get(0)?.status.equals("true")){
+        if (responseDetail?.data?.get(0)?.status == "true") {
             btnReserveSeat.setImageResource(R.drawable.reserve_seat)
             btnReserveSeat.setOnClickListener {
                 val dataCoWork: CoWorkPopular = intent.getParcelableExtra(Key)
                 navigate<ReserveActivity> {
-                    putExtra("idCoWork",dataCoWork._id)
+                    putExtra("idCoWork", dataCoWork._id)
                 }
             }
-        }else{}
+        } else { }
     }
 
     override fun onResponseFromApiReView(responseReView: ResponseReView?) {

@@ -16,7 +16,7 @@ data class DataCoWorkNearby(@SerializedName("_id") val _id: String,
                             @SerializedName("gellery") val gallery: Gallery,
                             @SerializedName("status") val status: String,
                             @SerializedName("poster") val poster: String,
-                            @SerializedName("average_rating") val averageRating: String)
+                            @SerializedName("average_rating") val averageRating: Float)
 
 data class Gallery(@SerializedName("image_01") val img1: String,
                    @SerializedName("image_02") val img2: String,

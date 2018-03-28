@@ -1,5 +1,6 @@
 package com.example.msigl62.coworkandroiduset.ui.register
 
+import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
@@ -25,6 +26,11 @@ import com.facebook.FacebookException
 import com.facebook.GraphRequest
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import okhttp3.MediaType
@@ -44,7 +50,9 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
     private var loadingDialog: ProgressDialog? = null
     private val presenterLoginContact: LoginContact.Presenter by lazy { LoginPresenter(this) }
 
-    companion object { const val REQUEST_CODE = 1 }
+    companion object {
+        const val REQUEST_CODE = 1
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +71,8 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
         val status = intent.extras?.getString("keyStatusFormLoginActivity")
         if (status == "true") {
             checkUserIDFacebook()
-        } else { }
+        } else {
+        }
     }
 
     private fun setToolBar() {
@@ -91,9 +100,32 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     private fun setImageViewUser() {
         imageView.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(intent, REQUEST_CODE)
+            grantPermission()
         }
+    }
+
+    private fun onPickUpImage() {
+        val intent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, REQUEST_CODE)
+    }
+
+    private fun grantPermission() {
+        Dexter.withActivity(this)
+                .withPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(object : MultiplePermissionsListener {
+                    override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                        (!hasDeniedPermission(report)).let { onPickUpImage() }
+                    }
+
+                    override fun onPermissionRationaleShouldBeShown(permissions: MutableList<PermissionRequest>?, token: PermissionToken?) {
+                        token?.continuePermissionRequest()
+                    }
+
+                    private fun hasDeniedPermission(report: MultiplePermissionsReport): Boolean {
+                        val denyPermission = report.deniedPermissionResponses
+                        return denyPermission != null && denyPermission.size > 0
+                    }
+                }).check()
     }
 
     @Suppress("DEPRECATED_IDENTITY_EQUALS")
@@ -175,6 +207,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
                         request.parameters = parameters
                         request.executeAsync()
                     }
+
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -182,11 +215,11 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
 
     override fun onSuccessValidated(model: LoginEmail) {}
 
-    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?, message: String?,status:String?) {
+    override fun onResponseFromApiLogin(resMessage: String, name: String?, image: String?, message: String?, status: String?) {
         if (resMessage == "false") {
-            if(message.equals("Account not verify")){
-                Toast.makeText(this, ""+message, Toast.LENGTH_LONG).show()
-            }else{
+            if (message.equals("Account not verify")) {
+                Toast.makeText(this, "" + message, Toast.LENGTH_LONG).show()
+            } else {
                 getDataFacebook()
             }
         } else {

@@ -49,8 +49,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.msigl62.coworkandroiduset.ui.MainFragment"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TransNav">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

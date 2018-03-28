@@ -1,7 +1,6 @@
 package com.example.msigl62.coworkandroiduset.ui.login
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -25,8 +24,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
         forgot.setOnClickListener(this)
         btnSubmitLoginFacebook.setOnClickListener(this)
         presenter = LoginPresenter(this)
+        setToolBar()
         edtEmailLogin.hint="Email"
         edtPasswordLogin.hint = "Password"
+    }
+
+    private fun setToolBar() {
+        back.setOnClickListener {
+            navigate<MainFragment> {  }
+        }
     }
 
     override fun onClick(v: View) {
@@ -76,8 +82,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
     }
 
     override fun onBackPressed() {
-        val i = Intent(this, MainFragment::class.java)
-        startActivity(i)
+        navigate<MainFragment> {  }
     }
 }
 

@@ -13,12 +13,8 @@ class ShowAllHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.apply {
             imageCoWorkPopular.load(coWork.poster)
             rating.rating= coWork.averageRating.toFloat()
-            ratingTextPop.text = coWork.averageRating
+            ratingTextPop.text = coWork.averageRating.toString()
             textCoWorkPopularName.text = coWork.name
-            if (coWork.status == "false") {
-                statusPop.visibility = View.GONE
-            } else {
-            }
             imageCoWorkPopular.setOnClickListener {
                 itemView.context.startActivity(Intent(itemView.context, DetailNearbyActivity::class.java
                 ).putExtra("key", coWork._id)

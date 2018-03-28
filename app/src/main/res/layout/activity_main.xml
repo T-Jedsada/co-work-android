@@ -5,28 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/myScrollingContent"
+    <FrameLayout
+        android:id="@+id/containerFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/layoutSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <FrameLayout
-                android:id="@+id/containerFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-
-    </android.support.v4.widget.NestedScrollView>
+        android:layout_height="match_parent" />
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        app:bb_tabXmlResource="@xml/bottombar_tabs"
-        app:bb_behavior="underNavbar|shy"/>
+        app:bb_behavior="shy"
+        app:bb_tabXmlResource="@xml/bottombar_tabs" />
+
 </android.support.design.widget.CoordinatorLayout>

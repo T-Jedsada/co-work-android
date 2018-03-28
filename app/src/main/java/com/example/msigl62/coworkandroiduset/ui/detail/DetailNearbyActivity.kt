@@ -125,8 +125,11 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         content.text = responseDetail?.data?.get(0)?.details
         address.text = responseDetail?.data?.get(0)?.address
         textPrice.text = responseDetail?.data?.get(0)?.price_per_hour
-        ratingTextDetail.text=rating
-        rat.rating=rating?.toFloat()!!
+        responseDetail?.data?.get(0)?.rarting?.let {
+            ratingTextDetail.text = it
+            rat.numStars = it.toInt()
+            rat.rating = it.toFloat()
+        }
         textContact.text = "0816117137"  //TODO make value
         textContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))

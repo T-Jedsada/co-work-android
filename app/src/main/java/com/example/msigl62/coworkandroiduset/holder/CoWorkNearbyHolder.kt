@@ -12,9 +12,10 @@ class CoWorkNearbyHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun onBind(coWork: DataCoWorkNearby) {
         itemView.apply {
             textCoWorkName.text = coWork.name
-            ratingText.text=coWork.averageRating
-            rating.rating = coWork.averageRating.toFloat()
             imageCoWorkNearby.load(coWork.poster)
+            ratingText.text=coWork.averageRating.toInt().toString()
+            ratingSuggest.numStars = coWork.averageRating.toInt()
+            ratingSuggest.rating = coWork.averageRating
             if(coWork.status == "false"){
                 status.visibility = View.GONE
             }else{ }
@@ -28,5 +29,6 @@ class CoWorkNearbyHolder(view: View) : RecyclerView.ViewHolder(view) {
                         .putExtra("raring",coWork.averageRating)
                 )
             }
-        } }
+        }
+    }
 }

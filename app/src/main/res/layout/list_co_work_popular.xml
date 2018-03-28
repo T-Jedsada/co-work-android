@@ -12,15 +12,16 @@
         android:textStyle="bold"
         android:layout_marginStart="16dp"
         android:id="@+id/textCoWorkPopular"
-        android:text="Other Popular Co-working"
+        android:text="OTHER PLACES"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listCoWorkPopular"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textCoWorkPopular"
         android:layout_marginTop="5dp" />
+
 
 </RelativeLayout>
