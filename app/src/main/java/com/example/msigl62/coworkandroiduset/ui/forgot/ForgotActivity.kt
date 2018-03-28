@@ -49,9 +49,7 @@ class ForgotActivity : AppCompatActivity(), ForgotContact.View {
             "false" -> Toast.makeText(this, R.string.toastResponseForgot, Toast.LENGTH_SHORT).show()
             "statusFalse" -> Toast.makeText(this, R.string.statusFalseConfirmSingUp, Toast.LENGTH_SHORT).show()
             else -> {
-                val i = Intent(this, ForgotActivityFinish::class.java)
-                startActivity(i)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                navigate<ForgotActivityFinish> {  }
             }
         }
     }

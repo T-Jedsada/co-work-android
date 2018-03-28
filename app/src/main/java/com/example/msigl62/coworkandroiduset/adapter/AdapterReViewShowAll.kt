@@ -7,7 +7,7 @@ import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.holder.CoWorkReViewHolder
 import com.example.msigl62.coworkandroiduset.model.DataReView
 
-class AdapterReView (private var coWork: List<DataReView>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterReViewShowAll (private var coWork: List<DataReView>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun setItem(items: List<DataReView>?) {
         items?.let {coWork = it}
@@ -19,12 +19,7 @@ class AdapterReView (private var coWork: List<DataReView>) : RecyclerView.Adapte
         return CoWorkReViewHolder(view)
     }
 
-    override fun getItemCount():  Int {
-        return when (coWork.isNotEmpty()) {
-            true -> 3
-            false -> coWork.size
-        }
-    }
+    override fun getItemCount():  Int = coWork.size
 
     override fun getItemViewType(position: Int): Int = R.layout.list_item_re_view
 

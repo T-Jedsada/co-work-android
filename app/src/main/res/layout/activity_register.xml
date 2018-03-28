@@ -39,7 +39,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:text="@string/topic_name"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textColor"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -50,6 +50,7 @@
             android:layout_below="@+id/textName"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            app:backgroundTint="#8471ED"
             android:ems="10"
             android:hint="@string/name"
             android:inputType="textEmailAddress" />
@@ -63,7 +64,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:text="@string/topic_email"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textColor"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -73,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textEmail"
             android:layout_marginLeft="30dp"
+            app:backgroundTint="#8471ED"
             android:layout_marginRight="30dp"
             android:ems="10"
             android:hint="@string/e_mail"
@@ -87,7 +89,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:text="@string/topic_password"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textColor"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -95,6 +97,7 @@
             android:id="@+id/password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:backgroundTint="#8471ED"
             android:layout_below="@+id/textPassword"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -117,7 +120,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:text="@string/topic_re_password"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textColor"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -125,6 +128,7 @@
             android:id="@+id/re_password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:backgroundTint="#8471ED"
             android:layout_below="@+id/textRePassword"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"

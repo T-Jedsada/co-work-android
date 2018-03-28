@@ -12,12 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="250dp">
     </android.support.v7.widget.RecyclerView>
-
+    
+    <ImageView
+        android:layout_marginTop="16dp"
+        android:id="@+id/showAllView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/recyclerViewReview"
+        android:src="@drawable/show_all"
+        android:layout_width="70dp"
+        android:layout_height="18dp" />
+    
     <ImageView
         android:layout_marginTop="20dp"
         android:scaleType="fitXY"
         android:background="@drawable/btn_available"
-        android:layout_below="@+id/recyclerViewReview"
+        android:layout_below="@+id/showAllView"
         android:id="@+id/btnReserveSeat"
         android:layout_width="match_parent"
         android:layout_height="45dp" />

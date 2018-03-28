@@ -42,7 +42,7 @@ class RegisterPresenter(val view: RegisterContact.View) : RegisterContact.Presen
             model.email.isNullOrEmpty() -> view.onErrorMessage(R.string.email_empty_massage)
             !model.email.emailPattern().matches() -> view.onErrorMessage(R.string.email_format_invalid)
             model.password.isNullOrEmpty() -> view.onErrorMessage(R.string.password_empty_massage)
-            model.password?.length ?: 6 > 30 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
+            model.password?.length?:0 < 6 || model.password?.length?:0 > 31 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
             model.rePassword.isNullOrEmpty() -> view.onErrorMessage(R.string.re_password_empty_massage)
             !model.rePassword.equals(model.password) -> view.onErrorMessage(R.string.invalid_re_password)
             else -> {

@@ -148,6 +148,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
                 true,
                 false
         )
+        //TODO :: use base la shit
         presenter.requestValidateApi(model)
         btnSubmit.isClickable = false
     }

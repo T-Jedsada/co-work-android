@@ -16,15 +16,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import bolts.AppLinkNavigation.navigate
-import com.ethanhua.skeleton.Skeleton
-import com.ethanhua.skeleton.SkeletonScreen
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkNearby
 import com.example.msigl62.coworkandroiduset.adapter.AdapterCoWorkPopular
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
 import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
 import com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity
 import kotlinx.android.synthetic.main.list_co_work_nearby_you.*
 import kotlinx.android.synthetic.main.list_co_work_popular.*
@@ -33,7 +29,6 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
     private lateinit var presenter: HomeContact.Presenter
     private lateinit var locationManager: LocationManager
-    private var skeletonScreen: SkeletonScreen? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater!!.inflate(R.layout.activity_home, container, false)
@@ -64,7 +59,7 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
             ActivityCompat.requestPermissions(context as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 101)
         } else {
             locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5f, this)
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
         }
     }
 
@@ -95,6 +90,14 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     //TODO getLocation send API
     override fun onLocationChanged(location: Location?) {
         location?.let { presenter.callCoWorkNearby(location.longitude, location.latitude) }
+
+        // TODO bug Preferences to page Show All
+        val section = this.getActivity()?.getSharedPreferences("location", Context.MODE_PRIVATE)
+        val editor = section?.edit()
+        editor?.putString("longitude", location?.longitude.toString())
+        editor?.putString("latitude",location?.latitude.toString())
+        editor?.commit()
+
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}

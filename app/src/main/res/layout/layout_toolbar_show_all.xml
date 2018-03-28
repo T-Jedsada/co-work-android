@@ -29,7 +29,7 @@
         android:layout_height="12dp" />
 
     <TextView
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColor"
         android:layout_marginTop="10dp"
         android:text="NEARBY YOU"
         android:layout_width="wrap_content"

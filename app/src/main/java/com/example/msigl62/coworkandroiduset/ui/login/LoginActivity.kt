@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
         forgot.setOnClickListener(this)
         btnSubmitLoginFacebook.setOnClickListener(this)
         presenter = LoginPresenter(this)
+        edtEmailLogin.hint="Email"
         edtPasswordLogin.hint = "Password"
     }
 
@@ -69,8 +70,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
                 editor.putString("sectionLoginName", name)
                 editor.putString("sectionLoginImage",image)
                 editor.commit()
-                val i = Intent(this, MainFragment::class.java)
-                startActivity(i)
+                navigate<MainFragment> {  }
             }
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    xmlns:tool="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="5dp">
 
@@ -13,60 +13,66 @@
         android:layout_height="190dp"
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
-        app:cardCornerRadius="7dp"
-        android:elevation="3dp">
+        android:elevation="3dp"
+        app:cardCornerRadius="7dp">
 
         <ImageView
-            android:background="@color/cardview_dark_background"
             android:id="@+id/imageCoWorkNearby"
             android:layout_width="200dp"
             android:layout_height="120dp"
+            android:background="@color/cardview_dark_background"
             android:clickable="true"
             android:scaleType="fitXY" />
 
         <TextView
-            android:layout_marginStart="8dp"
             android:id="@+id/textCoWorkName"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:layout_marginTop="120dp"
-            tool:text="CoWork_01"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="120dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tool:text="CoWork_01" />
 
         <TextView
-            android:layout_marginStart="8dp"
             android:id="@+id/textCoWorkNameAddress"
-            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="140dp"
             android:text="Suthep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/ratingText"
-            android:textStyle="bold"
-            android:textSize="13sp"
-            android:layout_marginRight="14dp"
+            android:layout_width="25dp"
+            android:layout_height="19dp"
             android:layout_gravity="right"
+            android:layout_marginRight="14dp"
             android:layout_marginTop="165dp"
-            tool:text="1"
-            android:layout_width="7dp"
-            android:layout_height="14dp" />
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tool:text="1.4" />
 
         <ImageView
             android:id="@+id/status"
-            android:src="@drawable/available"
             android:layout_width="60dp"
-            android:layout_height="30dp" />
-        
-        <ImageView
+            android:layout_height="30dp"
+            android:src="@drawable/available" />
+
+
+        <RatingBar
+            android:id="@+id/rating"
             android:layout_gravity="right"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="170dp"
-            android:src="@drawable/rating"
-            android:layout_width="48dp"
-            android:layout_height="8dp" />
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="167dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="8" />
+
 
     </android.support.v7.widget.CardView>
 

@@ -40,7 +40,6 @@
         android:layout_height="52dp"
         android:layout_below="@id/imEditProfile"
         android:src="@drawable/tab_chang_password">
-
     </ImageView>
 
     <ImageView
@@ -52,11 +51,13 @@
     </ImageView>
 
     <ImageView
+        android:layout_marginTop="49dp"
+        android:layout_marginStart="15dp"
         android:id="@+id/logOut"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_width="50dp"
+        android:layout_height="18dp"
         android:layout_below="@id/imAboutUs"
-        android:src="@drawable/tab_about">
+        android:src="@drawable/btn_logout">
     </ImageView>
 
 </RelativeLayout>

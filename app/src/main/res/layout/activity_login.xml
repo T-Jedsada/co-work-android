@@ -53,7 +53,7 @@
 
     <TextView
         android:id="@+id/topicEmail"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColor"
         android:textSize="10sp"
         android:layout_marginTop="250dp"
         android:layout_width="wrap_content"
@@ -63,9 +63,9 @@
         android:text="@string/topic_email" />
 
     <TextView
-        android:id="@+id/topicPass"
-        android:textColor="@color/colorAccent"
         android:textSize="10sp"
+        android:id="@+id/topicPass"
+        android:textColor="@color/textColor"
         android:layout_below="@+id/topicEmail"
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
@@ -83,8 +83,9 @@
             android:layout_marginRight="30dp"
             android:layout_below="@+id/topicEmail"
             android:ems="10"
-            android:hint="@string/e_mail"
-            android:inputType="textEmailAddress" />
+            app:backgroundTint="#8471ED"
+            android:inputType="textEmailAddress"
+            />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/signup_input_layout_password"
@@ -93,6 +94,7 @@
         android:layout_below="@+id/edtEmailLogin"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
+        app:backgroundTint="#8471ED"
         android:layout_marginRight="30dp"
         app:passwordToggleEnabled="true">
 

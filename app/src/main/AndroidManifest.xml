@@ -61,7 +61,8 @@
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity" />
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.profile.EditProfileUserActivity" />
         <activity android:name="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveSummaryActivity" />
-        <activity android:name="com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity"></activity>
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity" />
+        <activity android:name="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveOTPActivity"></activity>
     </application>
 
 </manifest>
