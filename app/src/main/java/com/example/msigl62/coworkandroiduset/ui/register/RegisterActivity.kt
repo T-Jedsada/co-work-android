@@ -16,7 +16,7 @@ import com.example.msigl62.coworkandroiduset.extension.load
 import com.example.msigl62.coworkandroiduset.model.LoginEmail
 import com.example.msigl62.coworkandroiduset.model.LoginFacebook
 import com.example.msigl62.coworkandroiduset.model.Register
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.MainActivity
 import com.example.msigl62.coworkandroiduset.ui.login.LoginActivity
 import com.example.msigl62.coworkandroiduset.ui.login.LoginContact
 import com.example.msigl62.coworkandroiduset.ui.login.LoginPresenter
@@ -229,7 +229,7 @@ class RegisterActivity : AppCompatActivity(), RegisterContact.View, LoginContact
             editor.putString("sectionLoginName", name)
             editor.putString("sectionLoginImage", image)
             editor.commit()
-            val i = Intent(this, MainFragment::class.java)
+            val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
     }

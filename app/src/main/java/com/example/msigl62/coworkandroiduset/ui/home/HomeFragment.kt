@@ -26,11 +26,6 @@ import com.example.msigl62.coworkandroiduset.ui.show.ShowAllNearbyActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.list_co_work_nearby_you.*
 import kotlinx.android.synthetic.main.list_co_work_popular.*
-import android.support.v4.view.ViewParentCompat.onNestedFling
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.CoordinatorLayout
-
-
 
 class HomeFragment : Fragment(), HomeContact.View, LocationListener {
 
@@ -50,14 +45,13 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
             startActivity(i)
         }
         btnBackToTop.setOnClickListener {
-            myScrollingContent.fullScroll(ScrollView.FOCUS_UP)
+            //myScrollingContent.fullScroll(ScrollView.FOCUS_UP)
+            myScrollingContent.scrollTo(0, 0)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        //TODO undo Edit getLocation bug view and lifecycle
-        // presenter.callCoWorkNearby(98.9487219,18.770992)
          getLocationUser()
     }
 
@@ -115,5 +109,6 @@ class HomeFragment : Fragment(), HomeContact.View, LocationListener {
     override fun onProviderEnabled(provider: String?) {}
 
     override fun onProviderDisabled(provider: String?) {}
+
 
 }

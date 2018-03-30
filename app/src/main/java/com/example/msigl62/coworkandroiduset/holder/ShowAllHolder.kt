@@ -12,8 +12,9 @@ class ShowAllHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun onBind(coWork: DataCoWorkNearby) {
         itemView.apply {
             imageCoWorkPopular.load(coWork.poster)
-            rating.rating= coWork.averageRating.toFloat()
-            ratingTextPop.text = coWork.averageRating.toString()
+            rating.numStars= coWork.averageRating.toInt()
+            rating.rating = coWork.averageRating
+            ratingTextPop.text = coWork.averageRating.toInt().toString()
             textCoWorkPopularName.text = coWork.name
             imageCoWorkPopular.setOnClickListener {
                 itemView.context.startActivity(Intent(itemView.context, DetailNearbyActivity::class.java

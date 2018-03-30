@@ -18,7 +18,7 @@ import com.example.msigl62.coworkandroiduset.extension.navigate
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.MainActivity
 import com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -61,7 +61,7 @@ class DetailPopularActivity : AppCompatActivity(), OnMapReadyCallback, DetailCon
 
     private fun setId() {
         backMain.setOnClickListener {
-            navigate<MainFragment> { }
+            navigate<MainActivity> { }
         }
     }
 

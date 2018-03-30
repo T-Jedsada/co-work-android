@@ -48,7 +48,7 @@
             android:name="com.example.msigl62.coworkandroiduset.ui.profile.ProfileUserFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.msigl62.coworkandroiduset.ui.MainFragment"
+            android:name="com.example.msigl62.coworkandroiduset.ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

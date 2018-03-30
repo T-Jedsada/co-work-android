@@ -17,7 +17,7 @@ import com.example.msigl62.coworkandroiduset.base.BaseActivity
 import com.example.msigl62.coworkandroiduset.extension.navigate
 import com.example.msigl62.coworkandroiduset.model.ResponseSuggestion
 import com.example.msigl62.coworkandroiduset.model.modellistcowork.CoWorkPopular
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.MainActivity
 import com.example.msigl62.coworkandroiduset.ui.home.HomeContact
 import com.example.msigl62.coworkandroiduset.ui.home.HomePresenter
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -50,7 +50,7 @@ class ShowAllNearbyActivity : BaseActivity<ContractMain.View, PresenterMain>(), 
 
     override fun setUpToolBar() {
         image_arrow.setOnClickListener {
-            navigate<MainFragment> {}
+            navigate<MainActivity> {}
         }
     }
 

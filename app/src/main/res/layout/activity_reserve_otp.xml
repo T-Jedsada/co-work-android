@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.msigl62.coworkandroiduset.ui.reserve.ReserveOTPActivity">
     <include layout="@layout/layout_toolbar" />
 
@@ -46,7 +47,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="40dp"
         android:text="MOBILE NUMBER"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColor"
         android:textSize="10sp"
         android:textStyle="bold" />
 
@@ -54,6 +55,7 @@
         android:id="@+id/edt_forgot_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:backgroundTint="#8471ED"
         android:layout_below="@+id/textEmail"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"

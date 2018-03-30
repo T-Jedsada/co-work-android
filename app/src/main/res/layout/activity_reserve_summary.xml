@@ -54,7 +54,7 @@
             android:layout_marginStart="@dimen/margin_left"
             android:layout_marginTop="16dp"
             android:text="@string/reserve_name"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textColor"
             android:textSize="10sp"
             android:textStyle="bold"
             tools:ignore="SmallSp" />
@@ -95,7 +95,7 @@
                 android:layout_below="@id/normal"
                 android:layout_marginTop="2dp"
                 android:text="500 Bath"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/textColor"
                 android:textStyle="bold" />
 
             <TextView
@@ -132,7 +132,7 @@
                 android:layout_below="@id/meeting"
                 android:layout_marginTop="2dp"
                 android:text="500 Bath"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/textColor"
                 android:textStyle="bold" />
 
             <TextView
@@ -169,7 +169,7 @@
                 android:layout_below="@id/exclusive"
                 android:layout_marginTop="2dp"
                 android:text="500 Bath"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/textColor"
                 android:textStyle="bold" />
 
             <TextView

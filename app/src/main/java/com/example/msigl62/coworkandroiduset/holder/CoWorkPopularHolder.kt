@@ -21,6 +21,15 @@ class CoWorkPopularHolder(view: View) : RecyclerView.ViewHolder(view) {
                 itemView.context.startActivity(Intent(itemView.context, DetailPopularActivity::class.java)
                         .putExtra(DetailPopularActivity.Key, coWork))
             }
+//            favouritePop.setOnClickListener {
+//                when (favouritePop.visibility == View. ) {
+//                    true -> {show.text = "Hide"
+//                        view.simpleFadeInAnimation() }
+//                    else -> {show.text = "Show"
+//                        view.simpleFadeOutAnimation() }
+//                }
+           // }
+
         }
     }
 }

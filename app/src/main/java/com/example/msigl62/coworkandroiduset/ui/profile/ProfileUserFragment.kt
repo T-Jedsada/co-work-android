@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.msi_gl62.co_work_android_uset.R
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_profile_user.*
 
 class ProfileUserFragment : Fragment() {
@@ -40,7 +40,7 @@ class ProfileUserFragment : Fragment() {
             val editor = section?.edit()
             editor?.putString("sectionLoginName",null)
             editor?.commit()
-            startActivity(Intent(context, MainFragment::class.java))
+            startActivity(Intent(context, MainActivity::class.java))
         }
     }
 

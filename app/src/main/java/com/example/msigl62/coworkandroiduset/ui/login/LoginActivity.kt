@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.extension.navigate
 import com.example.msigl62.coworkandroiduset.model.LoginEmail
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.MainActivity
 import com.example.msigl62.coworkandroiduset.ui.forgot.ForgotActivity
 import com.example.msigl62.coworkandroiduset.ui.register.RegisterActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
 
     private fun setToolBar() {
         back.setOnClickListener {
-            navigate<MainFragment> {  }
+            navigate<MainActivity> {  }
         }
     }
 
@@ -76,13 +76,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginContact.Vi
                 editor.putString("sectionLoginName", name)
                 editor.putString("sectionLoginImage",image)
                 editor.commit()
-                navigate<MainFragment> {  }
+                navigate<MainActivity> {  }
             }
         }
     }
 
     override fun onBackPressed() {
-        navigate<MainFragment> {  }
+        navigate<MainActivity> {  }
     }
 }
 

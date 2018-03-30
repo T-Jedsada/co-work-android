@@ -49,9 +49,7 @@ class LoginPresenter(val view: LoginContact.View) : LoginContact.Presenter, Inte
             !model.email.emailPattern().matches() -> view.onErrorMessage(R.string.email_format_invalid)
             model.password.isNullOrEmpty() -> view.onErrorMessage(R.string.password_empty_massage)
             model.password?.length ?: 0 > 30 -> view.onErrorMessage(R.string.password_shorter_that_defaul)
-            else -> {
-                view.onSuccessValidated(model)
-            }
+            else -> { view.onSuccessValidated(model) }
         }
     }
 }

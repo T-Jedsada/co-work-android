@@ -2,38 +2,29 @@ package com.example.msigl62.coworkandroiduset.ui.detail
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import com.example.msi_gl62.co_work_android_uset.R
 import com.example.msigl62.coworkandroiduset.adapter.AdapterReView
 import com.example.msigl62.coworkandroiduset.adapter.AdapterReViewShowAll
 import com.example.msigl62.coworkandroiduset.adapter.SectionsPagerAdapter
 import com.example.msigl62.coworkandroiduset.extension.navigate
-import com.example.msigl62.coworkandroiduset.extension.simpleFadeInAnimation
-import com.example.msigl62.coworkandroiduset.extension.simpleFadeOutAnimation
 import com.example.msigl62.coworkandroiduset.model.Gallery
 import com.example.msigl62.coworkandroiduset.model.ResponseDetail
 import com.example.msigl62.coworkandroiduset.model.ResponseReView
-import com.example.msigl62.coworkandroiduset.ui.MainFragment
+import com.example.msigl62.coworkandroiduset.ui.MainActivity
 import com.example.msigl62.coworkandroiduset.ui.reserve.ReserveActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detail_co_work.*
@@ -45,6 +36,8 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
     private val presenter: DetailContact.Presenter = DetailPresenter(this)
     private var id:String?=null
     private var rating:String?=null
+    private var lat:Double?=null
+    private var lon:Double?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +55,7 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
 
     private fun setId() {
         backMain.setOnClickListener {
-            navigate<MainFragment> {}
+            navigate<MainActivity> {}
         }
     }
 
@@ -110,26 +103,20 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
         })
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        val latitude = intent.extras?.getDouble("latitude")
-        val longitude = intent.extras?.getDouble("longitude")
-        val sydney = latitude ?.let { longitude?.let { it1 -> LatLng(it, it1) } }
-        mMap.addMarker(sydney?.let { MarkerOptions().position(it).title("") })
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 19.0f))
-
-    }
-
     override fun onResponseFromApi(responseDetail: ResponseDetail?) {
-        nameCoWorking.text = responseDetail?.data?.get(0)?.name
-        content.text = responseDetail?.data?.get(0)?.details
-        address.text = responseDetail?.data?.get(0)?.address
-        textPrice.text = responseDetail?.data?.get(0)?.price_per_hour
-        responseDetail?.data?.get(0)?.rarting?.let {
-            ratingTextDetail.text = it
-            rat.numStars = it.toInt()
-            rat.rating = it.toFloat()
+        responseDetail?.data?.get(0).let {
+            nameCoWorking.text = it?.name
+            content.text = it?.details
+            address.text = it?.address
+            textPrice.text = it?.price_per_hour
+            ratingTextDetail.text = it?.rarting
+            rat.numStars = it?.rarting?.toInt() ?: 0
+            rat.rating = it?.rarting?.toFloat() ?: 0.toFloat()
+            lat=it?.latitude
+            lon=it?.longitude
+
         }
+
         textContact.text = "0816117137"  //TODO make value
         textContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", textContact.text as String, null))
@@ -145,6 +132,16 @@ class DetailNearbyActivity : AppCompatActivity(), OnMapReadyCallback, DetailCont
                 editor.commit()
             }
         } else { }
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        val latitude = intent.extras?.getDouble("latitude")
+        val longitude = intent.extras?.getDouble("longitude")
+        val sydney = latitude ?.let { longitude?.let { it1 -> LatLng(it, it1) } }
+        mMap.addMarker(sydney?.let { MarkerOptions().position(it).title("") })
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 19.0f))
+
     }
 
     override fun onResponseFromApiReView(responseReView: ResponseReView?) {
